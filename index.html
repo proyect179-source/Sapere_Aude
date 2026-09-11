@@ -60,11 +60,14 @@ h1,h2,h3,h4{text-align:left;margin:0}
 .typing span{width:6px;height:6px;background:#b9bfd2;border-radius:50%;animation:blink 1.2s infinite ease-in-out}
 .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+#google_translate_element{display:none}
 @media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:760px){.sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%;padding:18px}.mobile-menu{display:block;background:#fff;border:1px solid var(--border);width:40px;height:40px;border-radius:11px}.topbar{gap:12px}.welcome h1{font-size:22px}.g4,.g3,.g2{grid-template-columns:1fr}.chat{grid-template-columns:1fr}.chat-list{display:none}.section-title{margin-top:22px}.chatbot-window{width:calc(100% - 40px);left:20px;bottom:90px}.chatbot-fab-wrap{left:20px}}
 </style>
 </head>
 <body>
+<div id="google_translate_element"></div>
+
 <div id="app" class="app">
 <aside class="sidebar" id="sidebar">
     <div class="brand"><div class="logo">🦉</div><span data-i18n="brand">Sapere Aude</span></div>
@@ -90,6 +93,9 @@ h1,h2,h3,h4{text-align:left;margin:0}
         <option value="es">🇪🇸 Español</option>
         <option value="en">🇬🇧 English</option>
         <option value="pt">🇧🇷 Português</option>
+        <option value="fr">🇫🇷 Français</option>
+        <option value="de">🇩🇪 Deutsch</option>
+        <option value="it">🇮🇹 Italiano</option>
       </select>
       <button class="auth-btn" id="authToggleBtn" onclick="openAuthModal()" data-i18n="auth_btn">Iniciar sesión o regístrate</button>
     </div>
@@ -99,19 +105,22 @@ h1,h2,h3,h4{text-align:left;margin:0}
     <div class="hero"><h2 data-i18n="hero_dash_title">Convierte tus objetivos en avances reales.</h2><p data-i18n="hero_dash_p">Reserva una sesión, consulta tus compromisos y accede a recursos seleccionados para tu proceso profesional o empresarial.</p><button class="btn" onclick="go('reservas')" data-i18n="hero_dash_btn">Reservar una asesoría →</button></div>
     <div class="section-title"><h2 data-i18n="resumen">Resumen de tu proceso</h2></div>
     <div class="grid g4">
-      <div class="card stat"><div><small data-i18n="sesiones">Sesiones realizadas</small><strong>8</strong><small data-i18n="this_month">+2 este mes</small></div><div class="icon">◷</div></div>
-      <div class="card stat"><div><small data-i18n="progreso">Progreso general</small><strong>72%</strong><small data-i18n="good_pace">Buen ritmo</small></div><div class="icon">↗</div></div>
-      <div class="card stat"><div><small data-i18n="compromisos">Compromisos</small><strong>4</strong><small data-i18n="pending_2">2 pendientes</small></div><div class="icon">✓</div></div>
-      <div class="card stat"><div><small data-i18n="recursos">Recursos guardados</small><strong>12</strong><small data-i18n="new_3">3 nuevos</small></div><div class="icon">▣</div></div>
+      <div class="card stat"><div><small data-i18n="sesiones">Sesiones realizadas</small><strong id="statSesiones">0</strong><small id="statSesionesSub" class="muted">—</small></div><div class="icon">◷</div></div>
+      <div class="card stat"><div><small data-i18n="progreso">Progreso general</small><strong id="statProgreso">0%</strong><small id="statProgresoSub" class="muted">—</small></div><div class="icon">↗</div></div>
+      <div class="card stat"><div><small data-i18n="compromisos">Compromisos</small><strong id="statCompromisos">0</strong><small id="statCompromisosSub" class="muted">—</small></div><div class="icon">✓</div></div>
+      <div class="card stat"><div><small data-i18n="recursos">Recursos guardados</small><strong id="statRecursos">0</strong><small id="statRecursosSub" class="muted">—</small></div><div class="icon">▣</div></div>
     </div>
     <div class="grid g2" style="margin-top:18px">
-      <div class="card"><div class="section-title" style="margin:0 0 15px"><h2 data-i18n="next_session">Próxima asesoría</h2><span class="badge" data-i18n="confirmed">Confirmada</span></div><div class="item"><div class="item-left"><div class="item-icon">👩‍💼</div><div><b data-i18n="advisor_name">Laura Martínez</b><div class="muted" data-i18n="advisor_role">Orientación académica · 45 min</div></div></div><b>04:00 PM</b></div><button class="btn secondary" style="width:100%;margin-top:12px" onclick="go('chat')" data-i18n="open_chat_btn">Abrir chat con asesora</button></div>
-      <div class="card"><div class="section-title" style="margin:0 0 15px"><h2 data-i18n="current_goal">Tu objetivo actual</h2><span class="badge">72%</span></div><h3 style="margin:5px 0" data-i18n="goal_title">Fortalecer competencias profesionales</h3><p class="muted" data-i18n="goal_plan">Plan de 12 sesiones · 8 completadas</p><div class="progress"><div style="width:72%"></div></div><div style="display:flex;justify-content:space-between;margin-top:8px" class="muted"><span data-i18n="start_label">Inicio: 03 Jun</span><span data-i18n="goal_label">Meta: 30 Sep</span></div></div>
+      <div class="card"><div class="section-title" style="margin:0 0 15px"><h2 data-i18n="next_session">Próxima asesoría</h2><span id="nextSessionBadge" class="badge orange">Sin reservas</span></div>
+        <div id="nextSessionContent"><p class="muted" id="nextSessionEmpty">Aún no tienes ninguna asesoría reservada.</p></div>
+        <button class="btn secondary" style="width:100%;margin-top:12px" onclick="go('reservas')" data-i18n="hero_dash_btn">Reservar una asesoría →</button></div>
+      <div class="card"><div class="section-title" style="margin:0 0 15px"><h2 data-i18n="current_goal">Tu objetivo actual</h2><span class="badge" id="goalBadge">0%</span></div>
+        <div id="goalContent"><p class="muted" id="goalEmpty">Todavía no has definido un objetivo. Ve a "Mi seguimiento" para crear uno.</p></div>
+      </div>
     </div>
     <div class="section-title"><h2 data-i18n="next_commitments">Próximos compromisos</h2><button class="btn ghost" onclick="go('seguimiento')" data-i18n="view_all">Ver todos</button></div>
-    <div class="card list">
-      <div class="item"><div class="item-left"><div class="item-icon">📘</div><div><b data-i18n="commit1_title">Completar módulo de comunicación</b><div class="muted" data-i18n="commit1_date">Fecha límite · 30 Ago</div></div></div><span class="badge orange" data-i18n="pending">Pendiente</span></div>
-      <div class="item"><div class="item-left"><div class="item-icon">📝</div><div><b data-i18n="commit2_title">Preparar preguntas para la próxima sesión</b><div class="muted" data-i18n="commit2_date">Fecha límite · 02 Sep</div></div></div><span class="badge" data-i18n="in_progress">En progreso</span></div>
+    <div class="card list" id="dashCommitList">
+      <p class="muted" id="dashCommitEmpty">No tienes compromisos registrados todavía.</p>
     </div>
   </section>
 
@@ -172,10 +181,10 @@ h1,h2,h3,h4{text-align:left;margin:0}
         <div>
           <label style="font-size:13px;font-weight:700" data-i18n="select_date">Selecciona una fecha</label>
           <div class="calendar" style="margin-top:9px" id="calendarDays">
-            <div class="day" data-day="Lun 24">Lun<br>24</div><div class="day" data-day="Mar 25">Mar<br>25</div><div class="day" data-day="Mié 26">Mié<br>26</div><div class="day" data-day="Jue 27">Jue<br>27</div><div class="day available selected" data-day="Vie 28">Vie<br>28</div><div class="day available" data-day="Sáb 29">Sáb<br>29</div><div class="day" data-day="Dom 30">Dom<br>30</div>
+            <div class="day" id="calDaysContainer" style="display:contents"></div>
           </div>
           <label style="display:block;font-size:13px;font-weight:700;margin:20px 0 9px" data-i18n="available_times">Horarios disponibles</label>
-          <div class="time-grid" id="timeSlots"><button type="button" class="time">2:00 PM</button><button type="button" class="time selected">4:00 PM</button><button type="button" class="time">5:30 PM</button><button type="button" class="time">7:00 PM</button></div>
+          <div class="time-grid" id="timeSlots"><button type="button" class="time">2:00 PM</button><button type="button" class="time">4:00 PM</button><button type="button" class="time">5:30 PM</button><button type="button" class="time">7:00 PM</button></div>
           <button class="btn" style="width:100%;margin-top:20px" onclick="confirmBooking()" data-i18n="confirm_booking_btn">Confirmar reserva</button>
         </div>
       </div>
@@ -205,16 +214,16 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <div class="card tool"><div class="bigicon">📊</div><h3 data-i18n="h2_title">Calculadora financiera</h3><p data-i18n="h2_p">Estima cuotas, presupuestos y escenarios básicos.</p><button class="btn secondary" onclick="openModal('Calculadora financiera','Herramienta preparada para incorporar tus variables de presupuesto.')" data-i18n="h2_btn">Abrir herramienta</button></div>
       <div class="card tool"><div class="bigicon">📝</div><h3 data-i18n="h3_title">Generador de checklist</h3><p data-i18n="h3_p">Convierte objetivos en acciones concretas y medibles.</p><button class="btn secondary" onclick="openModal('Checklist','Crea una lista de acciones para tu próximo objetivo.')" data-i18n="h3_btn">Abrir herramienta</button></div>
       <div class="card tool"><div class="bigicon">🔎</div><h3 data-i18n="h4_title">Buscador de recursos</h3><p data-i18n="h4_p">Encuentra material de apoyo según tu proceso.</p><button class="btn secondary" onclick="openModal('Recursos','Aquí puedes conectar un buscador de documentos y enlaces propios.')" data-i18n="h4_btn">Explorar</button></div>
-      <div class="card tool"><div class="bigicon">⏱️</div><h3 data-i18n="h5_title">Temporizador Pomodoro</h3><p data-i18n="h5_p">Trabaja por bloques de concentración y descanso.</p><button class="btn secondary" onclick="openModal('Pomodoro','25 minutos de concentración + 5 minutos de descanso.')" data-i18n="h5_btn">Iniciar</button></div>
+      <div class="card tool"><div class="bigicon">⏱️</div><h3 data-i18n="h5_title">Temporizador Pomodoro</h3><p data-i18n="h5_p">Trabaja por bloques de concentración y descanso.</p><div id="pomodoroDisplay" style="font-size:22px;font-weight:800;margin:8px 0;display:none">25:00</div><button class="btn secondary" id="pomodoroBtn" onclick="startPomodoro()" data-i18n="h5_btn">Iniciar</button></div>
       <div class="card tool"><div class="bigicon">🎯</div><h3 data-i18n="h6_title">Metas SMART</h3><p data-i18n="h6_p">Formula objetivos específicos, medibles y alcanzables.</p><button class="btn secondary" onclick="openModal('Metas SMART','Define qué quieres lograr, cómo medirlo y cuándo completarlo.')" data-i18n="h6_btn">Crear meta</button></div>
     </div>
   </section>
 
   <section id="chat" class="page">
     <div class="card chat">
-      <div class="chat-list"><h3 style="margin:8px" data-i18n="chat_conversations">Conversaciones</h3><div class="chat-user active"><div class="avatar">LM</div><div><b data-i18n="advisor_name">Laura Martínez</b><div class="muted" data-i18n="chat_online">En línea</div></div></div><div class="chat-user"><div class="avatar" style="background:#e6f5f4;color:#159A9C">AG</div><div><b>Andrés Gómez</b><div class="muted" data-i18n="chat_yesterday">Ayer</div></div></div></div>
+      <div class="chat-list"><h3 style="margin:8px" data-i18n="chat_conversations">Conversaciones</h3><div class="chat-user active"><div class="avatar">LM</div><div><b data-i18n="advisor_name">Laura Martínez</b><div class="muted" id="chatStatusLabel" data-i18n="chat_online">En línea</div></div></div></div>
       <div class="chat-main"><div style="padding:17px;border-bottom:1px solid var(--border)"><b data-i18n="advisor_name">Laura Martínez</b><div class="muted" data-i18n="chat_advisor_role">Asesora académica · ● En línea</div></div>
-        <div class="messages" id="messages"><div class="bubble them" data-i18n="chat_msg1">¡Hola, bienvenido a Sapere Aude! ¿Cómo avanzaste con el módulo que acordamos?</div><div class="bubble me" data-i18n="chat_msg2">Hola Laura. Ya completé la primera parte y tengo algunas dudas.</div><div class="bubble them" data-i18n="chat_msg3">Perfecto. Envíamelas por aquí y las revisamos antes de la próxima sesión.</div></div>
+        <div class="messages" id="messages"></div>
         <form class="chat-input" onsubmit="sendMessage(event)"><input id="chatText" data-i18n-ph="chat_placeholder" placeholder="Escribe un mensaje..." required><button class="btn" data-i18n="chat_send">Enviar</button></form>
       </div>
     </div>
@@ -222,30 +231,55 @@ h1,h2,h3,h4{text-align:left;margin:0}
 
   <section id="seguimiento" class="page">
     <div class="grid g3">
-      <div class="card"><small class="muted" data-i18n="main_goal">Objetivo principal</small><h2>72%</h2><div class="progress"><div style="width:72%"></div></div><p class="muted" data-i18n="sessions_completed_8_12">8 de 12 sesiones completadas</p></div>
-      <div class="card"><small class="muted" data-i18n="commitments_met">Compromisos cumplidos</small><h2>14 / 17</h2><div class="progress"><div style="width:82%"></div></div><p class="muted" data-i18n="compliance_82">82% de cumplimiento</p></div>
-      <div class="card"><small class="muted" data-i18n="next_review">Próxima revisión</small><h2 data-i18n="next_review_date">04 Sep</h2><p class="muted" data-i18n="next_review_desc">Revisión de avances con tu asesora.</p></div>
+      <div class="card"><small class="muted" data-i18n="main_goal">Objetivo principal</small><h2 id="segGoalPct">0%</h2><div class="progress"><div id="segGoalBar" style="width:0%"></div></div><p class="muted" id="segGoalDesc">Aún no has definido un objetivo.</p></div>
+      <div class="card"><small class="muted" data-i18n="commitments_met">Compromisos cumplidos</small><h2 id="segCommitFrac">0 / 0</h2><div class="progress"><div id="segCommitBar" style="width:0%"></div></div><p class="muted" id="segCommitPct">0% de cumplimiento</p></div>
+      <div class="card"><small class="muted" data-i18n="next_review">Próxima revisión</small><h2 id="segNextReview">—</h2><p class="muted" data-i18n="next_review_desc">Revisión de avances con tu asesora.</p></div>
     </div>
+
+    <div class="section-title"><h2>Definir objetivo</h2></div>
+    <div class="card form" style="max-width:640px">
+      <div class="field"><label>Nombre del objetivo</label><input id="goalNameInput" placeholder="Ej: Fortalecer competencias profesionales"></div>
+      <div class="grid g2">
+        <div class="field"><label>Sesiones totales del plan</label><input id="goalTotalInput" type="number" min="1" value="1"></div>
+        <div class="field"><label>Sesiones completadas</label><input id="goalDoneInput" type="number" min="0" value="0"></div>
+      </div>
+      <button class="btn" onclick="saveGoal()">Guardar objetivo</button>
+    </div>
+
     <div class="section-title"><h2 data-i18n="action_plan">Plan de acción</h2></div>
-    <div class="card"><table class="table"><thead><tr><th data-i18n="th_commitment">Compromiso</th><th data-i18n="th_session">Sesión</th><th data-i18n="th_date">Fecha</th><th data-i18n="th_status">Estado</th></tr></thead><tbody>
-      <tr><td data-i18n="row1_commit">Completar módulo de comunicación</td><td>#8</td><td>30 Ago</td><td><span class="badge orange" data-i18n="pending">Pendiente</span></td></tr>
-      <tr><td data-i18n="row2_commit">Preparar preguntas para sesión</td><td>#9</td><td>02 Sep</td><td><span class="badge" data-i18n="in_progress">En progreso</span></td></tr>
-      <tr><td data-i18n="row3_commit">Actualizar hoja de vida</td><td>#7</td><td>22 Ago</td><td><span class="badge" data-i18n="completed">Completado</span></td></tr>
-      <tr><td data-i18n="row4_commit">Investigar alternativas de formación propia</td><td>#6</td><td>18 Ago</td><td><span class="badge" data-i18n="completed">Completado</span></td></tr>
+    <div class="card form" style="max-width:640px;margin-bottom:16px">
+      <div class="grid g2">
+        <div class="field"><label>Compromiso</label><input id="commitTitleInput" placeholder="Ej: Completar módulo de comunicación"></div>
+        <div class="field"><label>Fecha límite</label><input id="commitDateInput" type="date"></div>
+      </div>
+      <button class="btn secondary" onclick="addCommitment()">Agregar compromiso</button>
+    </div>
+    <div class="card"><table class="table"><thead><tr><th data-i18n="th_commitment">Compromiso</th><th data-i18n="th_date">Fecha</th><th data-i18n="th_status">Estado</th><th></th></tr></thead><tbody id="commitTableBody">
+      <tr id="commitEmptyRow"><td colspan="4" class="muted">No tienes compromisos registrados todavía.</td></tr>
     </tbody></table></div>
   </section>
 
   <section id="pagos" class="page">
     <div class="grid g3">
-      <div class="card"><small class="muted" data-i18n="pending_balance">Saldo pendiente</small><h2>$480.000</h2><p class="muted" data-i18n="biz_services_2">2 servicios empresariales</p><button class="btn" onclick="openModal('Realizar pago','En producción, aquí se integraría la pasarela de pagos correspondiente.')" data-i18n="pay_now">Pagar ahora</button></div>
-      <div class="card"><small class="muted" data-i18n="paid_this_year">Pagado este año</small><h2>$2.160.000</h2><p class="muted" data-i18n="transactions_6">6 transacciones</p></div>
-      <div class="card"><small class="muted" data-i18n="next_invoice">Próxima factura</small><h2>15 Sep</h2><p class="muted" data-i18n="biz_consulting">Consultoría empresarial</p></div>
+      <div class="card"><small class="muted" data-i18n="pending_balance">Saldo pendiente</small><h2 id="pagoPendiente">$0</h2><p class="muted" id="pagoPendienteSub">Sin servicios pendientes</p></div>
+      <div class="card"><small class="muted" data-i18n="paid_this_year">Pagado este año</small><h2 id="pagoAnual">$0</h2><p class="muted" id="pagoAnualSub">0 transacciones</p></div>
+      <div class="card"><small class="muted" data-i18n="next_invoice">Próxima factura</small><h2 id="pagoProxFecha">—</h2><p class="muted" id="pagoProxDesc">No tienes facturas programadas.</p></div>
+    </div>
+    <div class="section-title"><h2>Registrar servicio / pago</h2></div>
+    <div class="card form" style="max-width:640px;margin-bottom:16px">
+      <div class="grid g2">
+        <div class="field"><label>Servicio</label><input id="payServiceInput" placeholder="Ej: Consultoría empresarial"></div>
+        <div class="field"><label>Valor (COP)</label><input id="payValueInput" type="number" min="0" placeholder="Ej: 480000"></div>
+      </div>
+      <div class="grid g2">
+        <div class="field"><label>Fecha</label><input id="payDateInput" type="date"></div>
+        <div class="field"><label>Estado</label><select id="payStatusInput"><option value="pendiente">Pendiente</option><option value="pagado">Pagado</option></select></div>
+      </div>
+      <button class="btn" onclick="addPayment()">Guardar registro</button>
     </div>
     <div class="section-title"><h2 data-i18n="payment_history">Historial de pagos</h2></div>
-    <div class="card"><table class="table"><thead><tr><th data-i18n="th_service">Servicio</th><th data-i18n="th_date">Fecha</th><th data-i18n="th_value">Valor</th><th data-i18n="th_status">Estado</th><th></th></tr></thead><tbody>
-      <tr><td data-i18n="biz_consulting">Consultoría empresarial</td><td>15 Ago 2026</td><td>$480.000</td><td><span class="badge" data-i18n="paid">Pagado</span></td><td><button class="btn ghost" data-i18n="invoice_btn">Factura</button></td></tr>
-      <tr><td>Plan de asesoría</td><td>10 Jul 2026</td><td>$360.000</td><td><span class="badge" data-i18n="paid">Pagado</span></td><td><button class="btn ghost" data-i18n="invoice_btn">Factura</button></td></tr>
-      <tr><td data-i18n="biz_consulting">Consultoría empresarial</td><td>15 Sep 2026</td><td>$480.000</td><td><span class="badge orange" data-i18n="pending">Pendiente</span></td><td><button class="btn ghost" onclick="openModal('Realizar pago','Aquí se conectaría la pasarela de pago.')" data-i18n="pay_btn">Pagar</button></td></tr>
+    <div class="card"><table class="table"><thead><tr><th data-i18n="th_service">Servicio</th><th data-i18n="th_date">Fecha</th><th data-i18n="th_value">Valor</th><th data-i18n="th_status">Estado</th><th></th></tr></thead><tbody id="paymentsTableBody">
+      <tr id="paymentsEmptyRow"><td colspan="5" class="muted">No tienes pagos registrados todavía.</td></tr>
     </tbody></table></div>
   </section>
 </main>
@@ -349,7 +383,19 @@ function refreshPageHeader(){
 }
 
 function changeLanguage(lang){
-  applyI18n(lang);
+  if(I18N[lang]){
+    applyI18n(lang);
+    document.cookie = 'googtrans=/es/es; path=/';
+  } else {
+    document.cookie = 'googtrans=/es/'+lang+'; path=/';
+    document.cookie = 'googtrans=/es/'+lang+'; domain=.'+location.hostname+'; path=/';
+    localStorage.setItem('sa_lang_gt', lang);
+    window.location.reload();
+  }
+}
+
+function googleTranslateElementInit() {
+  new google.translate.TranslateElement({pageLanguage: 'es', autoDisplay:false}, 'google_translate_element');
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
@@ -370,19 +416,6 @@ function showPage(id,btn){
 function go(id){const b=[...document.querySelectorAll('.nav button')].find(x=>x.getAttribute('onclick')?.includes("'"+id+"'"));showPage(id,b)}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
-document.querySelectorAll('#calendarDays .day.available').forEach(d=>{d.addEventListener('click',()=>{document.querySelectorAll('#calendarDays .day').forEach(x=>x.classList.remove('selected'));d.classList.add('selected')})});
-document.querySelectorAll('#timeSlots .time').forEach(t=>{t.addEventListener('click',()=>{document.querySelectorAll('#timeSlots .time').forEach(x=>x.classList.remove('selected'));t.classList.add('selected')})});
-
-function confirmBooking(){
-  const service=document.getElementById('service').value;
-  const selDay=document.querySelector('#calendarDays .day.selected');
-  const selTime=document.querySelector('#timeSlots .time.selected');
-  const day=selDay?selDay.textContent.trim().replace(/\s+/g,' '):'';
-  const time=selTime?selTime.textContent.trim():'';
-  toast('✓ '+service+' · '+day+' · '+time);
-}
-
-function sendMessage(e){e.preventDefault();const input=document.getElementById('chatText');const box=document.getElementById('messages');const b=document.createElement('div');b.className='bubble me';b.textContent=input.value;box.appendChild(b);input.value='';box.scrollTop=box.scrollHeight;setTimeout(()=>{const r=document.createElement('div');r.className='bubble them';r.textContent='¡Recibido! Lo revisamos y te respondo en breve.';box.appendChild(r);box.scrollTop=box.scrollHeight},700)}
 
 function openModal(t,x){document.getElementById('modalTitle').textContent=t;document.getElementById('modalText').textContent=x;document.getElementById('modal').classList.add('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
@@ -390,7 +423,6 @@ function closeModal(){document.getElementById('modal').classList.remove('open')}
 function toggleAuth(){const title=document.getElementById('authTitle'),sub=document.getElementById('authSubtitle'),name=document.getElementById('nameField'),btn=document.getElementById('authBtn'),authBtn=document.getElementById('authToggleBtn');const reg=name.style.display==='none';name.style.display=reg?'block':'none';const lang=localStorage.getItem('sa_lang')||'es';const dict=I18N[lang]||I18N['es'];title.textContent=reg?(dict.auth_create_account_title||'Crea tu cuenta'):dict.auth_login_title;sub.textContent=reg?(dict.auth_register_sub||'Regístrate para gestionar tu proceso.'):dict.auth_login_sub;btn.textContent=reg?(dict.auth_register_btn||'Registrarme'):dict.auth_login_btn;authBtn.textContent=reg?dict.auth_create_account:dict.auth_btn}
 function openAuthModal(){document.getElementById('auth').classList.add('open')}
 function closeAuthModal(){document.getElementById('auth').classList.remove('open');document.getElementById('nameField').style.display='none';const lang=localStorage.getItem('sa_lang')||'es';applyI18n(lang)}
-function login(e){e.preventDefault();document.getElementById('auth').classList.remove('open');toast('✓')}
 
 const KB = [
   {kw:['servicio','servicios','ofrecen','que hacen','qué hacen','service','services','offer','serviços','serviços oferece'], a:'servicios'},
@@ -402,16 +434,16 @@ const KB = [
   {kw:['asesor','asesora','hablar con','contactar','humano','persona','advisor','talk to','consultor'], a:'asesor'},
   {kw:['consultoria','consultoría','proyecto','proyectos','propuesta tecnica','consulting','project'], a:'consultoria'},
   {kw:['capacitacion','capacitación','organizacional','empresa','equipo de trabajo','training','organization'], a:'capacitacion'},
-  {kw:['idioma','language','traducir','translate','lingua'], a:'idioma'},
-  {kw:['hola','buenas','hello','hi','olá','oi'], a:'saludo'},
-  {kw:['gracias','thanks','thank you','obrigado'], a:'gracias'},
+  {kw:['idioma','language','traducir','translate','langue','sprache','lingua'], a:'idioma'},
+  {kw:['hola','buenas','hello','hi','olá','oi','bonjour','hallo','ciao'], a:'saludo'},
+  {kw:['gracias','thanks','thank you','obrigado','merci','danke','grazie'], a:'gracias'},
   {kw:['whatsapp','contacto','telefono','teléfono','numero','número','contact','phone'], a:'whatsapp'}
 ];
 
 const KB_RESPONSES = {
-  es:{servicios:'Ofrecemos <b>asesorías académicas</b>, <b>apoyo en actividades académicas</b>, <b>formación virtual</b>, <b>creación de contenido educativo</b>, <b>consultoría</b>, <b>capacitación organizacional</b> y <b>diseño de estrategias formativas</b>.',reservas:'Para reservar una asesoría ve a "Reservar asesoría": elige el servicio, la modalidad y un horario disponible.',precios:'Los valores varían según el servicio. Consulta "Pagos y facturación" o habla con un asesor para una cotización exacta.',formacion:'Nuestra formación es propia: cursos virtuales, microclases, bootcamps, videos, podcast y material descargable.',pagos:'En "Pagos y facturación" encuentras tu saldo pendiente e historial de pagos.',seguimiento:'En "Mi seguimiento" puedes ver tu porcentaje de avance y tu plan de acción.',asesor:'Puedes escribir a tu asesora en "Chat con asesores", o usar WhatsApp para respuesta inmediata.',consultoria:'Nuestra consultoría incluye formulación de proyectos, propuestas técnicas y optimización de procesos.',capacitacion:'Ofrecemos capacitación para equipos, talleres técnicos y programas de actualización profesional.',idioma:'Puedes cambiar el idioma del sitio con el selector 🌐 en la parte superior derecha (Español, English, Português).',saludo:'¡Hola! 🦉 Soy el asistente de Sapere Aude. ¿En qué puedo ayudarte?',gracias:'¡Con gusto! Si tienes otra duda, aquí estoy.',whatsapp:'Puedes escribirnos por WhatsApp con el botón verde en la esquina inferior derecha.',default:'Puedo ayudarte con: <b>servicios</b>, <b>reservas</b>, <b>formación</b>, <b>consultoría</b>, <b>pagos</b> o <b>seguimiento</b>.'},
-  en:{servicios:'We offer <b>academic advising</b>, <b>academic project support</b>, <b>online training</b>, <b>educational content creation</b>, <b>consulting</b>, <b>organizational training</b>, and <b>training strategy design</b>.',reservas:'To book a session go to "Book a session": choose the service, format, and an available time.',precios:'Prices vary by service. Check "Payments & billing" or talk to an advisor for an exact quote.',formacion:'Our training is in-house: online courses, micro-classes, bootcamps, videos, podcast, and downloadable material.',pagos:'In "Payments & billing" you can see your pending balance and payment history.',seguimiento:'In "My progress" you can see your progress percentage and action plan.',asesor:'You can message your advisor in "Chat with advisors", or use WhatsApp for an immediate reply.',consultoria:'Our consulting includes project formulation, technical proposals, and process optimization.',capacitacion:'We offer team training, technical workshops, and professional refresher programs.',idioma:'You can change the site language with the 🌐 selector in the top right corner (Español, English, Português).',saludo:'Hi! 🦉 I am the Sapere Aude assistant. How can I help?',gracias:'You are welcome! If you have another question, I am here.',whatsapp:'You can message us on WhatsApp using the green button in the bottom right corner.',default:'I can help with: <b>services</b>, <b>bookings</b>, <b>training</b>, <b>consulting</b>, <b>payments</b>, or <b>progress</b>.'},
-  pt:{servicios:'Oferecemos <b>assessorias acadêmicas</b>, <b>apoio em atividades acadêmicas</b>, <b>formação virtual</b>, <b>criação de conteúdo educacional</b>, <b>consultoria</b>, <b>capacitação organizacional</b> e <b>desenho de estratégias formativas</b>.',reservas:'Para reservar uma consultoria vá em "Reservar consultoria": escolha o serviço, modalidade e horário disponível.',precios:'Os valores variam por serviço. Consulte "Pagamentos e faturamento" ou fale com um consultor.',formacion:'Nossa formação é própria: cursos virtuais, microaulas, bootcamps, vídeos, podcast e material para download.',pagos:'Em "Pagamentos e faturamento" você vê seu saldo pendente e histórico de pagamentos.',seguimiento:'Em "Meu progresso" você vê seu percentual de avanço e plano de ação.',asesor:'Você pode escrever para sua consultora em "Chat com consultores", ou usar o WhatsApp.',consultoria:'Nossa consultoria inclui formulação de projetos, propostas técnicas e otimização de processos.',capacitacion:'Oferecemos capacitação de equipes, workshops técnicos e programas de atualização profissional.',idioma:'Você pode mudar o idioma do site com o seletor 🌐 no canto superior direito (Español, English, Português).',saludo:'Olá! 🦉 Sou o assistente da Sapere Aude. Como posso ajudar?',gracias:'De nada! Se tiver outra dúvida, estou aqui.',whatsapp:'Você pode nos escrever pelo WhatsApp usando o botão verde no canto inferior direito.',default:'Posso ajudar com: <b>serviços</b>, <b>reservas</b>, <b>formação</b>, <b>consultoria</b>, <b>pagamentos</b> ou <b>progresso</b>.'}
+  es:{servicios:'Ofrecemos <b>asesorías académicas</b>, <b>apoyo en actividades académicas</b>, <b>formación virtual</b>, <b>creación de contenido educativo</b>, <b>consultoría</b>, <b>capacitación organizacional</b> y <b>diseño de estrategias formativas</b>.',reservas:'Para reservar una asesoría ve a "Reservar asesoría": elige el servicio, la modalidad y un horario disponible.',precios:'Los valores varían según el servicio. Consulta "Pagos y facturación" o habla con un asesor para una cotización exacta.',formacion:'Nuestra formación es propia: cursos virtuales, microclases, bootcamps, videos, podcast y material descargable.',pagos:'En "Pagos y facturación" encuentras tu saldo pendiente e historial de pagos.',seguimiento:'En "Mi seguimiento" puedes ver tu porcentaje de avance y tu plan de acción.',asesor:'Puedes escribir a tu asesora en "Chat con asesores", o usar WhatsApp para respuesta inmediata.',consultoria:'Nuestra consultoría incluye formulación de proyectos, propuestas técnicas y optimización de procesos.',capacitacion:'Ofrecemos capacitación para equipos, talleres técnicos y programas de actualización profesional.',idioma:'Puedes cambiar el idioma del sitio con el selector 🌐 en la parte superior derecha.',saludo:'¡Hola! 🦉 Soy el asistente de Sapere Aude. ¿En qué puedo ayudarte?',gracias:'¡Con gusto! Si tienes otra duda, aquí estoy.',whatsapp:'Puedes escribirnos por WhatsApp con el botón verde en la esquina inferior derecha.',default:'Puedo ayudarte con: <b>servicios</b>, <b>reservas</b>, <b>formación</b>, <b>consultoría</b>, <b>pagos</b> o <b>seguimiento</b>.'},
+  en:{servicios:'We offer <b>academic advising</b>, <b>academic project support</b>, <b>online training</b>, <b>educational content creation</b>, <b>consulting</b>, <b>organizational training</b>, and <b>training strategy design</b>.',reservas:'To book a session go to "Book a session": choose the service, format, and an available time.',precios:'Prices vary by service. Check "Payments & billing" or talk to an advisor for an exact quote.',formacion:'Our training is in-house: online courses, micro-classes, bootcamps, videos, podcast, and downloadable material.',pagos:'In "Payments & billing" you can see your pending balance and payment history.',seguimiento:'In "My progress" you can see your progress percentage and action plan.',asesor:'You can message your advisor in "Chat with advisors", or use WhatsApp for an immediate reply.',consultoria:'Our consulting includes project formulation, technical proposals, and process optimization.',capacitacion:'We offer team training, technical workshops, and professional refresher programs.',idioma:'You can change the site language with the 🌐 selector in the top right corner.',saludo:'Hi! 🦉 I am the Sapere Aude assistant. How can I help?',gracias:'You are welcome! If you have another question, I am here.',whatsapp:'You can message us on WhatsApp using the green button in the bottom right corner.',default:'I can help with: <b>services</b>, <b>bookings</b>, <b>training</b>, <b>consulting</b>, <b>payments</b>, or <b>progress</b>.'},
+  pt:{servicios:'Oferecemos <b>assessorias acadêmicas</b>, <b>apoio em atividades acadêmicas</b>, <b>formação virtual</b>, <b>criação de conteúdo educacional</b>, <b>consultoria</b>, <b>capacitação organizacional</b> e <b>desenho de estratégias formativas</b>.',reservas:'Para reservar uma consultoria vá em "Reservar consultoria": escolha o serviço, modalidade e horário disponível.',precios:'Os valores variam por serviço. Consulte "Pagamentos e faturamento" ou fale com um consultor.',formacion:'Nossa formação é própria: cursos virtuais, microaulas, bootcamps, vídeos, podcast e material para download.',pagos:'Em "Pagamentos e faturamento" você vê seu saldo pendente e histórico de pagamentos.',seguimiento:'Em "Meu progresso" você vê seu percentual de avanço e plano de ação.',asesor:'Você pode escrever para sua consultora em "Chat com consultores", ou usar o WhatsApp.',consultoria:'Nossa consultoria inclui formulação de projetos, propostas técnicas e otimização de processos.',capacitacion:'Oferecemos capacitação de equipes, workshops técnicos e programas de atualização profissional.',idioma:'Você pode mudar o idioma do site com o seletor 🌐 no canto superior direito.',saludo:'Olá! 🦉 Sou o assistente da Sapere Aude. Como posso ajudar?',gracias:'De nada! Se tiver outra dúvida, estou aqui.',whatsapp:'Você pode nos escrever pelo WhatsApp usando o botão verde no canto inferior direito.',default:'Posso ajudar com: <b>serviços</b>, <b>reservas</b>, <b>formação</b>, <b>consultoria</b>, <b>pagamentos</b> ou <b>progresso</b>.'}
 };
 
 function findAnswer(text){
@@ -466,6 +498,376 @@ function handleChatbotSubmit(e){
   input.value='';
   chatbotRespond(val);
 }
+
+/* ===== Lógica real de la aplicación (sin datos de muestra) ===== */
+const SA_KEY = 'sa_app_state_v1';
+
+function loadState(){
+  try{
+    const raw = localStorage.getItem(SA_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return {
+    bookings: [],
+    commitments: [],
+    goal: null,
+    payments: [],
+    chatMessages: [],
+    resources: 0
+  };
+}
+function saveState(){ localStorage.setItem(SA_KEY, JSON.stringify(state)); }
+
+let state = loadState();
+
+function fmtCOP(n){
+  return '$' + Number(n||0).toLocaleString('es-CO');
+}
+
+/* ---- Calendario dinámico (próximos 7 días reales, sin fechas fijas de muestra) ---- */
+function buildCalendar(){
+  const cont = document.getElementById('calDaysContainer');
+  if(!cont) return;
+  cont.innerHTML = '';
+  const dayNames = ['Dom','Lun','Mar','Mié','Jue','Vie','Sáb'];
+  const today = new Date();
+  for(let i=0;i<7;i++){
+    const d = new Date(today);
+    d.setDate(today.getDate()+i);
+    const label = dayNames[d.getDay()] + ' ' + d.getDate();
+    const div = document.createElement('div');
+    const isWeekday = d.getDay()!==0;
+    div.className = 'day' + (isWeekday ? ' available' : '');
+    div.setAttribute('data-day', label);
+    div.setAttribute('data-iso', d.toISOString().slice(0,10));
+    div.innerHTML = dayNames[d.getDay()] + '<br>' + d.getDate();
+    if(isWeekday){
+      div.addEventListener('click', ()=>{
+        document.querySelectorAll('#calendarDays .day').forEach(x=>x.classList.remove('selected'));
+        div.classList.add('selected');
+      });
+    }
+    cont.appendChild(div);
+  }
+}
+
+/* ---- Reservas ---- */
+function confirmBooking(){
+  const service = document.getElementById('service').value;
+  const selDay = document.querySelector('#calendarDays .day.selected');
+  const selTime = document.querySelector('#timeSlots .time.selected');
+  const reason = document.getElementById('reasonInput').value.trim();
+  if(!selDay || !selTime){
+    toast('Selecciona una fecha y un horario disponibles');
+    return;
+  }
+  const booking = {
+    id: Date.now(),
+    service,
+    day: selDay.getAttribute('data-day'),
+    iso: selDay.getAttribute('data-iso'),
+    time: selTime.textContent.trim(),
+    reason
+  };
+  state.bookings.push(booking);
+  saveState();
+  toast('✓ Reserva creada: ' + service + ' · ' + booking.day + ' · ' + booking.time);
+  document.getElementById('reasonInput').value = '';
+  document.querySelectorAll('#calendarDays .day').forEach(x=>x.classList.remove('selected'));
+  document.querySelectorAll('#timeSlots .time').forEach(x=>x.classList.remove('selected'));
+  renderDashboard();
+}
+
+/* ---- Compromisos / objetivo (seguimiento) ---- */
+function saveGoal(){
+  const name = document.getElementById('goalNameInput').value.trim();
+  const total = parseInt(document.getElementById('goalTotalInput').value,10) || 1;
+  const done = parseInt(document.getElementById('goalDoneInput').value,10) || 0;
+  if(!name){ toast('Escribe un nombre para tu objetivo'); return; }
+  state.goal = { name, total, done: Math.min(done,total) };
+  saveState();
+  toast('✓ Objetivo guardado');
+  renderSeguimiento();
+  renderDashboard();
+}
+
+function addCommitment(){
+  const title = document.getElementById('commitTitleInput').value.trim();
+  const date = document.getElementById('commitDateInput').value;
+  if(!title){ toast('Escribe el compromiso'); return; }
+  state.commitments.push({ id: Date.now(), title, date, status: 'pendiente' });
+  saveState();
+  document.getElementById('commitTitleInput').value='';
+  document.getElementById('commitDateInput').value='';
+  toast('✓ Compromiso agregado');
+  renderSeguimiento();
+  renderDashboard();
+}
+
+function cycleCommitmentStatus(id){
+  const c = state.commitments.find(x=>x.id===id);
+  if(!c) return;
+  const order = ['pendiente','en_progreso','completado'];
+  const idx = order.indexOf(c.status);
+  c.status = order[(idx+1)%order.length];
+  saveState();
+  renderSeguimiento();
+  renderDashboard();
+}
+
+function statusBadge(status){
+  if(status==='completado') return '<span class="badge">Completado</span>';
+  if(status==='en_progreso') return '<span class="badge">En progreso</span>';
+  return '<span class="badge orange">Pendiente</span>';
+}
+
+function renderSeguimiento(){
+  const goalPctEl = document.getElementById('segGoalPct');
+  const goalBarEl = document.getElementById('segGoalBar');
+  const goalDescEl = document.getElementById('segGoalDesc');
+  if(state.goal){
+    const pct = Math.round((state.goal.done/state.goal.total)*100);
+    goalPctEl.textContent = pct+'%';
+    goalBarEl.style.width = pct+'%';
+    goalDescEl.textContent = state.goal.name+' · '+state.goal.done+' de '+state.goal.total+' sesiones completadas';
+  } else {
+    goalPctEl.textContent = '0%';
+    goalBarEl.style.width = '0%';
+    goalDescEl.textContent = 'Aún no has definido un objetivo.';
+  }
+
+  const total = state.commitments.length;
+  const done = state.commitments.filter(c=>c.status==='completado').length;
+  const pctC = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('segCommitFrac').textContent = done+' / '+total;
+  document.getElementById('segCommitBar').style.width = pctC+'%';
+  document.getElementById('segCommitPct').textContent = pctC+'% de cumplimiento';
+
+  const upcoming = state.commitments
+    .filter(c=>c.date)
+    .sort((a,b)=> new Date(a.date) - new Date(b.date))[0];
+  document.getElementById('segNextReview').textContent = upcoming ? upcoming.date : '—';
+
+  const tbody = document.getElementById('commitTableBody');
+  tbody.innerHTML = '';
+  if(state.commitments.length===0){
+    tbody.innerHTML = '<tr id="commitEmptyRow"><td colspan="4" class="muted">No tienes compromisos registrados todavía.</td></tr>';
+  } else {
+    state.commitments.forEach(c=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = '<td>'+c.title+'</td><td>'+(c.date||'—')+'</td><td>'+statusBadge(c.status)+'</td><td><button class="btn ghost" onclick="cycleCommitmentStatus('+c.id+')">Cambiar estado</button></td>';
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+/* ---- Pagos ---- */
+function addPayment(){
+  const service = document.getElementById('payServiceInput').value.trim();
+  const value = parseFloat(document.getElementById('payValueInput').value) || 0;
+  const date = document.getElementById('payDateInput').value;
+  const status = document.getElementById('payStatusInput').value;
+  if(!service || !value){ toast('Completa servicio y valor'); return; }
+  state.payments.push({ id: Date.now(), service, value, date, status });
+  saveState();
+  document.getElementById('payServiceInput').value='';
+  document.getElementById('payValueInput').value='';
+  document.getElementById('payDateInput').value='';
+  toast('✓ Registro guardado');
+  renderPagos();
+}
+
+function markPaid(id){
+  const p = state.payments.find(x=>x.id===id);
+  if(!p) return;
+  p.status = 'pagado';
+  saveState();
+  renderPagos();
+}
+
+function renderPagos(){
+  const pendientes = state.payments.filter(p=>p.status==='pendiente');
+  const pagadosThisYear = state.payments.filter(p=>p.status==='pagado');
+  const pendienteTotal = pendientes.reduce((s,p)=>s+p.value,0);
+  const pagadoTotal = pagadosThisYear.reduce((s,p)=>s+p.value,0);
+
+  document.getElementById('pagoPendiente').textContent = fmtCOP(pendienteTotal);
+  document.getElementById('pagoPendienteSub').textContent = pendientes.length + ' servicio(s) pendiente(s)';
+  document.getElementById('pagoAnual').textContent = fmtCOP(pagadoTotal);
+  document.getElementById('pagoAnualSub').textContent = pagadosThisYear.length + ' transacciones';
+
+  const nextInvoice = pendientes.sort((a,b)=> new Date(a.date||0) - new Date(b.date||0))[0];
+  document.getElementById('pagoProxFecha').textContent = nextInvoice ? (nextInvoice.date||'—') : '—';
+  document.getElementById('pagoProxDesc').textContent = nextInvoice ? nextInvoice.service : 'No tienes facturas programadas.';
+
+  const tbody = document.getElementById('paymentsTableBody');
+  tbody.innerHTML = '';
+  if(state.payments.length===0){
+    tbody.innerHTML = '<tr id="paymentsEmptyRow"><td colspan="5" class="muted">No tienes pagos registrados todavía.</td></tr>';
+  } else {
+    state.payments.forEach(p=>{
+      const tr = document.createElement('tr');
+      const badge = p.status==='pagado' ? '<span class="badge">Pagado</span>' : '<span class="badge orange">Pendiente</span>';
+      const action = p.status==='pagado' ? '<button class="btn ghost" disabled>Pagado</button>' : '<button class="btn ghost" onclick="markPaid('+p.id+')">Marcar pagado</button>';
+      tr.innerHTML = '<td>'+p.service+'</td><td>'+(p.date||'—')+'</td><td>'+fmtCOP(p.value)+'</td><td>'+badge+'</td><td>'+action+'</td>';
+      tbody.appendChild(tr);
+    });
+  }
+}
+
+/* ---- Dashboard ---- */
+function renderDashboard(){
+  document.getElementById('statSesiones').textContent = state.bookings.length;
+  document.getElementById('statSesionesSub').textContent = state.bookings.length ? 'Total reservadas' : 'Aún no reservas sesiones';
+
+  const pct = state.goal ? Math.round((state.goal.done/state.goal.total)*100) : 0;
+  document.getElementById('statProgreso').textContent = pct+'%';
+  document.getElementById('statProgresoSub').textContent = state.goal ? state.goal.name : 'Define tu objetivo';
+
+  document.getElementById('statCompromisos').textContent = state.commitments.length;
+  const pendCommits = state.commitments.filter(c=>c.status!=='completado').length;
+  document.getElementById('statCompromisosSub').textContent = state.commitments.length ? pendCommits+' pendientes' : 'Sin compromisos';
+
+  document.getElementById('statRecursos').textContent = state.resources;
+  document.getElementById('statRecursosSub').textContent = state.resources ? 'Guardados' : 'Ninguno guardado aún';
+
+  const nextBooking = state.bookings
+    .slice()
+    .sort((a,b)=> new Date(a.iso||0) - new Date(b.iso||0))[0];
+  const badge = document.getElementById('nextSessionBadge');
+  const content = document.getElementById('nextSessionContent');
+  if(nextBooking){
+    badge.textContent = 'Confirmada';
+    badge.className = 'badge';
+    content.innerHTML = '<div class="item"><div class="item-left"><div class="item-icon">🎓</div><div><b>'+nextBooking.service+'</b><div class="muted">'+nextBooking.day+'</div></div></div><b>'+nextBooking.time+'</b></div>';
+  } else {
+    badge.textContent = 'Sin reservas';
+    badge.className = 'badge orange';
+    content.innerHTML = '<p class="muted">Aún no tienes ninguna asesoría reservada.</p>';
+  }
+
+  const goalBadge = document.getElementById('goalBadge');
+  const goalContent = document.getElementById('goalContent');
+  if(state.goal){
+    goalBadge.textContent = pct+'%';
+    goalContent.innerHTML = '<h3 style="margin:5px 0">'+state.goal.name+'</h3><p class="muted">Plan de '+state.goal.total+' sesiones · '+state.goal.done+' completadas</p><div class="progress"><div style="width:'+pct+'%"></div></div>';
+  } else {
+    goalBadge.textContent = '0%';
+    goalContent.innerHTML = '<p class="muted">Todavía no has definido un objetivo. Ve a "Mi seguimiento" para crear uno.</p>';
+  }
+
+  const listEl = document.getElementById('dashCommitList');
+  const pending = state.commitments.filter(c=>c.status!=='completado').slice(0,4);
+  if(pending.length===0){
+    listEl.innerHTML = '<p class="muted">No tienes compromisos registrados todavía.</p>';
+  } else {
+    listEl.innerHTML = pending.map(c=>{
+      return '<div class="item"><div class="item-left"><div class="item-icon">📘</div><div><b>'+c.title+'</b><div class="muted">Fecha límite · '+(c.date||'sin definir')+'</div></div></div>'+statusBadge(c.status)+'</div>';
+    }).join('');
+  }
+}
+
+/* ---- Chat persistente (sin conversación de muestra) ---- */
+function renderChat(){
+  const box = document.getElementById('messages');
+  box.innerHTML = '';
+  state.chatMessages.forEach(m=>{
+    const b = document.createElement('div');
+    b.className = 'bubble ' + (m.from==='me' ? 'me' : 'them');
+    b.textContent = m.text;
+    box.appendChild(b);
+  });
+  box.scrollTop = box.scrollHeight;
+}
+
+function sendMessage(e){
+  e.preventDefault();
+  const input = document.getElementById('chatText');
+  const text = input.value.trim();
+  if(!text) return;
+  state.chatMessages.push({from:'me', text});
+  saveState();
+  renderChat();
+  input.value='';
+  setTimeout(()=>{
+    state.chatMessages.push({from:'them', text:'¡Recibido! Lo revisamos y te respondemos en breve.'});
+    saveState();
+    renderChat();
+  },700);
+}
+
+/* ---- Pomodoro funcional ---- */
+let pomodoroInterval = null;
+let pomodoroSeconds = 25*60;
+let pomodoroOnBreak = false;
+function startPomodoro(){
+  const display = document.getElementById('pomodoroDisplay');
+  const btn = document.getElementById('pomodoroBtn');
+  display.style.display = 'block';
+  if(pomodoroInterval){
+    clearInterval(pomodoroInterval);
+    pomodoroInterval = null;
+    btn.textContent = 'Iniciar';
+    return;
+  }
+  btn.textContent = 'Pausar';
+  pomodoroInterval = setInterval(()=>{
+    pomodoroSeconds--;
+    if(pomodoroSeconds<=0){
+      pomodoroOnBreak = !pomodoroOnBreak;
+      pomodoroSeconds = pomodoroOnBreak ? 5*60 : 25*60;
+      toast(pomodoroOnBreak ? '⏱️ Descanso de 5 minutos' : '⏱️ Nuevo bloque de concentración de 25 minutos');
+    }
+    const m = Math.floor(pomodoroSeconds/60).toString().padStart(2,'0');
+    const s = (pomodoroSeconds%60).toString().padStart(2,'0');
+    display.textContent = m+':'+s;
+  },1000);
+}
+
+/* ---- Autenticación real basada en localStorage (sin cuenta de muestra) ---- */
+const SA_USER_KEY = 'sa_user_v1';
+function getUser(){ try{ return JSON.parse(localStorage.getItem(SA_USER_KEY)); }catch(e){ return null; } }
+function setUser(u){ localStorage.setItem(SA_USER_KEY, JSON.stringify(u)); }
+function updateAuthUI(){
+  const user = getUser();
+  const btn = document.getElementById('authToggleBtn');
+  if(user){
+    btn.textContent = user.name ? ('Hola, '+user.name) : user.email;
+  } else {
+    const lang = localStorage.getItem('sa_lang')||'es';
+    btn.textContent = (I18N[lang]||I18N['es']).auth_btn;
+  }
+}
+
+function login(e){
+  e.preventDefault();
+  const email = document.getElementById('email').value.trim();
+  const nameField = document.getElementById('nameField');
+  const isRegister = nameField.style.display !== 'none';
+  const name = document.getElementById('name').value.trim();
+  if(!email){ toast('Ingresa un correo válido'); return; }
+  setUser({ email, name: isRegister ? name : (getUser()?.name || '') });
+  document.getElementById('auth').classList.remove('open');
+  updateAuthUI();
+  toast(isRegister ? '✓ Cuenta creada' : '✓ Sesión iniciada');
+}
+
+/* ---- Inicialización ---- */
+window.addEventListener('DOMContentLoaded', ()=>{
+  buildCalendar();
+  document.querySelectorAll('#timeSlots .time').forEach(t=>{
+    t.addEventListener('click', ()=>{
+      document.querySelectorAll('#timeSlots .time').forEach(x=>x.classList.remove('selected'));
+      t.classList.add('selected');
+    });
+  });
+  renderDashboard();
+  renderSeguimiento();
+  renderPagos();
+  renderChat();
+  updateAuthUI();
+});
 </script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
