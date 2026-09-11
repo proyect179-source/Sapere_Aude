@@ -208,14 +208,80 @@ h1,h2,h3,h4{text-align:left;margin:0}
   </section>
 
   <section id="herramientas" class="page">
-    <div class="section-title" style="margin-top:0"><div><h2 data-i18n="herramientas_title">Herramientas de apoyo</h2><div class="muted" data-i18n="herramientas_sub">Recursos prácticos para estudiar, organizarte y trabajar mejor.</div></div></div>
-    <div class="grid g3">
-      <div class="card tool"><div class="bigicon">🧠</div><h3 data-i18n="h1_title">Planificador de estudio</h3><p data-i18n="h1_p">Organiza sesiones, tareas y fechas límite.</p><button class="btn secondary" onclick="openModal('Planificador','Define tus tareas y distribúyelas durante la semana.')" data-i18n="h1_btn">Abrir herramienta</button></div>
-      <div class="card tool"><div class="bigicon">📊</div><h3 data-i18n="h2_title">Calculadora financiera</h3><p data-i18n="h2_p">Estima cuotas, presupuestos y escenarios básicos.</p><button class="btn secondary" onclick="openModal('Calculadora financiera','Herramienta preparada para incorporar tus variables de presupuesto.')" data-i18n="h2_btn">Abrir herramienta</button></div>
-      <div class="card tool"><div class="bigicon">📝</div><h3 data-i18n="h3_title">Generador de checklist</h3><p data-i18n="h3_p">Convierte objetivos en acciones concretas y medibles.</p><button class="btn secondary" onclick="openModal('Checklist','Crea una lista de acciones para tu próximo objetivo.')" data-i18n="h3_btn">Abrir herramienta</button></div>
-      <div class="card tool"><div class="bigicon">🔎</div><h3 data-i18n="h4_title">Buscador de recursos</h3><p data-i18n="h4_p">Encuentra material de apoyo según tu proceso.</p><button class="btn secondary" onclick="openModal('Recursos','Aquí puedes conectar un buscador de documentos y enlaces propios.')" data-i18n="h4_btn">Explorar</button></div>
-      <div class="card tool"><div class="bigicon">⏱️</div><h3 data-i18n="h5_title">Temporizador Pomodoro</h3><p data-i18n="h5_p">Trabaja por bloques de concentración y descanso.</p><div id="pomodoroDisplay" style="font-size:22px;font-weight:800;margin:8px 0;display:none">25:00</div><button class="btn secondary" id="pomodoroBtn" onclick="startPomodoro()" data-i18n="h5_btn">Iniciar</button></div>
-      <div class="card tool"><div class="bigicon">🎯</div><h3 data-i18n="h6_title">Metas SMART</h3><p data-i18n="h6_p">Formula objetivos específicos, medibles y alcanzables.</p><button class="btn secondary" onclick="openModal('Metas SMART','Define qué quieres lograr, cómo medirlo y cuándo completarlo.')" data-i18n="h6_btn">Crear meta</button></div>
+    <div class="section-title" style="margin-top:0"><div><h2 data-i18n="herramientas_title">Herramientas de apoyo</h2><div class="muted" data-i18n="herramientas_sub">Recursos prácticos para estudiar, organizarte y trabajar mejor. Todas funcionan directamente aquí y guardan tu información en este navegador.</div></div></div>
+    <div class="grid g2">
+
+      <!-- 1. Planificador de estudio -->
+      <div class="card tool" style="grid-column:1 / -1">
+        <div class="bigicon">🧠</div><h3 data-i18n="h1_title">Planificador de estudio</h3><p data-i18n="h1_p">Organiza sesiones, tareas y fechas límite.</p>
+        <div class="grid g3" style="margin-top:12px">
+          <div class="field"><label>Tarea</label><input id="planTaskInput" placeholder="Ej: Repasar cálculo integral"></div>
+          <div class="field"><label>Día</label><select id="planDayInput"><option>Lunes</option><option>Martes</option><option>Miércoles</option><option>Jueves</option><option>Viernes</option><option>Sábado</option><option>Domingo</option></select></div>
+          <div class="field"><label>Hora</label><input id="planTimeInput" type="time"></div>
+        </div>
+        <button class="btn secondary" style="margin-top:6px" onclick="addPlanTask()">Agregar al plan</button>
+        <div id="plannerBoard" class="grid g3" style="margin-top:16px"></div>
+      </div>
+
+      <!-- 2. Calculadora financiera -->
+      <div class="card tool">
+        <div class="bigicon">📊</div><h3 data-i18n="h2_title">Calculadora financiera</h3><p data-i18n="h2_p">Estima cuotas, presupuestos y escenarios básicos.</p>
+        <div class="grid g2" style="margin-top:12px">
+          <div class="field"><label>Monto total (COP)</label><input id="finMontoInput" type="number" min="0" placeholder="Ej: 1200000"></div>
+          <div class="field"><label>Número de cuotas</label><input id="finCuotasInput" type="number" min="1" value="3"></div>
+          <div class="field"><label>Interés mensual (%)</label><input id="finInteresInput" type="number" min="0" step="0.1" value="0"></div>
+          <div class="field"><label>Ahorro mensual disponible</label><input id="finAhorroInput" type="number" min="0" placeholder="Opcional"></div>
+        </div>
+        <button class="btn secondary" onclick="calcularFinanzas()">Calcular</button>
+        <div id="finResultado" class="muted" style="margin-top:12px;line-height:1.7"></div>
+      </div>
+
+      <!-- 3. Generador de checklist -->
+      <div class="card tool">
+        <div class="bigicon">📝</div><h3 data-i18n="h3_title">Generador de checklist</h3><p data-i18n="h3_p">Convierte objetivos en acciones concretas y medibles.</p>
+        <div class="field" style="margin-top:12px"><label>Nueva acción</label><input id="checkItemInput" placeholder="Ej: Entregar anteproyecto"></div>
+        <button class="btn secondary" onclick="addChecklistItem()">Agregar</button>
+        <div id="checklistProgress" class="muted" style="margin:10px 0 4px">0 de 0 completadas</div>
+        <div class="progress"><div id="checklistBar" style="width:0%"></div></div>
+        <div id="checklistBoard" class="list" style="margin-top:12px"></div>
+      </div>
+
+      <!-- 4. Buscador de recursos -->
+      <div class="card tool">
+        <div class="bigicon">🔎</div><h3 data-i18n="h4_title">Buscador de recursos</h3><p data-i18n="h4_p">Encuentra material de apoyo según tu proceso.</p>
+        <div class="field" style="margin-top:12px"><label>¿Qué necesitas?</label><input id="resSearchInput" placeholder="Ej: bases de datos, cálculo, Linux..." oninput="searchResources()"></div>
+        <div id="resResults" class="list" style="margin-top:10px"></div>
+      </div>
+
+      <!-- 5. Pomodoro -->
+      <div class="card tool">
+        <div class="bigicon">⏱️</div><h3 data-i18n="h5_title">Temporizador Pomodoro</h3><p data-i18n="h5_p">Trabaja por bloques de concentración y descanso.</p>
+        <div style="text-align:center;margin:14px 0">
+          <div id="pomodoroDisplay" style="font-size:40px;font-weight:800;color:var(--primary)">25:00</div>
+          <div id="pomodoroPhase" class="muted">Bloque de concentración</div>
+        </div>
+        <div class="grid g3">
+          <button class="btn secondary" id="pomodoroBtn" onclick="startPomodoro()">Iniciar</button>
+          <button class="btn secondary" onclick="pausePomodoro()">Pausar</button>
+          <button class="btn secondary" onclick="resetPomodoro()">Reiniciar</button>
+        </div>
+        <div class="muted" style="margin-top:10px">Ciclos completados: <b id="pomodoroCount">0</b></div>
+      </div>
+
+      <!-- 6. Metas SMART -->
+      <div class="card tool" style="grid-column:1 / -1">
+        <div class="bigicon">🎯</div><h3 data-i18n="h6_title">Metas SMART</h3><p data-i18n="h6_p">Formula objetivos específicos, medibles y alcanzables.</p>
+        <div class="grid g2" style="margin-top:12px">
+          <div class="field"><label>Específico (¿Qué quieres lograr?)</label><input id="smartS"></div>
+          <div class="field"><label>Medible (¿Cómo sabrás que lo lograste?)</label><input id="smartM"></div>
+          <div class="field"><label>Alcanzable (¿Es realista?)</label><input id="smartA"></div>
+          <div class="field"><label>Relevante (¿Por qué importa?)</label><input id="smartR"></div>
+          <div class="field"><label>Con tiempo definido (fecha límite)</label><input id="smartT" type="date"></div>
+        </div>
+        <button class="btn secondary" onclick="saveSmartGoal()">Guardar meta SMART</button>
+        <div id="smartBoard" class="list" style="margin-top:14px"></div>
+      </div>
+
     </div>
   </section>
 
@@ -235,7 +301,6 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <div class="card"><small class="muted" data-i18n="commitments_met">Compromisos cumplidos</small><h2 id="segCommitFrac">0 / 0</h2><div class="progress"><div id="segCommitBar" style="width:0%"></div></div><p class="muted" id="segCommitPct">0% de cumplimiento</p></div>
       <div class="card"><small class="muted" data-i18n="next_review">Próxima revisión</small><h2 id="segNextReview">—</h2><p class="muted" data-i18n="next_review_desc">Revisión de avances con tu asesora.</p></div>
     </div>
-
     <div class="section-title"><h2>Definir objetivo</h2></div>
     <div class="card form" style="max-width:640px">
       <div class="field"><label>Nombre del objetivo</label><input id="goalNameInput" placeholder="Ej: Fortalecer competencias profesionales"></div>
@@ -245,7 +310,6 @@ h1,h2,h3,h4{text-align:left;margin:0}
       </div>
       <button class="btn" onclick="saveGoal()">Guardar objetivo</button>
     </div>
-
     <div class="section-title"><h2 data-i18n="action_plan">Plan de acción</h2></div>
     <div class="card form" style="max-width:640px;margin-bottom:16px">
       <div class="grid g2">
@@ -513,18 +577,21 @@ function loadState(){
     goal: null,
     payments: [],
     chatMessages: [],
-    resources: 0
+    resources: 0,
+    plannerTasks: [],
+    checklistItems: [],
+    smartGoals: []
   };
 }
 function saveState(){ localStorage.setItem(SA_KEY, JSON.stringify(state)); }
-
 let state = loadState();
+if(!state.plannerTasks) state.plannerTasks = [];
+if(!state.checklistItems) state.checklistItems = [];
+if(!state.smartGoals) state.smartGoals = [];
 
-function fmtCOP(n){
-  return '$' + Number(n||0).toLocaleString('es-CO');
-}
+function fmtCOP(n){ return '$' + Math.round(Number(n||0)).toLocaleString('es-CO'); }
 
-/* ---- Calendario dinámico (próximos 7 días reales, sin fechas fijas de muestra) ---- */
+/* ---- Calendario dinámico de reservas ---- */
 function buildCalendar(){
   const cont = document.getElementById('calDaysContainer');
   if(!cont) return;
@@ -551,24 +618,13 @@ function buildCalendar(){
   }
 }
 
-/* ---- Reservas ---- */
 function confirmBooking(){
   const service = document.getElementById('service').value;
   const selDay = document.querySelector('#calendarDays .day.selected');
   const selTime = document.querySelector('#timeSlots .time.selected');
   const reason = document.getElementById('reasonInput').value.trim();
-  if(!selDay || !selTime){
-    toast('Selecciona una fecha y un horario disponibles');
-    return;
-  }
-  const booking = {
-    id: Date.now(),
-    service,
-    day: selDay.getAttribute('data-day'),
-    iso: selDay.getAttribute('data-iso'),
-    time: selTime.textContent.trim(),
-    reason
-  };
+  if(!selDay || !selTime){ toast('Selecciona una fecha y un horario disponibles'); return; }
+  const booking = { id: Date.now(), service, day: selDay.getAttribute('data-day'), iso: selDay.getAttribute('data-iso'), time: selTime.textContent.trim(), reason };
   state.bookings.push(booking);
   saveState();
   toast('✓ Reserva creada: ' + service + ' · ' + booking.day + ' · ' + booking.time);
@@ -608,8 +664,7 @@ function cycleCommitmentStatus(id){
   const c = state.commitments.find(x=>x.id===id);
   if(!c) return;
   const order = ['pendiente','en_progreso','completado'];
-  const idx = order.indexOf(c.status);
-  c.status = order[(idx+1)%order.length];
+  c.status = order[(order.indexOf(c.status)+1)%order.length];
   saveState();
   renderSeguimiento();
   renderDashboard();
@@ -623,31 +678,25 @@ function statusBadge(status){
 
 function renderSeguimiento(){
   const goalPctEl = document.getElementById('segGoalPct');
+  if(!goalPctEl) return;
   const goalBarEl = document.getElementById('segGoalBar');
   const goalDescEl = document.getElementById('segGoalDesc');
   if(state.goal){
     const pct = Math.round((state.goal.done/state.goal.total)*100);
-    goalPctEl.textContent = pct+'%';
-    goalBarEl.style.width = pct+'%';
+    goalPctEl.textContent = pct+'%'; goalBarEl.style.width = pct+'%';
     goalDescEl.textContent = state.goal.name+' · '+state.goal.done+' de '+state.goal.total+' sesiones completadas';
   } else {
-    goalPctEl.textContent = '0%';
-    goalBarEl.style.width = '0%';
+    goalPctEl.textContent = '0%'; goalBarEl.style.width = '0%';
     goalDescEl.textContent = 'Aún no has definido un objetivo.';
   }
-
   const total = state.commitments.length;
   const done = state.commitments.filter(c=>c.status==='completado').length;
   const pctC = total ? Math.round((done/total)*100) : 0;
   document.getElementById('segCommitFrac').textContent = done+' / '+total;
   document.getElementById('segCommitBar').style.width = pctC+'%';
   document.getElementById('segCommitPct').textContent = pctC+'% de cumplimiento';
-
-  const upcoming = state.commitments
-    .filter(c=>c.date)
-    .sort((a,b)=> new Date(a.date) - new Date(b.date))[0];
+  const upcoming = state.commitments.filter(c=>c.date).sort((a,b)=> new Date(a.date) - new Date(b.date))[0];
   document.getElementById('segNextReview').textContent = upcoming ? upcoming.date : '—';
-
   const tbody = document.getElementById('commitTableBody');
   tbody.innerHTML = '';
   if(state.commitments.length===0){
@@ -686,20 +735,19 @@ function markPaid(id){
 }
 
 function renderPagos(){
+  const pendEl = document.getElementById('pagoPendiente');
+  if(!pendEl) return;
   const pendientes = state.payments.filter(p=>p.status==='pendiente');
-  const pagadosThisYear = state.payments.filter(p=>p.status==='pagado');
+  const pagados = state.payments.filter(p=>p.status==='pagado');
   const pendienteTotal = pendientes.reduce((s,p)=>s+p.value,0);
-  const pagadoTotal = pagadosThisYear.reduce((s,p)=>s+p.value,0);
-
-  document.getElementById('pagoPendiente').textContent = fmtCOP(pendienteTotal);
+  const pagadoTotal = pagados.reduce((s,p)=>s+p.value,0);
+  pendEl.textContent = fmtCOP(pendienteTotal);
   document.getElementById('pagoPendienteSub').textContent = pendientes.length + ' servicio(s) pendiente(s)';
   document.getElementById('pagoAnual').textContent = fmtCOP(pagadoTotal);
-  document.getElementById('pagoAnualSub').textContent = pagadosThisYear.length + ' transacciones';
-
+  document.getElementById('pagoAnualSub').textContent = pagados.length + ' transacciones';
   const nextInvoice = pendientes.sort((a,b)=> new Date(a.date||0) - new Date(b.date||0))[0];
   document.getElementById('pagoProxFecha').textContent = nextInvoice ? (nextInvoice.date||'—') : '—';
   document.getElementById('pagoProxDesc').textContent = nextInvoice ? nextInvoice.service : 'No tienes facturas programadas.';
-
   const tbody = document.getElementById('paymentsTableBody');
   tbody.innerHTML = '';
   if(state.payments.length===0){
@@ -717,35 +765,29 @@ function renderPagos(){
 
 /* ---- Dashboard ---- */
 function renderDashboard(){
-  document.getElementById('statSesiones').textContent = state.bookings.length;
+  const el = document.getElementById('statSesiones');
+  if(!el) return;
+  el.textContent = state.bookings.length;
   document.getElementById('statSesionesSub').textContent = state.bookings.length ? 'Total reservadas' : 'Aún no reservas sesiones';
-
   const pct = state.goal ? Math.round((state.goal.done/state.goal.total)*100) : 0;
   document.getElementById('statProgreso').textContent = pct+'%';
   document.getElementById('statProgresoSub').textContent = state.goal ? state.goal.name : 'Define tu objetivo';
-
   document.getElementById('statCompromisos').textContent = state.commitments.length;
   const pendCommits = state.commitments.filter(c=>c.status!=='completado').length;
   document.getElementById('statCompromisosSub').textContent = state.commitments.length ? pendCommits+' pendientes' : 'Sin compromisos';
-
-  document.getElementById('statRecursos').textContent = state.resources;
-  document.getElementById('statRecursosSub').textContent = state.resources ? 'Guardados' : 'Ninguno guardado aún';
-
-  const nextBooking = state.bookings
-    .slice()
-    .sort((a,b)=> new Date(a.iso||0) - new Date(b.iso||0))[0];
+  const totalResources = state.checklistItems.length + state.plannerTasks.length + state.smartGoals.length;
+  document.getElementById('statRecursos').textContent = totalResources;
+  document.getElementById('statRecursosSub').textContent = totalResources ? 'Elementos guardados en herramientas' : 'Ninguno guardado aún';
+  const nextBooking = state.bookings.slice().sort((a,b)=> new Date(a.iso||0) - new Date(b.iso||0))[0];
   const badge = document.getElementById('nextSessionBadge');
   const content = document.getElementById('nextSessionContent');
   if(nextBooking){
-    badge.textContent = 'Confirmada';
-    badge.className = 'badge';
+    badge.textContent = 'Confirmada'; badge.className = 'badge';
     content.innerHTML = '<div class="item"><div class="item-left"><div class="item-icon">🎓</div><div><b>'+nextBooking.service+'</b><div class="muted">'+nextBooking.day+'</div></div></div><b>'+nextBooking.time+'</b></div>';
   } else {
-    badge.textContent = 'Sin reservas';
-    badge.className = 'badge orange';
+    badge.textContent = 'Sin reservas'; badge.className = 'badge orange';
     content.innerHTML = '<p class="muted">Aún no tienes ninguna asesoría reservada.</p>';
   }
-
   const goalBadge = document.getElementById('goalBadge');
   const goalContent = document.getElementById('goalContent');
   if(state.goal){
@@ -755,21 +797,19 @@ function renderDashboard(){
     goalBadge.textContent = '0%';
     goalContent.innerHTML = '<p class="muted">Todavía no has definido un objetivo. Ve a "Mi seguimiento" para crear uno.</p>';
   }
-
   const listEl = document.getElementById('dashCommitList');
   const pending = state.commitments.filter(c=>c.status!=='completado').slice(0,4);
   if(pending.length===0){
     listEl.innerHTML = '<p class="muted">No tienes compromisos registrados todavía.</p>';
   } else {
-    listEl.innerHTML = pending.map(c=>{
-      return '<div class="item"><div class="item-left"><div class="item-icon">📘</div><div><b>'+c.title+'</b><div class="muted">Fecha límite · '+(c.date||'sin definir')+'</div></div></div>'+statusBadge(c.status)+'</div>';
-    }).join('');
+    listEl.innerHTML = pending.map(c=>'<div class="item"><div class="item-left"><div class="item-icon">📘</div><div><b>'+c.title+'</b><div class="muted">Fecha límite · '+(c.date||'sin definir')+'</div></div></div>'+statusBadge(c.status)+'</div>').join('');
   }
 }
 
-/* ---- Chat persistente (sin conversación de muestra) ---- */
+/* ---- Chat persistente ---- */
 function renderChat(){
   const box = document.getElementById('messages');
+  if(!box) return;
   box.innerHTML = '';
   state.chatMessages.forEach(m=>{
     const b = document.createElement('div');
@@ -779,52 +819,214 @@ function renderChat(){
   });
   box.scrollTop = box.scrollHeight;
 }
-
 function sendMessage(e){
   e.preventDefault();
   const input = document.getElementById('chatText');
   const text = input.value.trim();
   if(!text) return;
   state.chatMessages.push({from:'me', text});
-  saveState();
-  renderChat();
-  input.value='';
+  saveState(); renderChat(); input.value='';
   setTimeout(()=>{
     state.chatMessages.push({from:'them', text:'¡Recibido! Lo revisamos y te respondemos en breve.'});
-    saveState();
-    renderChat();
+    saveState(); renderChat();
   },700);
 }
 
-/* ---- Pomodoro funcional ---- */
+/* ================= HERRAMIENTAS DE APOYO (funcionales) ================= */
+
+/* 1. Planificador de estudio */
+function addPlanTask(){
+  const task = document.getElementById('planTaskInput').value.trim();
+  const day = document.getElementById('planDayInput').value;
+  const time = document.getElementById('planTimeInput').value;
+  if(!task){ toast('Escribe una tarea'); return; }
+  state.plannerTasks.push({ id: Date.now(), task, day, time, done:false });
+  saveState();
+  document.getElementById('planTaskInput').value='';
+  document.getElementById('planTimeInput').value='';
+  toast('✓ Tarea añadida al plan');
+  renderPlanner();
+  renderDashboard();
+}
+function togglePlanTask(id){
+  const t = state.plannerTasks.find(x=>x.id===id);
+  if(t){ t.done = !t.done; saveState(); renderPlanner(); }
+}
+function deletePlanTask(id){
+  state.plannerTasks = state.plannerTasks.filter(x=>x.id!==id);
+  saveState(); renderPlanner(); renderDashboard();
+}
+function renderPlanner(){
+  const board = document.getElementById('plannerBoard');
+  if(!board) return;
+  const days = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado','Domingo'];
+  board.innerHTML = days.map(d=>{
+    const items = state.plannerTasks.filter(t=>t.day===d).sort((a,b)=> (a.time||'').localeCompare(b.time||''));
+    const itemsHtml = items.length ? items.map(t=>
+      '<div class="item" style="padding:8px 10px"><div class="item-left" style="gap:8px"><input type="checkbox" '+(t.done?'checked':'')+' onchange="togglePlanTask('+t.id+')"><div><b style="'+(t.done?'text-decoration:line-through;color:var(--muted)':'')+'; font-size:13px">'+t.task+'</b>'+(t.time?'<div class="muted" style="font-size:11px">'+t.time+'</div>':'')+'</div></div><button class="btn ghost" style="padding:3px" onclick="deletePlanTask('+t.id+')">✕</button></div>'
+    ).join('') : '<p class="muted" style="font-size:12px">Sin tareas</p>';
+    return '<div class="card" style="padding:12px;box-shadow:none;border:1px solid var(--border)"><b style="font-size:13px">'+d+'</b><div style="margin-top:8px;display:grid;gap:6px">'+itemsHtml+'</div></div>';
+  }).join('');
+}
+
+/* 2. Calculadora financiera */
+function calcularFinanzas(){
+  const monto = parseFloat(document.getElementById('finMontoInput').value)||0;
+  const cuotas = parseInt(document.getElementById('finCuotasInput').value,10)||1;
+  const interes = parseFloat(document.getElementById('finInteresInput').value)||0;
+  const ahorro = parseFloat(document.getElementById('finAhorroInput').value)||0;
+  const out = document.getElementById('finResultado');
+  if(monto<=0){ out.innerHTML = 'Ingresa un monto válido mayor a cero.'; return; }
+  const i = interes/100;
+  let cuotaMensual;
+  if(i>0){
+    cuotaMensual = monto * (i*Math.pow(1+i,cuotas)) / (Math.pow(1+i,cuotas)-1);
+  } else {
+    cuotaMensual = monto/cuotas;
+  }
+  const totalPagado = cuotaMensual*cuotas;
+  const totalIntereses = totalPagado-monto;
+  let html = 'Cuota mensual estimada: <b>'+fmtCOP(cuotaMensual)+'</b><br>';
+  html += 'Total a pagar en '+cuotas+' cuotas: <b>'+fmtCOP(totalPagado)+'</b><br>';
+  html += 'Intereses totales: <b>'+fmtCOP(totalIntereses)+'</b>';
+  if(ahorro>0){
+    const mesesParaCubrir = Math.ceil(cuotaMensual/ahorro);
+    html += '<br>Con un ahorro mensual de '+fmtCOP(ahorro)+', cada cuota representa '+Math.round((cuotaMensual/ahorro)*100)+'% de tu ahorro disponible.';
+  }
+  out.innerHTML = html;
+}
+
+/* 3. Generador de checklist */
+function addChecklistItem(){
+  const text = document.getElementById('checkItemInput').value.trim();
+  if(!text){ toast('Escribe una acción'); return; }
+  state.checklistItems.push({ id: Date.now(), text, done:false });
+  saveState();
+  document.getElementById('checkItemInput').value='';
+  renderChecklist();
+  renderDashboard();
+}
+function toggleChecklistItem(id){
+  const it = state.checklistItems.find(x=>x.id===id);
+  if(it){ it.done=!it.done; saveState(); renderChecklist(); }
+}
+function deleteChecklistItem(id){
+  state.checklistItems = state.checklistItems.filter(x=>x.id!==id);
+  saveState(); renderChecklist(); renderDashboard();
+}
+function renderChecklist(){
+  const board = document.getElementById('checklistBoard');
+  if(!board) return;
+  const total = state.checklistItems.length;
+  const done = state.checklistItems.filter(i=>i.done).length;
+  const pct = total ? Math.round((done/total)*100) : 0;
+  document.getElementById('checklistProgress').textContent = done+' de '+total+' completadas';
+  document.getElementById('checklistBar').style.width = pct+'%';
+  if(total===0){
+    board.innerHTML = '<p class="muted">Agrega tu primera acción para comenzar.</p>';
+  } else {
+    board.innerHTML = state.checklistItems.map(it=>
+      '<div class="item" style="padding:9px 12px"><div class="item-left" style="gap:10px"><input type="checkbox" '+(it.done?'checked':'')+' onchange="toggleChecklistItem('+it.id+')"><span style="'+(it.done?'text-decoration:line-through;color:var(--muted)':'')+'">'+it.text+'</span></div><button class="btn ghost" onclick="deleteChecklistItem('+it.id+')">✕</button></div>'
+    ).join('');
+  }
+}
+
+/* 4. Buscador de recursos (índice local propio) */
+const RESOURCE_INDEX = [
+  {kw:['base de datos','sql','bases de datos','normalizacion','normalización'], title:'Guía de modelos de bases de datos y SQL', desc:'Repasa entidad-relación, normalización (1FN-3FN) y consultas SQL básicas.'},
+  {kw:['calculo','cálculo','integral','derivada','limites','límites'], title:'Recursos de cálculo diferencial e integral', desc:'Ejercicios guiados de límites, derivadas e integrales paso a paso.'},
+  {kw:['linux','terminal','comandos','bash'], title:'Comandos esenciales de Linux', desc:'Gestión de usuarios, permisos, procesos y red desde la terminal.'},
+  {kw:['programacion','programación','c','python','javascript','html','css'], title:'Fundamentos de programación', desc:'Sintaxis básica, estructuras de control y buenas prácticas de código.'},
+  {kw:['fisica','física','circuitos','electric'], title:'Física y circuitos eléctricos', desc:'Leyes de Ohm y Kirchhoff, análisis de circuitos y problemas resueltos.'},
+  {kw:['apa','ieee','formato','norma','citas'], title:'Normas de citación APA e IEEE', desc:'Plantillas y ejemplos para trabajos académicos formales.'},
+  {kw:['web','sitio','hosting','github pages','deploy'], title:'Publicación de sitios web', desc:'Guía para desplegar sitios estáticos con GitHub Pages y dominios propios.'}
+];
+function searchResources(){
+  const q = document.getElementById('resSearchInput').value.trim().toLowerCase();
+  const results = document.getElementById('resResults');
+  if(!q){ results.innerHTML = '<p class="muted">Escribe un tema para buscar en la guía de recursos.</p>'; return; }
+  const matches = RESOURCE_INDEX.filter(r=> r.kw.some(k=> k.includes(q) || q.includes(k)) );
+  state.resources = matches.length;
+  if(matches.length===0){
+    results.innerHTML = '<p class="muted">No se encontraron recursos para "'+q+'". Prueba con otra palabra clave o pregunta a tu asesor en el chat.</p>';
+  } else {
+    results.innerHTML = matches.map(r=>'<div class="item"><div class="item-left"><div class="item-icon">📄</div><div><b>'+r.title+'</b><div class="muted">'+r.desc+'</div></div></div></div>').join('');
+  }
+}
+
+/* 5. Pomodoro funcional (iniciar / pausar / reiniciar) */
 let pomodoroInterval = null;
 let pomodoroSeconds = 25*60;
 let pomodoroOnBreak = false;
+let pomodoroCycles = 0;
+function updatePomodoroDisplay(){
+  const m = Math.floor(pomodoroSeconds/60).toString().padStart(2,'0');
+  const s = (pomodoroSeconds%60).toString().padStart(2,'0');
+  const disp = document.getElementById('pomodoroDisplay');
+  if(disp) disp.textContent = m+':'+s;
+  const phase = document.getElementById('pomodoroPhase');
+  if(phase) phase.textContent = pomodoroOnBreak ? 'Descanso' : 'Bloque de concentración';
+  const count = document.getElementById('pomodoroCount');
+  if(count) count.textContent = pomodoroCycles;
+}
 function startPomodoro(){
-  const display = document.getElementById('pomodoroDisplay');
-  const btn = document.getElementById('pomodoroBtn');
-  display.style.display = 'block';
-  if(pomodoroInterval){
-    clearInterval(pomodoroInterval);
-    pomodoroInterval = null;
-    btn.textContent = 'Iniciar';
-    return;
-  }
-  btn.textContent = 'Pausar';
+  if(pomodoroInterval) return;
+  document.getElementById('pomodoroBtn').textContent = 'Corriendo...';
   pomodoroInterval = setInterval(()=>{
     pomodoroSeconds--;
     if(pomodoroSeconds<=0){
+      if(!pomodoroOnBreak) pomodoroCycles++;
       pomodoroOnBreak = !pomodoroOnBreak;
       pomodoroSeconds = pomodoroOnBreak ? 5*60 : 25*60;
       toast(pomodoroOnBreak ? '⏱️ Descanso de 5 minutos' : '⏱️ Nuevo bloque de concentración de 25 minutos');
     }
-    const m = Math.floor(pomodoroSeconds/60).toString().padStart(2,'0');
-    const s = (pomodoroSeconds%60).toString().padStart(2,'0');
-    display.textContent = m+':'+s;
+    updatePomodoroDisplay();
   },1000);
 }
+function pausePomodoro(){
+  clearInterval(pomodoroInterval);
+  pomodoroInterval = null;
+  document.getElementById('pomodoroBtn').textContent = 'Iniciar';
+}
+function resetPomodoro(){
+  pausePomodoro();
+  pomodoroSeconds = 25*60;
+  pomodoroOnBreak = false;
+  updatePomodoroDisplay();
+}
 
-/* ---- Autenticación real basada en localStorage (sin cuenta de muestra) ---- */
+/* 6. Metas SMART */
+function saveSmartGoal(){
+  const s = document.getElementById('smartS').value.trim();
+  const m = document.getElementById('smartM').value.trim();
+  const a = document.getElementById('smartA').value.trim();
+  const r = document.getElementById('smartR').value.trim();
+  const t = document.getElementById('smartT').value;
+  if(!s || !t){ toast('Completa al menos el objetivo específico y la fecha límite'); return; }
+  state.smartGoals.push({ id: Date.now(), s, m, a, r, t });
+  saveState();
+  ['smartS','smartM','smartA','smartR','smartT'].forEach(id=>document.getElementById(id).value='');
+  toast('✓ Meta SMART guardada');
+  renderSmartGoals();
+  renderDashboard();
+}
+function deleteSmartGoal(id){
+  state.smartGoals = state.smartGoals.filter(g=>g.id!==id);
+  saveState(); renderSmartGoals(); renderDashboard();
+}
+function renderSmartGoals(){
+  const board = document.getElementById('smartBoard');
+  if(!board) return;
+  if(state.smartGoals.length===0){
+    board.innerHTML = '<p class="muted">Aún no has creado ninguna meta SMART.</p>';
+  } else {
+    board.innerHTML = state.smartGoals.map(g=>
+      '<div class="item"><div class="item-left"><div class="item-icon">🎯</div><div><b>'+g.s+'</b><div class="muted">Medible: '+(g.m||'—')+' · Alcanzable: '+(g.a||'—')+' · Relevante: '+(g.r||'—')+' · Fecha límite: '+g.t+'</div></div></div><button class="btn ghost" onclick="deleteSmartGoal('+g.id+')">✕</button></div>'
+    ).join('');
+  }
+}
+
+/* ---- Autenticación real basada en localStorage ---- */
 const SA_USER_KEY = 'sa_user_v1';
 function getUser(){ try{ return JSON.parse(localStorage.getItem(SA_USER_KEY)); }catch(e){ return null; } }
 function setUser(u){ localStorage.setItem(SA_USER_KEY, JSON.stringify(u)); }
@@ -838,7 +1040,6 @@ function updateAuthUI(){
     btn.textContent = (I18N[lang]||I18N['es']).auth_btn;
   }
 }
-
 function login(e){
   e.preventDefault();
   const email = document.getElementById('email').value.trim();
@@ -865,7 +1066,12 @@ window.addEventListener('DOMContentLoaded', ()=>{
   renderSeguimiento();
   renderPagos();
   renderChat();
+  renderPlanner();
+  renderChecklist();
+  renderSmartGoals();
+  updatePomodoroDisplay();
   updateAuthUI();
+  searchResources();
 });
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
