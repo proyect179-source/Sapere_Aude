@@ -346,14 +346,6 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <div class="card"><small class="muted" data-i18n="commitments_met">Compromisos cumplidos</small><h2 id="segCommitFrac">0 / 0</h2><div class="progress"><div id="segCommitBar" style="width:0%"></div></div><p class="muted" id="segCommitPct">0% de cumplimiento</p></div>
       <div class="card"><small class="muted" data-i18n="next_review">Próxima revisión</small><h2 id="segNextReview">—</h2><p class="muted" data-i18n="next_review_desc">Revisión de avances con tu asesora.</p></div>
     </div>
-    <div class="section-title"><h2>Mi perfil de aprendizaje</h2></div>
-    <div class="card form" style="max-width:640px">
-      <div class="grid g2">
-        <div class="field"><label>Nivel de experiencia</label><select id="userExperienceLevel"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
-        <div class="field"><label>Tema de interés</label><input id="userInterestTopic" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
-      </div>
-      <button class="btn secondary" onclick="saveUserProfileLevel()">Guardar perfil</button>
-    </div>
     <div class="section-title"><h2>Definir objetivo</h2></div>
     <div class="card form" style="max-width:640px">
       <div class="field"><label>Nombre del objetivo</label><input id="goalNameInput" placeholder="Ej: Fortalecer competencias profesionales"></div>
@@ -451,13 +443,12 @@ h1,h2,h3,h4{text-align:left;margin:0}
         <div class="field"><label>Descripción</label><textarea id="admCourseDescription" placeholder="Describe qué aprenderá el estudiante o la empresa..."></textarea></div>
         <div class="grid g2">
           <div class="field"><label>Visible para</label><select id="admCourseVisibility"><option value="both">Estudiantes y empresa</option><option value="student">Solo estudiantes</option><option value="empresa">Solo empresa</option></select></div>
-          <div class="field"><label>Fecha de corte manual (opcional)</label><input id="admCourseCutoff" type="date"></div>
+          <div class="field"><label>Fecha de corte de pago</label><input id="admCourseCutoff" type="date"></div>
         </div>
         <div class="grid g2">
           <div class="field"><label>Nivel de experiencia</label><select id="admCourseLevel"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
-          <div class="field"><label>Plazo de corte (meses)</label><input id="admCourseCutoffMonths" type="number" min="1" max="24" value="3" placeholder="Ej: 3"></div>
+          <div class="field"><label>Tema / enfoque</label><input id="admCourseTopic" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
         </div>
-        <div class="field"><label>Tema / enfoque</label><input id="admCourseTopic" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
         <div class="field"><label>Cuestionario del curso (Formato: Pregunta|Opción 1|Opción 2|Opción 3|Número de respuesta correcta)</label><textarea id="admCourseQuiz" placeholder="Ej: ¿Qué hace JOIN?|Une tablas|Crea archivos|Elimina datos|1\n¿Para qué sirve FILTER?|Filtrar filas|Guardar tabla|Copiar datos|1"></textarea></div>
         <div style="display:flex;gap:10px;flex-wrap:wrap">
           <button class="btn" id="saveCourseBtn" onclick="saveAdminCourse()">Guardar curso</button>
@@ -476,7 +467,7 @@ h1,h2,h3,h4{text-align:left;margin:0}
         </div>
       </div>
       <div class="section-title"><h2>Cursos activos</h2></div>
-      <div class="card"><table class="table"><thead><tr><th>Curso</th><th>Visibilidad</th><th>Nivel</th><th>Tema</th><th>Precio</th><th>Plazo</th><th>Fecha de corte</th><th></th></tr></thead><tbody id="admCoursesTableBody"></tbody></table></div>
+      <div class="card"><table class="table"><thead><tr><th>Curso</th><th>Visibilidad</th><th>Precio</th><th>Fecha de corte</th><th></th></tr></thead><tbody id="admCoursesTableBody"></tbody></table></div>
       <div class="section-title"><h2>Todas las publicaciones</h2></div>
       <div class="card list" id="admPostsList" style="margin-bottom:16px"></div>
       <div class="section-title"><h2>Usuarios registrados</h2></div>
@@ -503,10 +494,6 @@ h1,h2,h3,h4{text-align:left;margin:0}
         <div class="field" id="nameField" style="margin-top:14px"><label data-i18n="auth_name_label">Nombre completo</label><input id="name" data-i18n-ph="auth_name_ph" placeholder="Tu nombre"></div>
         <div class="field" id="companyField" style="display:none"><label>Nombre de la empresa</label><input id="companyName" placeholder="Ej: Acme S.A.S."></div>
         <div class="field" id="adminCodeField" style="display:none"><label>Código de administrador</label><input id="adminCode" placeholder="Solicítalo al equipo de Sapere Aude"></div>
-        <div class="grid g2" style="margin-top:14px">
-          <div class="field"><label>Nivel de experiencia</label><select id="experienceLevelSelect"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
-          <div class="field"><label>Tema de interés</label><input id="interestTopicInput" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
-        </div>
       </div>
       <div class="field"><label data-i18n="auth_email_label">Correo electrónico</label><input id="email" type="email" required placeholder="nombre@correo.com"></div>
       <div class="field"><label data-i18n="auth_pass_label">Contraseña</label><input id="password" type="password" required placeholder="••••••••" minlength="4"></div>
@@ -775,9 +762,7 @@ function handleAuthSubmit(e){
       role: selectedRole,
       companyName: selectedRole==='empresa' ? document.getElementById('companyName').value.trim() : '',
       companySector: '',
-      companyDesc: '',
-      experienceLevel: document.getElementById('experienceLevelSelect') ? document.getElementById('experienceLevelSelect').value : 'principiante',
-      preferredTopic: document.getElementById('interestTopicInput') ? document.getElementById('interestTopicInput').value.trim() : ''
+      companyDesc: ''
     };
     users.push(newUser);
     saveUsers(users);
@@ -821,9 +806,7 @@ function applyAuthUI(){
   const umEmail = document.getElementById('umEmail');
   if(user){
     btn.textContent = (user.role==='empresa' && user.companyName) ? user.companyName : user.name;
-    const levelText = (user.experienceLevel || 'principiante').charAt(0).toUpperCase() + ((user.experienceLevel || 'principiante').slice(1));
-    const topicText = (user.preferredTopic && user.preferredTopic.trim()) ? user.preferredTopic.trim() : 'Sin tema definido';
-    umEmail.innerHTML = user.email+'<br><span class="badge" style="margin-top:5px;display:inline-block">'+roleLabel(user.role)+'</span><br><span class="muted" style="display:block;margin-top:4px">Nivel: '+levelText+' · Tema: '+topicText+'</span>';
+    umEmail.innerHTML = user.email+'<br><span class="badge" style="margin-top:5px;display:inline-block">'+roleLabel(user.role)+'</span>';
   } else {
     const lang = localStorage.getItem('sa_lang')||'es';
     btn.textContent = (I18N[lang]||I18N['es']).auth_btn;
@@ -834,41 +817,11 @@ function applyAuthUI(){
     const need = b.getAttribute('data-role');
     b.style.display = (user && user.role===need) ? 'flex' : 'none';
   });
-  syncUserProfileControls();
   renderEmpresaPage();
   renderAdminPage();
   renderCourseCatalog();
   renderFeed();
   renderFeedPreview();
-}
-
-function syncUserProfileControls(){
-  const user = currentUser();
-  const levelEl = document.getElementById('userExperienceLevel');
-  const topicEl = document.getElementById('userInterestTopic');
-  if(levelEl && user){ levelEl.value = user.experienceLevel || 'principiante'; }
-  if(topicEl && user){ topicEl.value = user.preferredTopic || ''; }
-  const regLevelEl = document.getElementById('experienceLevelSelect');
-  const regTopicEl = document.getElementById('interestTopicInput');
-  if(regLevelEl && user){ regLevelEl.value = user.experienceLevel || 'principiante'; }
-  if(regTopicEl && user){ regTopicEl.value = user.preferredTopic || ''; }
-}
-
-function saveUserProfileLevel(){
-  const user = currentUser();
-  if(!user){ toast('Debes iniciar sesión para guardar tu perfil.'); return; }
-  const levelEl = document.getElementById('userExperienceLevel');
-  const topicEl = document.getElementById('userInterestTopic');
-  const newLevel = levelEl ? levelEl.value : 'principiante';
-  const newTopic = topicEl ? topicEl.value.trim() : '';
-  user.experienceLevel = newLevel;
-  user.preferredTopic = newTopic;
-  saveUsers(users);
-  if(document.getElementById('experienceLevelSelect')) document.getElementById('experienceLevelSelect').value = newLevel;
-  if(document.getElementById('interestTopicInput')) document.getElementById('interestTopicInput').value = newTopic;
-  applyAuthUI();
-  renderCourseCatalog();
-  toast('✓ Perfil de aprendizaje actualizado');
 }
 
 /* ================= COMUNIDAD / PUBLICACIONES ================= */
@@ -1027,7 +980,6 @@ function adminDeleteUser(id){
 /* ===== Lógica real de la aplicación (datos por usuario, sin datos de muestra) ===== */
 const SA_COURSES_KEY = 'sa_courses_v1';
 const SA_COURSE_ASSIGNMENTS_KEY = 'sa_course_assignments_v1';
-const SA_COURSE_ASSIGNMENT_META_KEY = 'sa_course_assignment_meta_v1';
 let editingCourseId = null;
 function loadCourses(){
   try{
@@ -1035,9 +987,9 @@ function loadCourses(){
     if(raw) return JSON.parse(raw);
   }catch(e){}
   return [
-    { id: 1, name: 'Fundamentos de SQL', description: 'Aprende consultas, filtros, joins y diseña bases de datos con confianza.', price: 450000, visibility: 'both', level: 'intermedio', cutoffMonths: 5 },
-    { id: 2, name: 'Excel para gestión académica', description: 'Organiza información, calcula indicadores y automatiza tareas básicas.', price: 300000, visibility: 'student', level: 'principiante', cutoffMonths: 3 },
-    { id: 3, name: 'Capacitación empresarial', description: 'Diseño de procesos, análisis de rendimiento y mejora de equipos de trabajo.', price: 800000, visibility: 'empresa', level: 'avanzado', cutoffMonths: 8 }
+    { id: 1, name: 'Fundamentos de SQL', description: 'Aprende consultas, filtros, joins y diseña bases de datos con confianza.', price: 450000, visibility: 'both', cutoffDate: '2026-09-30' },
+    { id: 2, name: 'Excel para gestión académica', description: 'Organiza información, calcula indicadores y automatiza tareas básicas.', price: 300000, visibility: 'student', cutoffDate: '2026-10-15' },
+    { id: 3, name: 'Capacitación empresarial', description: 'Diseño de procesos, análisis de rendimiento y mejora de equipos de trabajo.', price: 800000, visibility: 'empresa', cutoffDate: '2026-10-10' }
   ];
 }
 function saveCourses(){ localStorage.setItem(SA_COURSES_KEY, JSON.stringify(courses)); }
@@ -1049,14 +1001,6 @@ function loadCourseAssignments(){
   return {};
 }
 function saveCourseAssignments(assignments){ localStorage.setItem(SA_COURSE_ASSIGNMENTS_KEY, JSON.stringify(assignments)); }
-function loadCourseAssignmentMeta(){
-  try{
-    const raw = localStorage.getItem(SA_COURSE_ASSIGNMENT_META_KEY);
-    if(raw) return JSON.parse(raw);
-  }catch(e){}
-  return {};
-}
-function saveCourseAssignmentMeta(data){ localStorage.setItem(SA_COURSE_ASSIGNMENT_META_KEY, JSON.stringify(data)); }
 let courses = loadCourses();
 
 function resetCourseForm(){
@@ -1067,7 +1011,6 @@ function resetCourseForm(){
   document.getElementById('admCourseVisibility').value = 'both';
   document.getElementById('admCourseCutoff').value = '';
   document.getElementById('admCourseLevel').value = 'principiante';
-  document.getElementById('admCourseCutoffMonths').value = 3;
   document.getElementById('admCourseTopic').value = '';
   document.getElementById('admCourseQuiz').value = '';
   const saveBtn = document.getElementById('saveCourseBtn');
@@ -1184,32 +1127,6 @@ function getCourseLevelWeight(level){
   return weight[level] || 1;
 }
 
-function getDefaultCourseCutoffMonths(level){
-  const defaults = { principiante: 3, intermedio: 5, avanzado: 8 };
-  return defaults[level] || 3;
-}
-
-function getCourseCutoffMonths(course){
-  const months = Number(course && course.cutoffMonths);
-  if(Number.isFinite(months) && months > 0) return months;
-  return getDefaultCourseCutoffMonths(course && course.level ? course.level : 'principiante');
-}
-
-function addMonthsToDate(date, months){
-  const result = new Date(date);
-  result.setMonth(result.getMonth() + months);
-  return result;
-}
-
-function getCourseCutoffDateForEnrollment(course, enrollmentDate){
-  const baseDate = enrollmentDate ? new Date(enrollmentDate) : new Date();
-  if(course && course.cutoffDate){
-    const manualDate = new Date(course.cutoffDate + 'T00:00:00');
-    if(!Number.isNaN(manualDate.getTime())) return manualDate;
-  }
-  return addMonthsToDate(baseDate, getCourseCutoffMonths(course));
-}
-
 function parseCourseQuiz(raw){
   if(!raw || !raw.trim()) return [];
   const lines = raw.split(/\n+/).map(line => line.trim()).filter(Boolean);
@@ -1276,46 +1193,25 @@ function getUserAccessibleCourseIds(user){
   return [...ids];
 }
 
-function getCourseRecommendationScore(user, course){
-  const userTopic = (user && user.preferredTopic ? user.preferredTopic.toLowerCase() : '').trim();
-  const courseTopic = (course && course.topic ? course.topic.toLowerCase() : '').trim();
-  let topicScore = 0;
-  if(userTopic && courseTopic){
-    if(courseTopic.includes(userTopic) || userTopic.includes(courseTopic)) topicScore = 45;
-    else if(courseTopic.includes('sql') && userTopic.includes('sql')) topicScore = 40;
-    else if(courseTopic.includes('excel') && userTopic.includes('excel')) topicScore = 40;
-    else if(courseTopic.includes('marketing') && userTopic.includes('marketing')) topicScore = 40;
-  } else if(courseTopic) {
-    topicScore = 15;
-  }
-
-  const userLevel = user && user.experienceLevel ? user.experienceLevel : 'principiante';
-  const courseLevel = course && course.level ? course.level : 'principiante';
-  const levelGap = Math.abs(getCourseLevelWeight(courseLevel) - getCourseLevelWeight(userLevel));
-  const levelScore = Math.max(0, 30 - levelGap * 12);
-
-  const assessmentMap = loadUserAssessments();
-  const assessment = assessmentMap[String(user && user.id)] && assessmentMap[String(user.id)][String(course.id)];
-  const assessmentScore = assessment ? (assessment.score / Math.max(assessment.total, 1)) * 100 : 0;
-
-  return topicScore + levelScore + assessmentScore;
-}
-
 function getSuggestedCourseForUser(user){
   if(!user) return null;
-  const availableCourses = courses.filter(course => {
-    if(user.role === 'empresa') return course.visibility === 'both' || course.visibility === 'empresa';
-    return course.visibility === 'both' || course.visibility === 'student';
+  const assessmentMap = loadUserAssessments();
+  const byUser = assessmentMap[String(user.id)] || {};
+  const scoredCourses = courses.map(course => {
+    const assessment = byUser[String(course.id)];
+    const score = assessment ? (assessment.score / Math.max(assessment.total, 1)) * 100 : 0;
+    return { course, score, assessment };
+  }).filter(entry => entry.course && (entry.score > 0 || !Object.keys(byUser).length));
+
+  if(scoredCourses.length === 0) {
+    return courses[0] || null;
+  }
+
+  scoredCourses.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    return getCourseLevelWeight(b.course.level) - getCourseLevelWeight(a.course.level);
   });
 
-  if(!availableCourses.length) return null;
-
-  const scoredCourses = availableCourses.map(course => ({
-    course,
-    score: getCourseRecommendationScore(user, course)
-  }));
-
-  scoredCourses.sort((a, b) => b.score - a.score);
   return scoredCourses[0].course;
 }
 
@@ -1362,7 +1258,7 @@ function renderCourseCatalog(){
   }
 
   list.innerHTML = allowed.map(course => {
-      const cutoff = getCourseCutoffDateForEnrollment(course, new Date());
+    const cutoff = course.cutoffDate ? new Date(course.cutoffDate + 'T00:00:00') : null;
     const cutoffText = cutoff ? cutoff.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Sin fecha';
     const assessment = getUserAssessmentForCourse(user.id, course.id);
     const scoreText = assessment ? '<div class="muted">Evaluación: ' + Math.round((assessment.score / Math.max(assessment.total, 1)) * 100) + '%</div>' : '<div class="muted">Sin evaluación</div>';
@@ -1379,17 +1275,6 @@ function populateAdminCourseAssignmentSelect(){
     return;
   }
   select.innerHTML = courses.map(course => '<option value="'+course.id+'">'+course.name+'</option>').join('');
-}
-
-function getAssignmentCutoffDateForUserAndCourse(email, courseId){
-  const meta = loadCourseAssignmentMeta();
-  const key = String(email || '').trim().toLowerCase();
-  const course = courses.find(item => item.id === Number(courseId));
-  const metaEntry = meta[key] && meta[key][String(courseId)];
-  if(metaEntry && metaEntry.cutoffDate){
-    return new Date(metaEntry.cutoffDate + 'T00:00:00');
-  }
-  return getCourseCutoffDateForEnrollment(course, new Date());
 }
 
 function assignCourseToUserByEmail(options = {}){
@@ -1410,18 +1295,6 @@ function assignCourseToUserByEmail(options = {}){
   if(!arr.includes(courseId)) arr.push(courseId);
   assignments[targetEmail] = arr;
   saveCourseAssignments(assignments);
-
-  const course = courses.find(item => item.id === Number(courseId));
-  const meta = loadCourseAssignmentMeta();
-  const userMeta = meta[targetEmail] || {};
-  userMeta[String(courseId)] = {
-    assignedAt: new Date().toISOString(),
-    cutoffDate: getCourseCutoffDateForEnrollment(course, new Date()).toISOString().slice(0, 10),
-    cutoffMonths: getCourseCutoffMonths(course)
-  };
-  meta[targetEmail] = userMeta;
-  saveCourseAssignmentMeta(meta);
-
   if(targetUser){
     targetUser.assignedCourseIds = [...new Set([...(Array.isArray(targetUser.assignedCourseIds) ? targetUser.assignedCourseIds : []), courseId])];
     saveUsers(users);
@@ -1499,13 +1372,16 @@ function saveAdminCourse(){
   const visibility = document.getElementById('admCourseVisibility').value;
   const cutoffDate = document.getElementById('admCourseCutoff').value;
   const level = document.getElementById('admCourseLevel').value || 'principiante';
-  const cutoffMonths = Number(document.getElementById('admCourseCutoffMonths').value) || getDefaultCourseCutoffMonths(level);
   const topic = document.getElementById('admCourseTopic').value.trim() || 'General';
   const quizRaw = document.getElementById('admCourseQuiz').value.trim();
   const quiz = parseCourseQuiz(quizRaw);
 
   if(!name || !price){
     toast('Completa el nombre y el precio del curso.');
+    return;
+  }
+  if(!cutoffDate){
+    toast('Debes definir la fecha de corte de pago para el curso.');
     return;
   }
 
@@ -1516,13 +1392,12 @@ function saveAdminCourse(){
       course.description = description;
       course.price = price;
       course.visibility = visibility;
-      course.cutoffDate = cutoffDate || '';
-      course.cutoffMonths = cutoffMonths;
+      course.cutoffDate = cutoffDate;
       course.level = level;
       course.topic = topic;
       course.quiz = quiz;
       course.quizText = quizRaw;
-      toast('✓ Curso actualizado con plazo y fecha de corte configurados');
+      toast('✓ Curso actualizado con nueva fecha de corte');
     }
   } else {
     courses.push({
@@ -1531,14 +1406,13 @@ function saveAdminCourse(){
       description,
       price,
       visibility,
-      cutoffDate: cutoffDate || '',
-      cutoffMonths,
+      cutoffDate,
       level,
       topic,
       quiz,
       quizText: quizRaw
     });
-    toast('✓ Curso registrado con plazo automático según su nivel');
+    toast('✓ Curso registrado y configurado');
   }
 
   saveCourses();
@@ -1562,7 +1436,6 @@ function editAdminCourse(id){
   document.getElementById('admCourseVisibility').value = course.visibility || 'both';
   document.getElementById('admCourseCutoff').value = course.cutoffDate || '';
   document.getElementById('admCourseLevel').value = course.level || 'principiante';
-  document.getElementById('admCourseCutoffMonths').value = String(getCourseCutoffMonths(course));
   document.getElementById('admCourseTopic').value = course.topic || '';
   document.getElementById('admCourseQuiz').value = Array.isArray(course.quiz) ? course.quiz.map(item => `${item.question}|${item.options.join('|')}|${item.answerIndex}`).join('\n') : (course.quizText || '');
   const saveBtn = document.getElementById('saveCourseBtn');
@@ -1581,11 +1454,9 @@ function renderAdminCoursesTable(){
   }
 
   tbody.innerHTML = courses.map(course => {
-    const cutoffDate = getCourseCutoffDateForEnrollment(course, new Date());
-    const cutoffText = cutoffDate ? cutoffDate.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Sin fecha';
+    const cutoffText = course.cutoffDate ? new Date(course.cutoffDate + 'T00:00:00').toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Sin fecha';
     const level = (course.level || 'principiante').charAt(0).toUpperCase() + ((course.level || 'principiante').slice(1));
-    const months = getCourseCutoffMonths(course);
-    return '<tr><td>' + course.name + '</td><td>' + courseVisibilityLabel(course.visibility) + '</td><td>' + level + '</td><td>' + (course.topic || 'General') + '</td><td>' + fmtCOP(course.price) + '</td><td>' + months + ' meses</td><td>' + cutoffText + '</td><td><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" onclick="editAdminCourse(' + course.id + ')">Editar</button><button class="btn ghost" onclick="deleteAdminCourse(' + course.id + ')">Eliminar</button></div></td></tr>';
+    return '<tr><td>' + course.name + '</td><td>' + courseVisibilityLabel(course.visibility) + '</td><td>' + level + '</td><td>' + (course.topic || 'General') + '</td><td>' + fmtCOP(course.price) + '</td><td>' + cutoffText + '</td><td><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" onclick="editAdminCourse(' + course.id + ')">Editar</button><button class="btn ghost" onclick="deleteAdminCourse(' + course.id + ')">Eliminar</button></div></td></tr>';
   }).join('');
 }
 
