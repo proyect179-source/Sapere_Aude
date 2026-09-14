@@ -26,7 +26,7 @@ h1,h2,h3,h4{text-align:left;margin:0}
 .grid{display:grid;gap:18px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:repeat(2,1fr)}
 .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:20px;box-shadow:var(--shadow);text-align:left}.stat{display:flex;justify-content:space-between;align-items:flex-start}.stat .icon{width:44px;height:44px;border-radius:13px;background:#e6f5f4;color:var(--primary);display:grid;place-items:center;font-size:20px}.stat strong{font-size:28px;display:block;margin-top:10px}.stat small{color:var(--muted)}.section-title{display:flex;justify-content:space-between;align-items:center;margin:30px 0 14px;gap:10px;flex-wrap:wrap}.section-title h2{font-size:18px;margin:0}.btn{padding:11px 16px;border-radius:11px;background:var(--primary);color:#fff;font-weight:700;transition:.2s}.btn:hover{background:var(--primary2);transform:translateY(-1px)}.btn.secondary{background:#e6f5f4;color:var(--primary)}.btn.secondary:hover{background:#d3ece9}.btn.ghost{background:transparent;color:var(--primary);padding:7px}
 .hero{background:linear-gradient(120deg,#123B63,#159A9C 60%,#9BCB8A);color:#fff;padding:28px;border-radius:22px;position:relative;overflow:hidden;text-align:left}.hero:after{content:"";position:absolute;width:250px;height:250px;border:45px solid rgba(255,255,255,.08);border-radius:50%;right:-70px;top:-110px}.hero h2{margin:0 0 8px;font-size:25px}.hero p{margin:0;color:#eaf8f7;max-width:620px}.hero .btn{background:#fff;color:#123B63;margin-top:20px}
-.list{display:grid;gap:12px}.item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:14px;flex-wrap:wrap;gap:10px}.item-left{display:flex;gap:13px;align-items:center}.item-icon{width:42px;height:42px;border-radius:12px;background:#eaf6f2;display:grid;place-items:center;font-size:18px}.muted{color:var(--muted);font-size:13px;text-align:left}.badge{font-size:11px;padding:5px 9px;border-radius:99px;background:#e9fbf7;color:#0f7d7e;font-weight:800}.badge.orange{background:#fff5e4;color:#ae7218}.progress{height:8px;background:#edf3f1;border-radius:99px;overflow:hidden}.progress > div{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:inherit}
+.list{display:grid;gap:12px}.item{display:flex;align-items:center;justify-content:space-between;padding:14px;border:1px solid var(--border);border-radius:14px;flex-wrap:wrap;gap:10px}.item-left{display:flex;gap:13px;align-items:center}.item-icon{width:42px;height:42px;border-radius:12px;background:#eaf6f2;display:grid;place-items:center;font-size:18px}.muted{color:var(--muted);font-size:13px;text-align:left}.badge{font-size:11px;padding:5px 9px;border-radius:99px;background:#e9fbf7;color:#0f7d7e;font-weight:800}.badge.orange{background:#fff5e4;color:#ae7218}.badge.purple{background:#f1e9fb;color:#6b3fa0}.badge.blue{background:#e6f0f8;color:#28577f}.progress{height:8px;background:#edf3f1;border-radius:99px;overflow:hidden}.progress > div{height:100%;background:linear-gradient(90deg,var(--primary),var(--accent));border-radius:inherit}
 .form{display:grid;gap:14px}.field label{font-size:13px;font-weight:700;display:block;margin-bottom:7px;text-align:left}.field input,.field select,.field textarea{width:100%;border:1px solid var(--border);border-radius:11px;padding:12px;background:#fbfcfe;outline:none}.field textarea{min-height:110px;resize:vertical}
 .calendar{display:grid;grid-template-columns:repeat(7,1fr);gap:7px}.day{padding:11px 4px;text-align:center;border:1px solid var(--border);border-radius:10px;font-size:12px;background:#fff;cursor:default}.day.available{color:var(--primary);font-weight:800;cursor:pointer}.day.available:hover{border-color:var(--primary)}.day.selected{background:var(--primary);color:#fff;border-color:var(--primary)}.time-grid{display:flex;flex-wrap:wrap;gap:8px}.time{padding:9px 12px;border:1px solid var(--border);border-radius:9px;background:white}.time.selected{background:#e6f5f4;color:var(--primary);border-color:#a9dbd8;font-weight:700}
 .tool{transition:.2s;text-align:left}.tool:hover{transform:translateY(-3px);border-color:#a9dbd8}.tool h3{margin:12px 0 5px;font-size:16px}.tool p{font-size:13px;color:var(--muted);line-height:1.5}.tool .bigicon{font-size:27px}
@@ -36,10 +36,20 @@ h1,h2,h3,h4{text-align:left;margin:0}
 .chat{display:grid;grid-template-columns:280px 1fr;min-height:520px;overflow:hidden;padding:0}.chat-list{border-right:1px solid var(--border);padding:15px}.chat-user{padding:12px;border-radius:12px;display:flex;gap:10px;cursor:pointer}.chat-user.active{background:#e6f5f4}.chat-main{display:flex;flex-direction:column}.messages{padding:20px;flex:1;background:#fbfcff;display:flex;flex-direction:column;gap:12px;overflow-y:auto;max-height:420px}.bubble{max-width:70%;padding:11px 14px;border-radius:15px;background:#fff;border:1px solid var(--border);font-size:14px;line-height:1.5;text-align:left}.bubble.me{margin-left:auto;background:var(--primary);color:#fff;border:0;border-bottom-right-radius:4px}.bubble.them{border-bottom-left-radius:4px}.chat-input{padding:13px;border-top:1px solid var(--border);display:flex;gap:8px}.chat-input input{flex:1;border:1px solid var(--border);border-radius:10px;padding:11px}
 .table{width:100%;border-collapse:collapse}.table th,.table td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--border);font-size:13px}.table th{color:var(--muted);font-size:11px;text-transform:uppercase;letter-spacing:.05em}
 .modal{position:fixed;inset:0;background:rgba(18,59,99,.55);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}.modal.open{display:flex}.modal-box{background:#fff;border-radius:20px;width:min(520px,100%);padding:25px;box-shadow:0 30px 80px rgba(0,0,0,.2);position:relative;text-align:left}.modal-head{display:flex;justify-content:space-between;align-items:center}.close{background:#f2f3f7;width:34px;height:34px;border-radius:9px}.toast{position:fixed;right:22px;bottom:22px;background:#123B63;color:#fff;padding:13px 17px;border-radius:12px;display:none;z-index:80;max-width:300px}.toast.show{display:block;animation:fadeIn .25s ease}
-.auth{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(18,59,99,.55);z-index:60;padding:20px}.auth.open{display:flex}.auth-card{width:min(440px,100%);background:white;border-radius:24px;padding:30px;box-shadow:0 30px 80px rgba(0,0,0,.2);position:relative;text-align:left}.auth .brand{color:#123B63;padding:0 0 22px}.auth h1{margin:0 0 7px}.auth p{color:var(--muted);font-size:14px}.auth-links{display:flex;justify-content:space-between;font-size:12px;margin-top:10px}.auth-links a{color:var(--primary);cursor:pointer}.check{display:flex;gap:8px;font-size:12px;color:var(--muted);align-items:flex-start}
+.auth{position:fixed;inset:0;display:none;align-items:center;justify-content:center;background:rgba(18,59,99,.55);z-index:60;padding:20px}.auth.open{display:flex}.auth-card{width:min(460px,100%);background:white;border-radius:24px;padding:30px;box-shadow:0 30px 80px rgba(0,0,0,.2);position:relative;text-align:left;max-height:92vh;overflow-y:auto}.auth .brand{color:#123B63;padding:0 0 22px}.auth h1{margin:0 0 7px}.auth p{color:var(--muted);font-size:14px}.auth-links{display:flex;justify-content:space-between;font-size:12px;margin-top:10px}.auth-links a{color:var(--primary);cursor:pointer}.check{display:flex;gap:8px;font-size:12px;color:var(--muted);align-items:flex-start}
+.role-picker{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:4px}
+.role-opt{border:1.5px solid var(--border);border-radius:12px;padding:10px 6px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;color:var(--muted)}
+.role-opt.selected{border-color:var(--primary);background:#e6f5f4;color:var(--primary)}
+.role-opt .ric{display:block;font-size:18px;margin-bottom:4px}
 .topbar-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .lang-select{border:1px solid var(--border);border-radius:10px;padding:9px 12px;background:#fff;font-weight:700;font-size:13px;color:var(--text)}
 .auth-btn{padding:11px 16px;background:var(--primary);color:#fff;border-radius:11px;font-weight:700;border:0;cursor:pointer;transition:.3s}.auth-btn:hover{background:var(--primary2);transform:translateY(-2px)}
+.user-menu-wrap{position:relative}
+.user-menu{position:absolute;right:0;top:calc(100% + 8px);background:#fff;border:1px solid var(--border);border-radius:14px;box-shadow:var(--shadow);width:210px;padding:8px;display:none;z-index:30}
+.user-menu.open{display:block}
+.user-menu button{width:100%;text-align:left;padding:10px 12px;border-radius:9px;background:transparent;color:var(--text);font-size:13px}
+.user-menu button:hover{background:#f3f6f8}
+.user-menu .um-email{padding:8px 12px;font-size:11px;color:var(--muted);border-bottom:1px solid var(--border);margin-bottom:6px}
 .whatsapp-btn{position:fixed;bottom:30px;right:30px;width:60px;height:60px;background:#25d366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 12px rgba(0,0,0,.15);text-decoration:none;z-index:40;transition:.3s}.whatsapp-btn:hover{transform:scale(1.1)}.whatsapp-btn svg{width:32px;height:32px}.whatsapp-container{position:fixed;bottom:30px;right:100px;display:flex;align-items:center;gap:12px;z-index:40}.whatsapp-message{background:#25d366;color:#fff;padding:12px 16px;border-radius:20px;font-size:13px;font-weight:600;white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.15)}
 .chatbot-fab-wrap{position:fixed;left:30px;bottom:30px;display:flex;align-items:center;gap:12px;z-index:45}.chatbot-fab{width:60px;height:60px;background:linear-gradient(135deg,var(--primary),var(--accent));border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(21,154,156,.4);font-size:26px;transition:.3s;color:#fff}.chatbot-fab:hover{transform:scale(1.08)}.chatbot-label{background:#fff;border:1px solid var(--border);color:var(--text);padding:9px 14px;border-radius:999px;font-size:13px;font-weight:700;box-shadow:0 8px 18px rgba(18,59,99,.08);white-space:nowrap}
 .chatbot-window{position:fixed;bottom:100px;left:30px;width:340px;max-height:480px;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(18,59,99,.25);z-index:46;display:none;flex-direction:column;overflow:hidden;border:1px solid var(--border)}
@@ -60,9 +70,17 @@ h1,h2,h3,h4{text-align:left;margin:0}
 .typing span{width:6px;height:6px;background:#b9bfd2;border-radius:50%;animation:blink 1.2s infinite ease-in-out}
 .typing span:nth-child(2){animation-delay:.2s}.typing span:nth-child(3){animation-delay:.4s}
 @keyframes blink{0%,80%,100%{opacity:.3}40%{opacity:1}}
+.locked-wrap{padding:60px 20px;text-align:center}
+.locked-wrap .li{font-size:40px;margin-bottom:14px}
+.post-card{border:1px solid var(--border);border-radius:16px;padding:16px;background:#fff}
+.post-card .pc-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px}
+.post-card .pc-body{color:var(--muted);font-size:13.5px;line-height:1.6;white-space:pre-wrap}
+.pill-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.pill-tab{padding:8px 14px;border-radius:99px;border:1px solid var(--border);background:#fff;font-size:12.5px;font-weight:700;color:var(--muted)}
+.pill-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
 #google_translate_element{display:none}
 @media(max-width:1000px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:760px){.sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%;padding:18px}.mobile-menu{display:block;background:#fff;border:1px solid var(--border);width:40px;height:40px;border-radius:11px}.topbar{gap:12px}.welcome h1{font-size:22px}.g4,.g3,.g2{grid-template-columns:1fr}.chat{grid-template-columns:1fr}.chat-list{display:none}.section-title{margin-top:22px}.chatbot-window{width:calc(100% - 40px);left:20px;bottom:90px}.chatbot-fab-wrap{left:20px}}
+@media(max-width:760px){.sidebar{transform:translateX(-100%);transition:.25s}.sidebar.open{transform:translateX(0)}.main{margin-left:0;width:100%;padding:18px}.mobile-menu{display:block;background:#fff;border:1px solid var(--border);width:40px;height:40px;border-radius:11px}.topbar{gap:12px}.welcome h1{font-size:22px}.g4,.g3,.g2{grid-template-columns:1fr}.chat{grid-template-columns:1fr}.chat-list{display:none}.section-title{margin-top:22px}.chatbot-window{width:calc(100% - 40px);left:20px;bottom:90px}.chatbot-fab-wrap{left:20px}.role-picker{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -71,15 +89,18 @@ h1,h2,h3,h4{text-align:left;margin:0}
 <div id="app" class="app">
 <aside class="sidebar" id="sidebar">
     <div class="brand"><div class="logo">🦉</div><span data-i18n="brand">Sapere Aude</span></div>
-  <nav class="nav">
-    <button class="active" onclick="showPage('dashboard',this)"><span>⌂</span><span data-i18n="nav_dashboard">Inicio</span></button>
-    <button onclick="showPage('servicios',this)"><span>★</span><span data-i18n="nav_servicios">Nuestros servicios</span></button>
-    <button onclick="showPage('reservas',this)"><span>◷</span><span data-i18n="nav_reservas">Reservar asesoría</span></button>
-    <button onclick="showPage('formacion',this)"><span>▣</span><span data-i18n="nav_formacion">Formación propia</span></button>
-    <button onclick="showPage('herramientas',this)"><span>⚙</span><span data-i18n="nav_herramientas">Herramientas</span></button>
-    <button onclick="showPage('chat',this)"><span>◌</span><span data-i18n="nav_chat">Chat con asesores</span></button>
-    <button onclick="showPage('seguimiento',this)"><span>✓</span><span data-i18n="nav_seguimiento">Mi seguimiento</span></button>
-    <button onclick="showPage('pagos',this)"><span>▤</span><span data-i18n="nav_pagos">Pagos y facturación</span></button>
+  <nav class="nav" id="navMain">
+    <button class="active" data-page="dashboard" onclick="showPage('dashboard',this)"><span>⌂</span><span data-i18n="nav_dashboard">Inicio</span></button>
+    <button data-page="servicios" onclick="showPage('servicios',this)"><span>★</span><span data-i18n="nav_servicios">Nuestros servicios</span></button>
+    <button data-page="reservas" onclick="showPage('reservas',this)"><span>◷</span><span data-i18n="nav_reservas">Reservar asesoría</span></button>
+    <button data-page="formacion" onclick="showPage('formacion',this)"><span>▣</span><span data-i18n="nav_formacion">Formación propia</span></button>
+    <button data-page="comunidad" onclick="showPage('comunidad',this)"><span>📣</span><span>Comunidad</span></button>
+    <button data-page="herramientas" onclick="showPage('herramientas',this)"><span>⚙</span><span data-i18n="nav_herramientas">Herramientas</span></button>
+    <button data-page="chat" onclick="showPage('chat',this)"><span>◌</span><span data-i18n="nav_chat">Chat con asesores</span></button>
+    <button data-page="seguimiento" onclick="showPage('seguimiento',this)"><span>✓</span><span data-i18n="nav_seguimiento">Mi seguimiento</span></button>
+    <button data-page="pagos" onclick="showPage('pagos',this)"><span>▤</span><span data-i18n="nav_pagos">Pagos y facturación</span></button>
+    <button data-page="empresa" data-role="empresa" onclick="showPage('empresa',this)" style="display:none"><span>🏢</span><span>Mi empresa</span></button>
+    <button data-page="admin" data-role="admin" onclick="showPage('admin',this)" style="display:none"><span>🛠</span><span>Administración</span></button>
   </nav>
   <div class="side-bottom"><span data-i18n="side_help">¿Necesitas ayuda?</span><br><b data-i18n="side_support">Centro de soporte</b><br><span data-i18n="side_hours">Respondemos en horario laboral. También puedes usar el asistente virtual 🦉.</span></div>
 </aside>
@@ -97,7 +118,14 @@ h1,h2,h3,h4{text-align:left;margin:0}
         <option value="de">🇩🇪 Deutsch</option>
         <option value="it">🇮🇹 Italiano</option>
       </select>
-      <button class="auth-btn" id="authToggleBtn" onclick="openAuthModal()" data-i18n="auth_btn">Iniciar sesión o regístrate</button>
+      <div class="user-menu-wrap">
+        <button class="auth-btn" id="authToggleBtn" onclick="handleAuthBtnClick()" data-i18n="auth_btn">Iniciar sesión o regístrate</button>
+        <div class="user-menu" id="userMenu">
+          <div class="um-email" id="umEmail"></div>
+          <button onclick="goProfilePage()">👤 Ver mi cuenta</button>
+          <button onclick="logout()">🚪 Cerrar sesión</button>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -122,6 +150,8 @@ h1,h2,h3,h4{text-align:left;margin:0}
     <div class="card list" id="dashCommitList">
       <p class="muted" id="dashCommitEmpty">No tienes compromisos registrados todavía.</p>
     </div>
+    <div class="section-title"><h2>Novedades de la comunidad</h2><button class="btn ghost" onclick="go('comunidad')">Ver todas</button></div>
+    <div class="card list" id="dashFeedPreview"></div>
   </section>
 
   <section id="servicios" class="page">
@@ -199,12 +229,27 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <div class="card tool"><div class="bigicon">⚡</div><h3 data-i18n="vt2_title">Microclases y bootcamps</h3><p data-i18n="vt2_p">Sesiones cortas intensivas para dominar un tema específico rápidamente.</p><button class="btn secondary" style="width:100%;margin-top:10px" onclick="openModal('Microclases y bootcamps','Consulta el calendario de próximas microclases y bootcamps intensivos.')" data-i18n="vt2_btn">Ver calendario →</button></div>
       <div class="card tool"><div class="bigicon">📝</div><h3 data-i18n="vt3_title">Nivelación e ingreso universitario</h3><p data-i18n="vt3_p">Programas de nivelación académica y preparación para exámenes de ingreso.</p><button class="btn secondary" style="width:100%;margin-top:10px" onclick="openModal('Nivelación académica','Tu asesor activará el programa de nivelación según tu diagnóstico inicial.')" data-i18n="vt3_btn">Explorar →</button></div>
     </div>
+    <div class="section-title"><h2>Cursos disponibles</h2></div>
+    <div class="card list" id="courseCatalogList"><p class="muted">No hay cursos disponibles para tu rol en este momento.</p></div>
     <div class="section-title"><h2 data-i18n="own_content">Contenido educativo propio</h2></div>
     <div class="grid g3">
       <div class="card tool"><div class="bigicon">🎥</div><h3 data-i18n="oc1_title">Videos y podcast formativo</h3><p data-i18n="oc1_p">Material audiovisual educativo elaborado por nuestro equipo de asesores.</p><button class="btn secondary" style="width:100%;margin-top:10px" onclick="openModal('Videos y podcast','Accede a la biblioteca de videos y episodios de podcast disponibles.')" data-i18n="oc1_btn">Ver contenido →</button></div>
       <div class="card tool"><div class="bigicon">📰</div><h3 data-i18n="oc2_title">Blog y artículos académicos</h3><p data-i18n="oc2_p">Artículos y guías escritas por especialistas de Sapere Aude.</p><button class="btn secondary" style="width:100%;margin-top:10px" onclick="openModal('Blog educativo','Explora nuestros artículos organizados por tema académico.')" data-i18n="oc2_btn">Leer más →</button></div>
       <div class="card tool"><div class="bigicon">📦</div><h3 data-i18n="oc3_title">Material descargable</h3><p data-i18n="oc3_p">Guías, plantillas y recursos premium desarrollados internamente.</p><button class="btn secondary" style="width:100%;margin-top:10px" onclick="openModal('Material descargable','Consulta el material disponible para tu plan actual.')" data-i18n="oc3_btn">Explorar →</button></div>
     </div>
+  </section>
+
+  <section id="comunidad" class="page">
+    <div class="hero"><h2>Comunidad Sapere Aude</h2><p>Publicaciones, ofertas de formación y anuncios de empresas aliadas y del equipo Sapere Aude.</p></div>
+    <div class="section-title"><h2>Todas las publicaciones</h2></div>
+    <div class="pill-tabs" id="feedFilters">
+      <button class="pill-tab active" data-cat="todas" onclick="setFeedFilter('todas',this)">Todas</button>
+      <button class="pill-tab" data-cat="anuncio" onclick="setFeedFilter('anuncio',this)">Anuncios</button>
+      <button class="pill-tab" data-cat="empleo" onclick="setFeedFilter('empleo',this)">Empleo</button>
+      <button class="pill-tab" data-cat="formacion" onclick="setFeedFilter('formacion',this)">Formación</button>
+      <button class="pill-tab" data-cat="evento" onclick="setFeedFilter('evento',this)">Eventos</button>
+    </div>
+    <div class="list" id="feedList"></div>
   </section>
 
   <section id="herramientas" class="page">
@@ -301,6 +346,14 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <div class="card"><small class="muted" data-i18n="commitments_met">Compromisos cumplidos</small><h2 id="segCommitFrac">0 / 0</h2><div class="progress"><div id="segCommitBar" style="width:0%"></div></div><p class="muted" id="segCommitPct">0% de cumplimiento</p></div>
       <div class="card"><small class="muted" data-i18n="next_review">Próxima revisión</small><h2 id="segNextReview">—</h2><p class="muted" data-i18n="next_review_desc">Revisión de avances con tu asesora.</p></div>
     </div>
+    <div class="section-title"><h2>Mi perfil de aprendizaje</h2></div>
+    <div class="card form" style="max-width:640px">
+      <div class="grid g2">
+        <div class="field"><label>Nivel de experiencia</label><select id="userExperienceLevel"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
+        <div class="field"><label>Tema de interés</label><input id="userInterestTopic" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
+      </div>
+      <button class="btn secondary" onclick="saveUserProfileLevel()">Guardar perfil</button>
+    </div>
     <div class="section-title"><h2>Definir objetivo</h2></div>
     <div class="card form" style="max-width:640px">
       <div class="field"><label>Nombre del objetivo</label><input id="goalNameInput" placeholder="Ej: Fortalecer competencias profesionales"></div>
@@ -329,22 +382,106 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <div class="card"><small class="muted" data-i18n="paid_this_year">Pagado este año</small><h2 id="pagoAnual">$0</h2><p class="muted" id="pagoAnualSub">0 transacciones</p></div>
       <div class="card"><small class="muted" data-i18n="next_invoice">Próxima factura</small><h2 id="pagoProxFecha">—</h2><p class="muted" id="pagoProxDesc">No tienes facturas programadas.</p></div>
     </div>
-    <div class="section-title"><h2>Registrar servicio / pago</h2></div>
-    <div class="card form" style="max-width:640px;margin-bottom:16px">
-      <div class="grid g2">
-        <div class="field"><label>Servicio</label><input id="payServiceInput" placeholder="Ej: Consultoría empresarial"></div>
-        <div class="field"><label>Valor (COP)</label><input id="payValueInput" type="number" min="0" placeholder="Ej: 480000"></div>
-      </div>
-      <div class="grid g2">
-        <div class="field"><label>Fecha</label><input id="payDateInput" type="date"></div>
-        <div class="field"><label>Estado</label><select id="payStatusInput"><option value="pendiente">Pendiente</option><option value="pagado">Pagado</option></select></div>
-      </div>
-      <button class="btn" onclick="addPayment()">Guardar registro</button>
+    <div class="section-title"><h2>Historial de pagos</h2></div>
+    <div class="card" style="margin-bottom:16px">
+      <p class="muted" style="margin:0 0 12px">La gestión del pago queda reservada para el administrador. Aquí solo se muestra el historial disponible para consulta.</p>
+      <table class="table"><thead><tr><th data-i18n="th_service">Servicio</th><th data-i18n="th_date">Fecha</th><th data-i18n="th_value">Valor</th><th data-i18n="th_status">Estado</th></tr></thead><tbody id="paymentsTableBody">
+        <tr id="paymentsEmptyRow"><td colspan="4" class="muted">No tienes pagos registrados todavía.</td></tr>
+      </tbody></table>
     </div>
-    <div class="section-title"><h2 data-i18n="payment_history">Historial de pagos</h2></div>
-    <div class="card"><table class="table"><thead><tr><th data-i18n="th_service">Servicio</th><th data-i18n="th_date">Fecha</th><th data-i18n="th_value">Valor</th><th data-i18n="th_status">Estado</th><th></th></tr></thead><tbody id="paymentsTableBody">
-      <tr id="paymentsEmptyRow"><td colspan="5" class="muted">No tienes pagos registrados todavía.</td></tr>
-    </tbody></table></div>
+  </section>
+
+  <section id="empresa" class="page">
+    <div id="empresaLocked" class="card locked-wrap" style="display:none">
+      <div class="li">🏢</div><h2>Panel de empresa</h2>
+      <p class="muted" style="max-width:420px;margin:8px auto 18px">Inicia sesión con una cuenta de empresa para publicar ofertas, anuncios y gestionar tu perfil.</p>
+      <button class="btn" onclick="openAuthModal('register','empresa')">Crear cuenta de empresa</button>
+    </div>
+    <div id="empresaContent" style="display:none">
+      <div class="hero"><h2 id="empresaHeroTitle">Panel de empresa</h2><p>Publica contenido visible en la Comunidad, gestiona tu perfil y revisa tus publicaciones.</p></div>
+      <div class="section-title"><h2>Perfil de la empresa</h2></div>
+      <div class="card form" style="max-width:640px">
+        <div class="field"><label>Nombre de la empresa</label><input id="empNombreInput"></div>
+        <div class="field"><label>Sector</label><input id="empSectorInput" placeholder="Ej: Tecnología, Educación, Retail..."></div>
+        <div class="field"><label>Descripción breve</label><textarea id="empDescInput" placeholder="Cuéntanos a qué se dedica tu empresa..."></textarea></div>
+        <button class="btn secondary" onclick="saveEmpresaProfile()">Guardar perfil</button>
+      </div>
+      <div class="section-title"><h2>Publicar contenido</h2></div>
+      <div class="card form" style="max-width:640px;margin-bottom:16px">
+        <div class="grid g2">
+          <div class="field"><label>Tipo de publicación</label><select id="empPostCat"><option value="anuncio">Anuncio</option><option value="empleo">Oferta de empleo</option><option value="formacion">Formación</option><option value="evento">Evento</option></select></div>
+          <div class="field"><label>Título</label><input id="empPostTitle" placeholder="Ej: Buscamos practicante de marketing"></div>
+        </div>
+        <div class="field"><label>Contenido</label><textarea id="empPostBody" placeholder="Describe la publicación..."></textarea></div>
+        <button class="btn" onclick="publishPost('empresa')">Publicar en la comunidad</button>
+      </div>
+      <div class="section-title"><h2>Mis publicaciones</h2></div>
+      <div class="card list" id="empresaPostsList"></div>
+    </div>
+  </section>
+
+  <section id="admin" class="page">
+    <div id="adminLocked" class="card locked-wrap" style="display:none">
+      <div class="li">🛠</div><h2>Panel de administración</h2>
+      <p class="muted" style="max-width:420px;margin:8px auto 18px">Esta sección es exclusiva para administradores de Sapere Aude.</p>
+      <button class="btn" onclick="openAuthModal('login')">Iniciar sesión</button>
+    </div>
+    <div id="adminContent" style="display:none">
+      <div class="hero"><h2>Panel de administración</h2><p>Gestiona anuncios generales, usuarios registrados y todas las publicaciones de la comunidad.</p></div>
+      <div class="grid g3">
+        <div class="card stat"><div><small>Usuarios registrados</small><strong id="admStatUsers">0</strong></div><div class="icon">👤</div></div>
+        <div class="card stat"><div><small>Empresas registradas</small><strong id="admStatEmpresas">0</strong></div><div class="icon">🏢</div></div>
+        <div class="card stat"><div><small>Publicaciones activas</small><strong id="admStatPosts">0</strong></div><div class="icon">📣</div></div>
+      </div>
+      <div class="section-title"><h2>Publicar anuncio oficial</h2></div>
+      <div class="card form" style="max-width:640px;margin-bottom:16px">
+        <div class="grid g2">
+          <div class="field"><label>Tipo</label><select id="admPostCat"><option value="anuncio">Anuncio</option><option value="formacion">Formación</option><option value="evento">Evento</option></select></div>
+          <div class="field"><label>Título</label><input id="admPostTitle" placeholder="Ej: Nueva convocatoria de bootcamp"></div>
+        </div>
+        <div class="field"><label>Contenido</label><textarea id="admPostBody"></textarea></div>
+        <button class="btn" onclick="publishPost('admin')">Publicar como Sapere Aude</button>
+      </div>
+      <div class="section-title"><h2>Catalogar cursos</h2></div>
+      <div class="card form" style="max-width:760px;margin-bottom:16px">
+        <div class="grid g2">
+          <div class="field"><label>Nombre del curso</label><input id="admCourseName" placeholder="Ej: Fundamentos de SQL"></div>
+          <div class="field"><label>Precio (COP)</label><input id="admCoursePrice" type="number" min="0" placeholder="Ej: 450000"></div>
+        </div>
+        <div class="field"><label>Descripción</label><textarea id="admCourseDescription" placeholder="Describe qué aprenderá el estudiante o la empresa..."></textarea></div>
+        <div class="grid g2">
+          <div class="field"><label>Visible para</label><select id="admCourseVisibility"><option value="both">Estudiantes y empresa</option><option value="student">Solo estudiantes</option><option value="empresa">Solo empresa</option></select></div>
+          <div class="field"><label>Fecha de corte manual (opcional)</label><input id="admCourseCutoff" type="date"></div>
+        </div>
+        <div class="grid g2">
+          <div class="field"><label>Nivel de experiencia</label><select id="admCourseLevel"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
+          <div class="field"><label>Plazo de corte (meses)</label><input id="admCourseCutoffMonths" type="number" min="1" max="24" value="3" placeholder="Ej: 3"></div>
+        </div>
+        <div class="field"><label>Tema / enfoque</label><input id="admCourseTopic" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
+        <div class="field"><label>Cuestionario del curso (Formato: Pregunta|Opción 1|Opción 2|Opción 3|Número de respuesta correcta)</label><textarea id="admCourseQuiz" placeholder="Ej: ¿Qué hace JOIN?|Une tablas|Crea archivos|Elimina datos|1\n¿Para qué sirve FILTER?|Filtrar filas|Guardar tabla|Copiar datos|1"></textarea></div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn" id="saveCourseBtn" onclick="saveAdminCourse()">Guardar curso</button>
+          <button class="btn secondary" id="cancelCourseEditBtn" style="display:none" onclick="cancelCourseEdit()">Cancelar edición</button>
+        </div>
+      </div>
+      <div class="section-title"><h2>Asignar curso a usuario</h2></div>
+      <div class="card form" style="max-width:760px;margin-bottom:16px">
+        <div class="grid g2">
+          <div class="field"><label>Correo del usuario o colaborador</label><input id="admAssignEmail" placeholder="correo@empresa.com"></div>
+          <div class="field"><label>Curso a asignar</label><select id="admAssignCourse"></select></div>
+        </div>
+        <div style="display:flex;gap:10px;flex-wrap:wrap">
+          <button class="btn secondary" onclick="assignCourseToUserByEmail()">Asignar contenido</button>
+          <button class="btn ghost" onclick="assignRecommendedCourseToUser()">Asignar mejor curso recomendado</button>
+        </div>
+      </div>
+      <div class="section-title"><h2>Cursos activos</h2></div>
+      <div class="card"><table class="table"><thead><tr><th>Curso</th><th>Visibilidad</th><th>Nivel</th><th>Tema</th><th>Precio</th><th>Plazo</th><th>Fecha de corte</th><th></th></tr></thead><tbody id="admCoursesTableBody"></tbody></table></div>
+      <div class="section-title"><h2>Todas las publicaciones</h2></div>
+      <div class="card list" id="admPostsList" style="margin-bottom:16px"></div>
+      <div class="section-title"><h2>Usuarios registrados</h2></div>
+      <div class="card"><table class="table"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Empresa</th><th></th></tr></thead><tbody id="admUsersTableBody"></tbody></table></div>
+    </div>
   </section>
 </main>
 </div>
@@ -355,12 +492,28 @@ h1,h2,h3,h4{text-align:left;margin:0}
     <div class="brand"><div class="logo">🦉</div>Sapere Aude</div>
     <h1 id="authTitle" data-i18n="auth_login_title">Bienvenido de nuevo</h1>
     <p id="authSubtitle" data-i18n="auth_login_sub">Accede a tus asesorías, recursos y seguimiento.</p>
-    <form class="form" onsubmit="login(event)">
-      <div class="field" id="nameField" style="display:none"><label data-i18n="auth_name_label">Nombre completo</label><input id="name" data-i18n-ph="auth_name_ph" placeholder="Tu nombre"></div>
+    <form class="form" id="authForm" onsubmit="handleAuthSubmit(event)">
+      <div id="registerExtra" style="display:none">
+        <label style="font-size:13px;font-weight:700;display:block;margin-bottom:7px">Tipo de cuenta</label>
+        <div class="role-picker" id="rolePicker">
+          <div class="role-opt selected" data-role="user" onclick="selectRole('user')"><span class="ric">👤</span>Usuario</div>
+          <div class="role-opt" data-role="empresa" onclick="selectRole('empresa')"><span class="ric">🏢</span>Empresa</div>
+          <div class="role-opt" data-role="admin" onclick="selectRole('admin')"><span class="ric">🛠</span>Administrador</div>
+        </div>
+        <div class="field" id="nameField" style="margin-top:14px"><label data-i18n="auth_name_label">Nombre completo</label><input id="name" data-i18n-ph="auth_name_ph" placeholder="Tu nombre"></div>
+        <div class="field" id="companyField" style="display:none"><label>Nombre de la empresa</label><input id="companyName" placeholder="Ej: Acme S.A.S."></div>
+        <div class="field" id="adminCodeField" style="display:none"><label>Código de administrador</label><input id="adminCode" placeholder="Solicítalo al equipo de Sapere Aude"></div>
+        <div class="grid g2" style="margin-top:14px">
+          <div class="field"><label>Nivel de experiencia</label><select id="experienceLevelSelect"><option value="principiante">Principiante</option><option value="intermedio">Intermedio</option><option value="avanzado">Avanzado</option></select></div>
+          <div class="field"><label>Tema de interés</label><input id="interestTopicInput" placeholder="Ej: SQL, Excel, marketing, gestión..."></div>
+        </div>
+      </div>
       <div class="field"><label data-i18n="auth_email_label">Correo electrónico</label><input id="email" type="email" required placeholder="nombre@correo.com"></div>
-      <div class="field"><label data-i18n="auth_pass_label">Contraseña</label><input id="password" type="password" required placeholder="••••••••"></div>
-      <label class="check"><input type="checkbox"> <span data-i18n="auth_keep_session">Mantener mi sesión iniciada</span></label>
+      <div class="field"><label data-i18n="auth_pass_label">Contraseña</label><input id="password" type="password" required placeholder="••••••••" minlength="4"></div>
+      <label class="check"><input type="checkbox" id="keepSession" checked> <span data-i18n="auth_keep_session">Mantener mi sesión iniciada</span></label>
+      <p class="muted" id="authError" style="color:var(--danger);display:none;margin:0"></p>
       <button class="btn" id="authBtn" data-i18n="auth_login_btn">Iniciar sesión</button>
+      <button type="button" class="btn secondary" id="forgotPasswordBtn" style="margin-top:10px;width:100%" onclick="handleForgotPassword()">¿Olvidaste tu contraseña?</button>
     </form>
     <div class="auth-links"><span data-i18n="auth_secure">Plataforma segura</span><a onclick="toggleAuth()" data-i18n="auth_create_account">Crear una cuenta</a></div>
   </div>
@@ -436,8 +589,21 @@ function refreshPageHeader(){
     herramientas:['herramientas_title','herramientas_sub'],
     chat:['nav_chat',null],
     seguimiento:['nav_seguimiento',null],
-    pagos:['nav_pagos',null]
+    pagos:['nav_pagos',null],
+    comunidad:[null,null],
+    empresa:[null,null],
+    admin:[null,null]
   };
+  const custom = {
+    comunidad:['Comunidad Sapere Aude','Publicaciones, ofertas y anuncios de la comunidad.'],
+    empresa:['Panel de empresa','Publica y gestiona contenido para tu empresa.'],
+    admin:['Panel de administración','Gestiona usuarios, empresas y publicaciones.']
+  };
+  if(custom[id]){
+    document.getElementById('pageTitle').textContent = custom[id][0];
+    document.getElementById('pageSubtitle').textContent = custom[id][1];
+    return;
+  }
   const keys = map[id];
   if(keys){
     if(keys[0] && dict[keys[0]]) document.getElementById('pageTitle').textContent = dict[keys[0]];
@@ -462,13 +628,6 @@ function googleTranslateElementInit() {
   new google.translate.TranslateElement({pageLanguage: 'es', autoDisplay:false}, 'google_translate_element');
 }
 
-window.addEventListener('DOMContentLoaded', ()=>{
-  const savedLang = localStorage.getItem('sa_lang') || 'es';
-  const sel = document.getElementById('langSelect');
-  if(sel) sel.value = savedLang;
-  if(I18N[savedLang]) applyI18n(savedLang);
-});
-
 function showPage(id,btn){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   document.getElementById(id).classList.add('active');
@@ -476,99 +635,480 @@ function showPage(id,btn){
   if(btn)btn.classList.add('active');
   refreshPageHeader();
   document.getElementById('sidebar').classList.remove('open');
+  if(id==='empresa') renderEmpresaPage();
+  if(id==='admin') renderAdminPage();
+  if(id==='comunidad') renderFeed();
 }
-function go(id){const b=[...document.querySelectorAll('.nav button')].find(x=>x.getAttribute('onclick')?.includes("'"+id+"'"));showPage(id,b)}
+function go(id){const b=[...document.querySelectorAll('.nav button')].find(x=>x.getAttribute('data-page')===id);showPage(id,b)}
 function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200)}
 
 
 function openModal(t,x){document.getElementById('modalTitle').textContent=t;document.getElementById('modalText').textContent=x;document.getElementById('modal').classList.add('open')}
 function closeModal(){document.getElementById('modal').classList.remove('open')}
 
-function toggleAuth(){const title=document.getElementById('authTitle'),sub=document.getElementById('authSubtitle'),name=document.getElementById('nameField'),btn=document.getElementById('authBtn'),authBtn=document.getElementById('authToggleBtn');const reg=name.style.display==='none';name.style.display=reg?'block':'none';const lang=localStorage.getItem('sa_lang')||'es';const dict=I18N[lang]||I18N['es'];title.textContent=reg?(dict.auth_create_account_title||'Crea tu cuenta'):dict.auth_login_title;sub.textContent=reg?(dict.auth_register_sub||'Regístrate para gestionar tu proceso.'):dict.auth_login_sub;btn.textContent=reg?(dict.auth_register_btn||'Registrarme'):dict.auth_login_btn;authBtn.textContent=reg?dict.auth_create_account:dict.auth_btn}
-function openAuthModal(){document.getElementById('auth').classList.add('open')}
-function closeAuthModal(){document.getElementById('auth').classList.remove('open');document.getElementById('nameField').style.display='none';const lang=localStorage.getItem('sa_lang')||'es';applyI18n(lang)}
+/* ================= AUTENTICACIÓN REAL POR ROLES ================= */
+const SA_USERS_KEY = 'sa_users_v1';
+const SA_SESSION_KEY = 'sa_session_v1';
+const ADMIN_SIGNUP_CODE = 'SAPERE-ADMIN-2026';
 
-const KB = [
-  {kw:['servicio','servicios','ofrecen','que hacen','qué hacen','service','services','offer','serviços','serviços oferece'], a:'servicios'},
-  {kw:['reserva','reservar','agendar','cita','sesion','sesión','horario','book','booking','schedule','reservar consultoria'], a:'reservas'},
-  {kw:['precio','precios','costo','costos','cuanto cuesta','cuánto cuesta','tarifa','valor','price','pricing','preço','preços'], a:'precios'},
-  {kw:['formacion','formación','curso','cursos','taller','talleres','modulo','módulo','bootcamp','microclase','training','course','courses','formação'], a:'formacion'},
-  {kw:['pago','pagos','factura','facturación','facturacion','saldo','pendiente','payment','payments','invoice','pagamento'], a:'pagos'},
-  {kw:['seguimiento','avance','progreso','compromiso','compromisos','meta','metas','progress','tracking','commitment','acompanhamento'], a:'seguimiento'},
-  {kw:['asesor','asesora','hablar con','contactar','humano','persona','advisor','talk to','consultor'], a:'asesor'},
-  {kw:['consultoria','consultoría','proyecto','proyectos','propuesta tecnica','consulting','project'], a:'consultoria'},
-  {kw:['capacitacion','capacitación','organizacional','empresa','equipo de trabajo','training','organization'], a:'capacitacion'},
-  {kw:['idioma','language','traducir','translate','langue','sprache','lingua'], a:'idioma'},
-  {kw:['hola','buenas','hello','hi','olá','oi','bonjour','hallo','ciao'], a:'saludo'},
-  {kw:['gracias','thanks','thank you','obrigado','merci','danke','grazie'], a:'gracias'},
-  {kw:['whatsapp','contacto','telefono','teléfono','numero','número','contact','phone'], a:'whatsapp'}
-];
+// Hash simple (no criptográfico) sólo para no guardar contraseñas en texto plano en este entorno de demo.
+function simpleHash(str){
+  let h = 0;
+  for(let i=0;i<str.length;i++){ h = (Math.imul(31,h) + str.charCodeAt(i))|0; }
+  return 'h'+Math.abs(h)+'_'+str.length;
+}
 
-const KB_RESPONSES = {
-  es:{servicios:'Ofrecemos <b>asesorías académicas</b>, <b>apoyo en actividades académicas</b>, <b>formación virtual</b>, <b>creación de contenido educativo</b>, <b>consultoría</b>, <b>capacitación organizacional</b> y <b>diseño de estrategias formativas</b>.',reservas:'Para reservar una asesoría ve a "Reservar asesoría": elige el servicio, la modalidad y un horario disponible.',precios:'Los valores varían según el servicio. Consulta "Pagos y facturación" o habla con un asesor para una cotización exacta.',formacion:'Nuestra formación es propia: cursos virtuales, microclases, bootcamps, videos, podcast y material descargable.',pagos:'En "Pagos y facturación" encuentras tu saldo pendiente e historial de pagos.',seguimiento:'En "Mi seguimiento" puedes ver tu porcentaje de avance y tu plan de acción.',asesor:'Puedes escribir a tu asesora en "Chat con asesores", o usar WhatsApp para respuesta inmediata.',consultoria:'Nuestra consultoría incluye formulación de proyectos, propuestas técnicas y optimización de procesos.',capacitacion:'Ofrecemos capacitación para equipos, talleres técnicos y programas de actualización profesional.',idioma:'Puedes cambiar el idioma del sitio con el selector 🌐 en la parte superior derecha.',saludo:'¡Hola! 🦉 Soy el asistente de Sapere Aude. ¿En qué puedo ayudarte?',gracias:'¡Con gusto! Si tienes otra duda, aquí estoy.',whatsapp:'Puedes escribirnos por WhatsApp con el botón verde en la esquina inferior derecha.',default:'Puedo ayudarte con: <b>servicios</b>, <b>reservas</b>, <b>formación</b>, <b>consultoría</b>, <b>pagos</b> o <b>seguimiento</b>.'},
-  en:{servicios:'We offer <b>academic advising</b>, <b>academic project support</b>, <b>online training</b>, <b>educational content creation</b>, <b>consulting</b>, <b>organizational training</b>, and <b>training strategy design</b>.',reservas:'To book a session go to "Book a session": choose the service, format, and an available time.',precios:'Prices vary by service. Check "Payments & billing" or talk to an advisor for an exact quote.',formacion:'Our training is in-house: online courses, micro-classes, bootcamps, videos, podcast, and downloadable material.',pagos:'In "Payments & billing" you can see your pending balance and payment history.',seguimiento:'In "My progress" you can see your progress percentage and action plan.',asesor:'You can message your advisor in "Chat with advisors", or use WhatsApp for an immediate reply.',consultoria:'Our consulting includes project formulation, technical proposals, and process optimization.',capacitacion:'We offer team training, technical workshops, and professional refresher programs.',idioma:'You can change the site language with the 🌐 selector in the top right corner.',saludo:'Hi! 🦉 I am the Sapere Aude assistant. How can I help?',gracias:'You are welcome! If you have another question, I am here.',whatsapp:'You can message us on WhatsApp using the green button in the bottom right corner.',default:'I can help with: <b>services</b>, <b>bookings</b>, <b>training</b>, <b>consulting</b>, <b>payments</b>, or <b>progress</b>.'},
-  pt:{servicios:'Oferecemos <b>assessorias acadêmicas</b>, <b>apoio em atividades acadêmicas</b>, <b>formação virtual</b>, <b>criação de conteúdo educacional</b>, <b>consultoria</b>, <b>capacitação organizacional</b> e <b>desenho de estratégias formativas</b>.',reservas:'Para reservar uma consultoria vá em "Reservar consultoria": escolha o serviço, modalidade e horário disponível.',precios:'Os valores variam por serviço. Consulte "Pagamentos e faturamento" ou fale com um consultor.',formacion:'Nossa formação é própria: cursos virtuais, microaulas, bootcamps, vídeos, podcast e material para download.',pagos:'Em "Pagamentos e faturamento" você vê seu saldo pendente e histórico de pagamentos.',seguimiento:'Em "Meu progresso" você vê seu percentual de avanço e plano de ação.',asesor:'Você pode escrever para sua consultora em "Chat com consultores", ou usar o WhatsApp.',consultoria:'Nossa consultoria inclui formulação de projetos, propostas técnicas e otimização de processos.',capacitacion:'Oferecemos capacitação de equipes, workshops técnicos e programas de atualização profissional.',idioma:'Você pode mudar o idioma do site com o seletor 🌐 no canto superior direito.',saludo:'Olá! 🦉 Sou o assistente da Sapere Aude. Como posso ajudar?',gracias:'De nada! Se tiver outra dúvida, estou aqui.',whatsapp:'Você pode nos escrever pelo WhatsApp usando o botão verde no canto inferior direito.',default:'Posso ajudar com: <b>serviços</b>, <b>reservas</b>, <b>formação</b>, <b>consultoria</b>, <b>pagamentos</b> ou <b>progresso</b>.'}
-};
+function loadUsers(){
+  try{
+    const raw = localStorage.getItem(SA_USERS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  // Semilla: cuenta de administrador por defecto
+  const seeded = [{
+    id: 1,
+    name: 'Administrador Sapere Aude',
+    email: 'admin@sapereaude.com',
+    passwordHash: simpleHash('admin123'),
+    role: 'admin',
+    companyName: '',
+    companySector: '',
+    companyDesc: ''
+  }];
+  localStorage.setItem(SA_USERS_KEY, JSON.stringify(seeded));
+  return seeded;
+}
+function saveUsers(users){ localStorage.setItem(SA_USERS_KEY, JSON.stringify(users)); }
+let users = loadUsers();
 
-function findAnswer(text){
-  const t=text.toLowerCase();
-  let best=null,bestScore=0;
-  for(const entry of KB){
-    let score=0;
-    for(const kw of entry.kw){ if(t.includes(kw)) score+=kw.length; }
-    if(score>bestScore){bestScore=score;best=entry;}
+function getSession(){
+  try{ return JSON.parse(localStorage.getItem(SA_SESSION_KEY)); }catch(e){ return null; }
+}
+function setSession(userId){ localStorage.setItem(SA_SESSION_KEY, JSON.stringify({userId})); }
+function clearSession(){ localStorage.removeItem(SA_SESSION_KEY); }
+function currentUser(){
+  const s = getSession();
+  if(!s) return null;
+  return users.find(u=>u.id===s.userId) || null;
+}
+
+let authMode = 'login'; // 'login' | 'register'
+let selectedRole = 'user';
+
+function selectRole(role){
+  selectedRole = role;
+  document.querySelectorAll('.role-opt').forEach(el=>el.classList.toggle('selected', el.getAttribute('data-role')===role));
+  document.getElementById('companyField').style.display = role==='empresa' ? 'block' : 'none';
+  document.getElementById('adminCodeField').style.display = role==='admin' ? 'block' : 'none';
+}
+
+function openAuthModal(mode, presetRole){
+  authMode = mode || 'login';
+  document.getElementById('auth').classList.add('open');
+  document.getElementById('authError').style.display = 'none';
+  const lang = localStorage.getItem('sa_lang')||'es';
+  const dict = I18N[lang]||I18N['es'];
+  if(authMode==='register'){
+    document.getElementById('registerExtra').style.display='block';
+    document.getElementById('authTitle').textContent = 'Crea tu cuenta';
+    document.getElementById('authSubtitle').textContent = 'Elige el tipo de cuenta que necesitas.';
+    document.getElementById('authBtn').textContent = 'Registrarme';
+    selectRole(presetRole || 'user');
+  } else {
+    document.getElementById('registerExtra').style.display='none';
+    document.getElementById('authTitle').textContent = dict.auth_login_title;
+    document.getElementById('authSubtitle').textContent = dict.auth_login_sub;
+    document.getElementById('authBtn').textContent = dict.auth_login_btn;
   }
-  const lang = localStorage.getItem('sa_lang') || 'es';
-  const responses = KB_RESPONSES[lang] || KB_RESPONSES['es'];
-  if(best) return responses[best.a] || responses.default;
-  return responses.default;
+}
+function closeAuthModal(){
+  document.getElementById('auth').classList.remove('open');
+  document.getElementById('authForm').reset();
+  document.getElementById('authError').style.display='none';
+}
+function toggleAuth(){
+  openAuthModal(authMode==='login' ? 'register' : 'login');
 }
 
-function toggleChatbot(){document.getElementById('chatbotWindow').classList.toggle('open')}
+function handleForgotPassword(){
+  const emailInput = document.getElementById('email');
+  const typedEmail = (emailInput ? emailInput.value.trim() : '').toLowerCase();
+  const targetEmail = typedEmail || window.prompt('Escribe tu correo electrónico registrado:', '');
+  if(!targetEmail){ return; }
 
-function appendChatbotBubble(text,cls){
-  const body=document.getElementById('chatbotBody');
-  const b=document.createElement('div');
-  b.className='chatbot-bubble '+cls;
-  b.innerHTML=text;
-  body.appendChild(b);
-  body.scrollTop=body.scrollHeight;
-  return b;
+  const user = users.find(u => String(u.email || '').trim().toLowerCase() === targetEmail.toLowerCase());
+  if(!user){
+    showAuthError('No encontramos una cuenta con ese correo.');
+    return;
+  }
+
+  const tempPassword = 'Reset' + String(user.id).slice(-4);
+  user.passwordHash = simpleHash(tempPassword);
+  saveUsers(users);
+
+  if(emailInput) emailInput.value = targetEmail;
+  const passwordInput = document.getElementById('password');
+  if(passwordInput) passwordInput.value = tempPassword;
+
+  authMode = 'login';
+  openAuthModal('login');
+  showAuthError('Se creó una contraseña temporal: ' + tempPassword + '. Inicia sesión y cámbiala luego en tu perfil.');
 }
 
-function chatbotRespond(text){
-  const typing=document.createElement('div');
-  typing.className='chatbot-bubble bot typing';
-  typing.innerHTML='<span></span><span></span><span></span>';
-  document.getElementById('chatbotBody').appendChild(typing);
-  document.getElementById('chatbotBody').scrollTop=document.getElementById('chatbotBody').scrollHeight;
-  setTimeout(()=>{
-    typing.remove();
-    appendChatbotBubble(findAnswer(text),'bot');
-  },550+Math.random()*400);
+function handleAuthBtnClick(){
+  if(currentUser()){
+    document.getElementById('userMenu').classList.toggle('open');
+  } else {
+    openAuthModal('login');
+  }
+}
+document.addEventListener('click', (e)=>{
+  const wrap = document.querySelector('.user-menu-wrap');
+  if(wrap && !wrap.contains(e.target)){
+    const m = document.getElementById('userMenu');
+    if(m) m.classList.remove('open');
+  }
+});
+
+function showAuthError(msg){
+  const el = document.getElementById('authError');
+  el.textContent = msg;
+  el.style.display = 'block';
 }
 
-function chatbotAsk(text){
-  appendChatbotBubble(text,'user');
-  chatbotRespond(text);
-}
-
-function handleChatbotSubmit(e){
+function handleAuthSubmit(e){
   e.preventDefault();
-  const input=document.getElementById('chatbotInput');
-  const val=input.value.trim();
-  if(!val) return;
-  appendChatbotBubble(val,'user');
-  input.value='';
-  chatbotRespond(val);
+  const email = document.getElementById('email').value.trim().toLowerCase();
+  const password = document.getElementById('password').value;
+  if(!email || !password){ showAuthError('Completa correo y contraseña.'); return; }
+
+  if(authMode==='register'){
+    if(users.some(u=>u.email===email)){ showAuthError('Ya existe una cuenta con este correo.'); return; }
+    const name = document.getElementById('name').value.trim();
+    if(!name){ showAuthError('Escribe tu nombre completo.'); return; }
+    if(selectedRole==='empresa'){
+      const companyName = document.getElementById('companyName').value.trim();
+      if(!companyName){ showAuthError('Escribe el nombre de la empresa.'); return; }
+    }
+    if(selectedRole==='admin'){
+      const code = document.getElementById('adminCode').value.trim();
+      if(code !== ADMIN_SIGNUP_CODE){ showAuthError('Código de administrador incorrecto.'); return; }
+    }
+    const newUser = {
+      id: Date.now(),
+      name,
+      email,
+      passwordHash: simpleHash(password),
+      role: selectedRole,
+      companyName: selectedRole==='empresa' ? document.getElementById('companyName').value.trim() : '',
+      companySector: '',
+      companyDesc: '',
+      experienceLevel: document.getElementById('experienceLevelSelect') ? document.getElementById('experienceLevelSelect').value : 'principiante',
+      preferredTopic: document.getElementById('interestTopicInput') ? document.getElementById('interestTopicInput').value.trim() : ''
+    };
+    users.push(newUser);
+    saveUsers(users);
+    setSession(newUser.id);
+    toast('✓ Cuenta creada. ¡Bienvenido/a, '+newUser.name+'!');
+  } else {
+    const user = users.find(u=>u.email===email);
+    if(!user || user.passwordHash !== simpleHash(password)){ showAuthError('Correo o contraseña incorrectos.'); return; }
+    setSession(user.id);
+    toast('✓ Sesión iniciada. ¡Hola, '+user.name+'!');
+  }
+  closeAuthModal();
+  applyAuthUI();
 }
 
-/* ===== Lógica real de la aplicación (sin datos de muestra) ===== */
-const SA_KEY = 'sa_app_state_v1';
+function logout(){
+  clearSession();
+  document.getElementById('userMenu').classList.remove('open');
+  toast('Sesión cerrada');
+  applyAuthUI();
+  go('dashboard');
+}
 
+function goProfilePage(){
+  document.getElementById('userMenu').classList.remove('open');
+  const u = currentUser();
+  if(!u) return;
+  if(u.role==='admin') go('admin');
+  else if(u.role==='empresa') go('empresa');
+  else go('seguimiento');
+}
+
+function roleLabel(role){
+  return role==='admin' ? 'Administrador' : role==='empresa' ? 'Empresa' : 'Usuario';
+}
+
+function applyAuthUI(){
+  const user = currentUser();
+  const btn = document.getElementById('authToggleBtn');
+  const menu = document.getElementById('userMenu');
+  const umEmail = document.getElementById('umEmail');
+  if(user){
+    btn.textContent = (user.role==='empresa' && user.companyName) ? user.companyName : user.name;
+    const levelText = (user.experienceLevel || 'principiante').charAt(0).toUpperCase() + ((user.experienceLevel || 'principiante').slice(1));
+    const topicText = (user.preferredTopic && user.preferredTopic.trim()) ? user.preferredTopic.trim() : 'Sin tema definido';
+    umEmail.innerHTML = user.email+'<br><span class="badge" style="margin-top:5px;display:inline-block">'+roleLabel(user.role)+'</span><br><span class="muted" style="display:block;margin-top:4px">Nivel: '+levelText+' · Tema: '+topicText+'</span>';
+  } else {
+    const lang = localStorage.getItem('sa_lang')||'es';
+    btn.textContent = (I18N[lang]||I18N['es']).auth_btn;
+    if(menu) menu.classList.remove('open');
+  }
+  // Mostrar/ocultar botones de navegación según el rol
+  document.querySelectorAll('.nav button[data-role]').forEach(b=>{
+    const need = b.getAttribute('data-role');
+    b.style.display = (user && user.role===need) ? 'flex' : 'none';
+  });
+  syncUserProfileControls();
+  renderEmpresaPage();
+  renderAdminPage();
+  renderCourseCatalog();
+  renderFeed();
+  renderFeedPreview();
+}
+
+function syncUserProfileControls(){
+  const user = currentUser();
+  const levelEl = document.getElementById('userExperienceLevel');
+  const topicEl = document.getElementById('userInterestTopic');
+  if(levelEl && user){ levelEl.value = user.experienceLevel || 'principiante'; }
+  if(topicEl && user){ topicEl.value = user.preferredTopic || ''; }
+  const regLevelEl = document.getElementById('experienceLevelSelect');
+  const regTopicEl = document.getElementById('interestTopicInput');
+  if(regLevelEl && user){ regLevelEl.value = user.experienceLevel || 'principiante'; }
+  if(regTopicEl && user){ regTopicEl.value = user.preferredTopic || ''; }
+}
+
+function saveUserProfileLevel(){
+  const user = currentUser();
+  if(!user){ toast('Debes iniciar sesión para guardar tu perfil.'); return; }
+  const levelEl = document.getElementById('userExperienceLevel');
+  const topicEl = document.getElementById('userInterestTopic');
+  const newLevel = levelEl ? levelEl.value : 'principiante';
+  const newTopic = topicEl ? topicEl.value.trim() : '';
+  user.experienceLevel = newLevel;
+  user.preferredTopic = newTopic;
+  saveUsers(users);
+  if(document.getElementById('experienceLevelSelect')) document.getElementById('experienceLevelSelect').value = newLevel;
+  if(document.getElementById('interestTopicInput')) document.getElementById('interestTopicInput').value = newTopic;
+  applyAuthUI();
+  renderCourseCatalog();
+  toast('✓ Perfil de aprendizaje actualizado');
+}
+
+/* ================= COMUNIDAD / PUBLICACIONES ================= */
+const SA_POSTS_KEY = 'sa_posts_v1';
+function loadPosts(){
+  try{ const raw = localStorage.getItem(SA_POSTS_KEY); if(raw) return JSON.parse(raw); }catch(e){}
+  return [];
+}
+function savePosts(){ localStorage.setItem(SA_POSTS_KEY, JSON.stringify(posts)); }
+let posts = loadPosts();
+let feedFilter = 'todas';
+
+function publishPost(from){
+  const user = currentUser();
+  if(!user){ toast('Debes iniciar sesión'); return; }
+  const catId = from==='empresa' ? 'empPostCat' : 'admPostCat';
+  const titleId = from==='empresa' ? 'empPostTitle' : 'admPostTitle';
+  const bodyId = from==='empresa' ? 'empPostBody' : 'admPostBody';
+  const category = document.getElementById(catId).value;
+  const title = document.getElementById(titleId).value.trim();
+  const body = document.getElementById(bodyId).value.trim();
+  if(!title || !body){ toast('Completa el título y el contenido'); return; }
+  posts.unshift({
+    id: Date.now(),
+    authorId: user.id,
+    authorName: user.role==='empresa' ? (user.companyName || user.name) : 'Sapere Aude',
+    authorRole: user.role,
+    category,
+    title,
+    body,
+    date: new Date().toISOString().slice(0,10)
+  });
+  savePosts();
+  document.getElementById(titleId).value='';
+  document.getElementById(bodyId).value='';
+  toast('✓ Publicación creada');
+  renderFeed(); renderFeedPreview();
+  if(from==='empresa') renderEmpresaPage(); else renderAdminPage();
+}
+function deletePost(id){
+  const user = currentUser();
+  const p = posts.find(x=>x.id===id);
+  if(!p || !user) return;
+  if(user.role!=='admin' && p.authorId!==user.id){ toast('No puedes eliminar esta publicación'); return; }
+  posts = posts.filter(x=>x.id!==id);
+  savePosts();
+  renderFeed(); renderFeedPreview(); renderEmpresaPage(); renderAdminPage();
+  toast('Publicación eliminada');
+}
+function categoryLabel(cat){
+  return {anuncio:'Anuncio', empleo:'Empleo', formacion:'Formación', evento:'Evento'}[cat] || cat;
+}
+function categoryBadgeClass(cat){
+  return {anuncio:'blue', empleo:'orange', formacion:'', evento:'purple'}[cat] || '';
+}
+function postCardHtml(p, allowDelete){
+  const user = currentUser();
+  const canDelete = allowDelete && user && (user.role==='admin' || user.id===p.authorId);
+  return '<div class="post-card"><div class="pc-head"><div><b>'+p.title+'</b><div class="muted" style="margin-top:3px">'+p.authorName+' · '+p.date+'</div></div><span class="badge '+categoryBadgeClass(p.category)+'">'+categoryLabel(p.category)+'</span></div><div class="pc-body">'+p.body+'</div>'+(canDelete?'<button class="btn ghost" style="margin-top:8px" onclick="deletePost('+p.id+')">Eliminar</button>':'')+'</div>';
+}
+function setFeedFilter(cat, btn){
+  feedFilter = cat;
+  document.querySelectorAll('#feedFilters .pill-tab').forEach(b=>b.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  renderFeed();
+}
+function renderFeed(){
+  const list = document.getElementById('feedList');
+  if(!list) return;
+  const filtered = feedFilter==='todas' ? posts : posts.filter(p=>p.category===feedFilter);
+  if(filtered.length===0){
+    list.innerHTML = '<p class="muted">Todavía no hay publicaciones en esta categoría.</p>';
+  } else {
+    list.innerHTML = filtered.map(p=>postCardHtml(p, true)).join('');
+  }
+}
+function renderFeedPreview(){
+  const box = document.getElementById('dashFeedPreview');
+  if(!box) return;
+  const recent = posts.slice(0,3);
+  if(recent.length===0){
+    box.innerHTML = '<p class="muted">Todavía no hay publicaciones. Visita "Comunidad" para verlas cuando se publiquen.</p>';
+  } else {
+    box.innerHTML = recent.map(p=>postCardHtml(p, false)).join('');
+  }
+}
+
+/* ================= PANEL DE EMPRESA ================= */
+function saveEmpresaProfile(){
+  const user = currentUser();
+  if(!user || user.role!=='empresa') return;
+  user.companyName = document.getElementById('empNombreInput').value.trim() || user.companyName;
+  user.companySector = document.getElementById('empSectorInput').value.trim();
+  user.companyDesc = document.getElementById('empDescInput').value.trim();
+  saveUsers(users);
+  toast('✓ Perfil de empresa actualizado');
+  applyAuthUI();
+}
+function renderEmpresaPage(){
+  const locked = document.getElementById('empresaLocked');
+  const content = document.getElementById('empresaContent');
+  if(!locked || !content) return;
+  const user = currentUser();
+  if(!user || user.role!=='empresa'){
+    locked.style.display = 'block';
+    content.style.display = 'none';
+    return;
+  }
+  locked.style.display = 'none';
+  content.style.display = 'block';
+  document.getElementById('empresaHeroTitle').textContent = user.companyName || 'Panel de empresa';
+  document.getElementById('empNombreInput').value = user.companyName || '';
+  document.getElementById('empSectorInput').value = user.companySector || '';
+  document.getElementById('empDescInput').value = user.companyDesc || '';
+  const mine = posts.filter(p=>p.authorId===user.id);
+  const listEl = document.getElementById('empresaPostsList');
+  listEl.innerHTML = mine.length ? mine.map(p=>postCardHtml(p, true)).join('') : '<p class="muted">Todavía no has publicado contenido.</p>';
+}
+
+/* ================= PANEL DE ADMINISTRACIÓN ================= */
+function renderAdminPage(){
+  const locked = document.getElementById('adminLocked');
+  const content = document.getElementById('adminContent');
+  if(!locked || !content) return;
+  const user = currentUser();
+  if(!user || user.role!=='admin'){
+    locked.style.display = 'block';
+    content.style.display = 'none';
+    return;
+  }
+  locked.style.display = 'none';
+  content.style.display = 'block';
+  document.getElementById('admStatUsers').textContent = users.filter(u=>u.role==='user').length;
+  document.getElementById('admStatEmpresas').textContent = users.filter(u=>u.role==='empresa').length;
+  document.getElementById('admStatPosts').textContent = posts.length;
+  const postsEl = document.getElementById('admPostsList');
+  postsEl.innerHTML = posts.length ? posts.map(p=>postCardHtml(p, true)).join('') : '<p class="muted">Todavía no hay publicaciones.</p>';
+  renderAdminCoursesTable();
+  populateAdminCourseAssignmentSelect();
+  const tbody = document.getElementById('admUsersTableBody');
+  tbody.innerHTML = users.map(u=>
+    '<tr><td>'+u.name+'</td><td>'+u.email+'</td><td><span class="badge">'+roleLabel(u.role)+'</span></td><td>'+(u.companyName||'—')+'</td><td>'+(u.id===user.id?'':'<button class="btn ghost" onclick="adminDeleteUser('+u.id+')">Eliminar</button>')+'</td></tr>'
+  ).join('');
+}
+function adminDeleteUser(id){
+  const user = currentUser();
+  if(!user || user.role!=='admin') return;
+  if(id===user.id){ toast('No puedes eliminar tu propia cuenta de administrador'); return; }
+  users = users.filter(u=>u.id!==id);
+  posts = posts.filter(p=>p.authorId!==id);
+  saveUsers(users); savePosts();
+  toast('Usuario eliminado');
+  renderAdminPage(); renderFeed(); renderFeedPreview();
+}
+
+/* ===== Lógica real de la aplicación (datos por usuario, sin datos de muestra) ===== */
+const SA_COURSES_KEY = 'sa_courses_v1';
+const SA_COURSE_ASSIGNMENTS_KEY = 'sa_course_assignments_v1';
+const SA_COURSE_ASSIGNMENT_META_KEY = 'sa_course_assignment_meta_v1';
+let editingCourseId = null;
+function loadCourses(){
+  try{
+    const raw = localStorage.getItem(SA_COURSES_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return [
+    { id: 1, name: 'Fundamentos de SQL', description: 'Aprende consultas, filtros, joins y diseña bases de datos con confianza.', price: 450000, visibility: 'both', level: 'intermedio', cutoffMonths: 5 },
+    { id: 2, name: 'Excel para gestión académica', description: 'Organiza información, calcula indicadores y automatiza tareas básicas.', price: 300000, visibility: 'student', level: 'principiante', cutoffMonths: 3 },
+    { id: 3, name: 'Capacitación empresarial', description: 'Diseño de procesos, análisis de rendimiento y mejora de equipos de trabajo.', price: 800000, visibility: 'empresa', level: 'avanzado', cutoffMonths: 8 }
+  ];
+}
+function saveCourses(){ localStorage.setItem(SA_COURSES_KEY, JSON.stringify(courses)); }
+function loadCourseAssignments(){
+  try{
+    const raw = localStorage.getItem(SA_COURSE_ASSIGNMENTS_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return {};
+}
+function saveCourseAssignments(assignments){ localStorage.setItem(SA_COURSE_ASSIGNMENTS_KEY, JSON.stringify(assignments)); }
+function loadCourseAssignmentMeta(){
+  try{
+    const raw = localStorage.getItem(SA_COURSE_ASSIGNMENT_META_KEY);
+    if(raw) return JSON.parse(raw);
+  }catch(e){}
+  return {};
+}
+function saveCourseAssignmentMeta(data){ localStorage.setItem(SA_COURSE_ASSIGNMENT_META_KEY, JSON.stringify(data)); }
+let courses = loadCourses();
+
+function resetCourseForm(){
+  editingCourseId = null;
+  document.getElementById('admCourseName').value = '';
+  document.getElementById('admCourseDescription').value = '';
+  document.getElementById('admCoursePrice').value = '';
+  document.getElementById('admCourseVisibility').value = 'both';
+  document.getElementById('admCourseCutoff').value = '';
+  document.getElementById('admCourseLevel').value = 'principiante';
+  document.getElementById('admCourseCutoffMonths').value = 3;
+  document.getElementById('admCourseTopic').value = '';
+  document.getElementById('admCourseQuiz').value = '';
+  const saveBtn = document.getElementById('saveCourseBtn');
+  if(saveBtn) saveBtn.textContent = 'Guardar curso';
+  const cancelBtn = document.getElementById('cancelCourseEditBtn');
+  if(cancelBtn) cancelBtn.style.display = 'none';
+}
+
+function stateKeyFor(){
+  const user = currentUser();
+  return user ? ('sa_app_state_v1_u'+user.id) : 'sa_app_state_v1_guest';
+}
 function loadState(){
   try{
-    const raw = localStorage.getItem(SA_KEY);
+    const raw = localStorage.getItem(stateKeyFor());
     if(raw) return JSON.parse(raw);
   }catch(e){}
   return {
@@ -583,11 +1123,25 @@ function loadState(){
     smartGoals: []
   };
 }
-function saveState(){ localStorage.setItem(SA_KEY, JSON.stringify(state)); }
+function saveState(){ localStorage.setItem(stateKeyFor(), JSON.stringify(state)); }
 let state = loadState();
 if(!state.plannerTasks) state.plannerTasks = [];
 if(!state.checklistItems) state.checklistItems = [];
 if(!state.smartGoals) state.smartGoals = [];
+
+function reloadStateForCurrentUser(){
+  state = loadState();
+  if(!state.plannerTasks) state.plannerTasks = [];
+  if(!state.checklistItems) state.checklistItems = [];
+  if(!state.smartGoals) state.smartGoals = [];
+  renderDashboard();
+  renderSeguimiento();
+  renderPagos();
+  renderChat();
+  renderPlanner();
+  renderChecklist();
+  renderSmartGoals();
+}
 
 function fmtCOP(n){ return '$' + Math.round(Number(n||0)).toLocaleString('es-CO'); }
 
@@ -618,7 +1172,13 @@ function buildCalendar(){
   }
 }
 
+function requireLogin(){
+  if(!currentUser()){ toast('Inicia sesión para continuar'); openAuthModal('login'); return false; }
+  return true;
+}
+
 function confirmBooking(){
+  if(!requireLogin()) return;
   const service = document.getElementById('service').value;
   const selDay = document.querySelector('#calendarDays .day.selected');
   const selTime = document.querySelector('#timeSlots .time.selected');
@@ -634,8 +1194,455 @@ function confirmBooking(){
   renderDashboard();
 }
 
+function visibleCourseAccess(role){
+  return role === 'admin' ? 'both' : role === 'empresa' ? 'empresa' : 'student';
+}
+
+function courseVisibilityLabel(value){
+  if(value === 'both') return 'Estudiantes y empresa';
+  if(value === 'student') return 'Solo estudiantes';
+  if(value === 'empresa') return 'Solo empresa';
+  return 'General';
+}
+
+function getCourseLevelWeight(level){
+  const weight = { principiante: 1, intermedio: 2, avanzado: 3 };
+  return weight[level] || 1;
+}
+
+function getDefaultCourseCutoffMonths(level){
+  const defaults = { principiante: 3, intermedio: 5, avanzado: 8 };
+  return defaults[level] || 3;
+}
+
+function getCourseCutoffMonths(course){
+  const months = Number(course && course.cutoffMonths);
+  if(Number.isFinite(months) && months > 0) return months;
+  return getDefaultCourseCutoffMonths(course && course.level ? course.level : 'principiante');
+}
+
+function addMonthsToDate(date, months){
+  const result = new Date(date);
+  result.setMonth(result.getMonth() + months);
+  return result;
+}
+
+function getCourseCutoffDateForEnrollment(course, enrollmentDate){
+  const baseDate = enrollmentDate ? new Date(enrollmentDate) : new Date();
+  if(course && course.cutoffDate){
+    const manualDate = new Date(course.cutoffDate + 'T00:00:00');
+    if(!Number.isNaN(manualDate.getTime())) return manualDate;
+  }
+  return addMonthsToDate(baseDate, getCourseCutoffMonths(course));
+}
+
+function parseCourseQuiz(raw){
+  if(!raw || !raw.trim()) return [];
+  const lines = raw.split(/\n+/).map(line => line.trim()).filter(Boolean);
+  const parsed = [];
+  for (const line of lines) {
+    const parts = line.split('|').map(part => part.trim());
+    if(parts.length < 5) continue;
+    const question = parts[0];
+    const options = parts.slice(1, -1);
+    const answerIndex = Number(parts[parts.length - 1]);
+    if(!question || options.length < 2 || Number.isNaN(answerIndex)) continue;
+    parsed.push({ question, options, answerIndex: Math.max(0, Math.min(answerIndex, options.length - 1)) });
+  }
+  return parsed;
+}
+
+function loadUserAssessments(){
+  try {
+    const raw = localStorage.getItem('sa_user_assessments_v1');
+    return raw ? JSON.parse(raw) : {};
+  } catch (e) {
+    return {};
+  }
+}
+
+function saveUserAssessments(data){
+  localStorage.setItem('sa_user_assessments_v1', JSON.stringify(data));
+}
+
+function getUserAssessmentForCourse(userId, courseId){
+  const map = loadUserAssessments();
+  const userKey = String(userId);
+  return map[userKey] && map[userKey][String(courseId)] ? map[userKey][String(courseId)] : null;
+}
+
+function saveUserAssessmentForCourse(userId, courseId, result){
+  const map = loadUserAssessments();
+  if(!map[String(userId)]) map[String(userId)] = {};
+  map[String(userId)][String(courseId)] = result;
+  saveUserAssessments(map);
+}
+
+function getUserAccessibleCourseIds(user){
+  if(!user) return [];
+  if(user.role === 'admin') return courses.map(c => c.id);
+
+  const assignments = loadCourseAssignments();
+  const ids = new Set(Array.isArray(user.assignedCourseIds) ? user.assignedCourseIds : []);
+  const emailKey = String(user.email || '').trim().toLowerCase();
+  if(emailKey && Array.isArray(assignments[emailKey])){
+    assignments[emailKey].forEach(id => ids.add(id));
+  }
+  if(user.companyName){
+    Object.entries(assignments).forEach(([entryEmail, courseIds]) => {
+      const targetUser = users.find(u => String(u.email || '').trim().toLowerCase() === String(entryEmail).trim().toLowerCase() && u.companyName === user.companyName);
+      if(targetUser && Array.isArray(courseIds)){
+        courseIds.forEach(id => ids.add(id));
+      }
+    });
+  }
+  if(Array.isArray(user.purchasedCourseIds)){
+    user.purchasedCourseIds.forEach(id => ids.add(id));
+  }
+  return [...ids];
+}
+
+function getCourseRecommendationScore(user, course){
+  const userTopic = (user && user.preferredTopic ? user.preferredTopic.toLowerCase() : '').trim();
+  const courseTopic = (course && course.topic ? course.topic.toLowerCase() : '').trim();
+  let topicScore = 0;
+  if(userTopic && courseTopic){
+    if(courseTopic.includes(userTopic) || userTopic.includes(courseTopic)) topicScore = 45;
+    else if(courseTopic.includes('sql') && userTopic.includes('sql')) topicScore = 40;
+    else if(courseTopic.includes('excel') && userTopic.includes('excel')) topicScore = 40;
+    else if(courseTopic.includes('marketing') && userTopic.includes('marketing')) topicScore = 40;
+  } else if(courseTopic) {
+    topicScore = 15;
+  }
+
+  const userLevel = user && user.experienceLevel ? user.experienceLevel : 'principiante';
+  const courseLevel = course && course.level ? course.level : 'principiante';
+  const levelGap = Math.abs(getCourseLevelWeight(courseLevel) - getCourseLevelWeight(userLevel));
+  const levelScore = Math.max(0, 30 - levelGap * 12);
+
+  const assessmentMap = loadUserAssessments();
+  const assessment = assessmentMap[String(user && user.id)] && assessmentMap[String(user.id)][String(course.id)];
+  const assessmentScore = assessment ? (assessment.score / Math.max(assessment.total, 1)) * 100 : 0;
+
+  return topicScore + levelScore + assessmentScore;
+}
+
+function getSuggestedCourseForUser(user){
+  if(!user) return null;
+  const availableCourses = courses.filter(course => {
+    if(user.role === 'empresa') return course.visibility === 'both' || course.visibility === 'empresa';
+    return course.visibility === 'both' || course.visibility === 'student';
+  });
+
+  if(!availableCourses.length) return null;
+
+  const scoredCourses = availableCourses.map(course => ({
+    course,
+    score: getCourseRecommendationScore(user, course)
+  }));
+
+  scoredCourses.sort((a, b) => b.score - a.score);
+  return scoredCourses[0].course;
+}
+
+function assignRecommendedCourseToUser(){
+  const email = document.getElementById('admAssignEmail').value.trim().toLowerCase();
+  if(!email){
+    toast('Escribe el correo del usuario para recomendarle un curso.');
+    return;
+  }
+  const targetUser = users.find(u => String(u.email || '').trim().toLowerCase() === email);
+  if(!targetUser){
+    toast('No existe un usuario con ese correo.');
+    return;
+  }
+  const recommended = getSuggestedCourseForUser(targetUser) || courses[0];
+  if(!recommended){
+    toast('Primero crea al menos un curso.');
+    return;
+  }
+  assignCourseToUserByEmail({ forceCourseId: recommended.id, silent: true });
+  toast('✓ Se asignó el curso recomendado: ' + recommended.name);
+}
+
+function renderCourseCatalog(){
+  const list = document.getElementById('courseCatalogList');
+  if(!list) return;
+  const user = currentUser();
+  if(!user){
+    list.innerHTML = '<p class="muted">Inicia sesión para ver los cursos disponibles.</p>';
+    return;
+  }
+
+  const accessibleIds = new Set(getUserAccessibleCourseIds(user));
+  const allowed = courses.filter(course => {
+    if(accessibleIds.has(course.id)) return true;
+    const access = course.visibility;
+    if(user.role === 'empresa') return access === 'both' || access === 'empresa';
+    return access === 'both' || access === 'student';
+  });
+
+  if(allowed.length === 0){
+    list.innerHTML = '<p class="muted">Aún no tienes cursos asignados o contratados para tu acceso.</p>';
+    return;
+  }
+
+  list.innerHTML = allowed.map(course => {
+      const cutoff = getCourseCutoffDateForEnrollment(course, new Date());
+    const cutoffText = cutoff ? cutoff.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Sin fecha';
+    const assessment = getUserAssessmentForCourse(user.id, course.id);
+    const scoreText = assessment ? '<div class="muted">Evaluación: ' + Math.round((assessment.score / Math.max(assessment.total, 1)) * 100) + '%</div>' : '<div class="muted">Sin evaluación</div>';
+    const recommendedText = getSuggestedCourseForUser(user)?.id === course.id ? '<span class="badge">Recomendado</span>' : '';
+    return '<div class="item"><div class="item-left"><div class="item-icon">🎓</div><div><b>' + course.name + '</b><div class="muted">' + (course.description || 'Curso disponible para tu formación.') + '</div><div class="muted">Nivel: ' + (course.level || 'principiante') + ' · Tema: ' + (course.topic || 'General') + ' · Fecha de corte: ' + cutoffText + '</div>' + scoreText + '</div></div><div style="text-align:right"><div class="badge">' + courseVisibilityLabel(course.visibility) + '</div>' + recommendedText + '<div style="margin-top:6px;font-weight:800">' + fmtCOP(course.price) + '</div><button class="btn ghost" style="margin-top:8px" onclick="openCourseQuiz(' + course.id + ')">Evaluar curso</button></div></div>';
+  }).join('');
+}
+
+function populateAdminCourseAssignmentSelect(){
+  const select = document.getElementById('admAssignCourse');
+  if(!select) return;
+  if(courses.length===0){
+    select.innerHTML = '<option value="">No hay cursos creados</option>';
+    return;
+  }
+  select.innerHTML = courses.map(course => '<option value="'+course.id+'">'+course.name+'</option>').join('');
+}
+
+function getAssignmentCutoffDateForUserAndCourse(email, courseId){
+  const meta = loadCourseAssignmentMeta();
+  const key = String(email || '').trim().toLowerCase();
+  const course = courses.find(item => item.id === Number(courseId));
+  const metaEntry = meta[key] && meta[key][String(courseId)];
+  if(metaEntry && metaEntry.cutoffDate){
+    return new Date(metaEntry.cutoffDate + 'T00:00:00');
+  }
+  return getCourseCutoffDateForEnrollment(course, new Date());
+}
+
+function assignCourseToUserByEmail(options = {}){
+  if(!currentUser() || currentUser().role !== 'admin'){
+    toast('Solo el administrador puede asignar cursos.');
+    return;
+  }
+  const email = document.getElementById('admAssignEmail').value.trim().toLowerCase();
+  const courseId = options.forceCourseId || Number(document.getElementById('admAssignCourse').value);
+  const targetEmail = options.forceEmail || email;
+  if(!targetEmail || !courseId){
+    toast('Selecciona un correo y un curso.');
+    return;
+  }
+  const assignments = loadCourseAssignments();
+  const targetUser = users.find(u => String(u.email || '').trim().toLowerCase() === targetEmail);
+  const arr = Array.isArray(assignments[targetEmail]) ? assignments[targetEmail] : [];
+  if(!arr.includes(courseId)) arr.push(courseId);
+  assignments[targetEmail] = arr;
+  saveCourseAssignments(assignments);
+
+  const course = courses.find(item => item.id === Number(courseId));
+  const meta = loadCourseAssignmentMeta();
+  const userMeta = meta[targetEmail] || {};
+  userMeta[String(courseId)] = {
+    assignedAt: new Date().toISOString(),
+    cutoffDate: getCourseCutoffDateForEnrollment(course, new Date()).toISOString().slice(0, 10),
+    cutoffMonths: getCourseCutoffMonths(course)
+  };
+  meta[targetEmail] = userMeta;
+  saveCourseAssignmentMeta(meta);
+
+  if(targetUser){
+    targetUser.assignedCourseIds = [...new Set([...(Array.isArray(targetUser.assignedCourseIds) ? targetUser.assignedCourseIds : []), courseId])];
+    saveUsers(users);
+  }
+  if(!options.silent){
+    document.getElementById('admAssignEmail').value = '';
+    toast('✓ Curso asignado al correo indicado');
+  }
+  renderCourseCatalog();
+}
+
+function openCourseQuiz(courseId){
+  const user = currentUser();
+  if(!user){
+    toast('Debes iniciar sesión para evaluar un curso.');
+    return;
+  }
+  const course = courses.find(c => c.id === courseId);
+  if(!course) return;
+  const quiz = Array.isArray(course.quiz) ? course.quiz : parseCourseQuiz(course.quizText || course.quizTextArea || '');
+  if(!quiz.length){
+    toast('Este curso aún no tiene un cuestionario disponible.');
+    return;
+  }
+
+  const content = quiz.map((item, idx) => {
+    const opts = item.options.map((option, optIdx) => `
+      <label style="display:block;margin:7px 0">
+        <input type="radio" name="quiz-${course.id}-${idx}" value="${optIdx}">
+        <span>${option}</span>
+      </label>
+    `).join('');
+    return `<div style="margin-bottom:14px"><div style="font-weight:700;margin-bottom:6px">${idx + 1}. ${item.question}</div>${opts}</div>`;
+  }).join('');
+
+  document.getElementById('modalTitle').textContent = 'Evaluación de ' + course.name;
+  document.getElementById('modalText').innerHTML = '<div class="form">' + content + '</div>';
+  document.getElementById('modal').classList.add('open');
+  const btn = document.querySelector('#modal .btn');
+  if(btn){
+    btn.textContent = 'Enviar evaluación';
+    btn.onclick = function(){
+      const radioGroups = document.querySelectorAll('#modal input[type="radio"]');
+      let score = 0;
+      let total = quiz.length;
+      let index = 0;
+      quiz.forEach((item, itemIdx) => {
+        const checked = document.querySelector('input[name="quiz-' + course.id + '-' + itemIdx + '"]:checked');
+        if(checked && Number(checked.value) === item.answerIndex){
+          score += 1;
+        }
+      });
+      const result = { score, total, courseId: course.id, level: course.level || 'principiante', updatedAt: new Date().toISOString() };
+      saveUserAssessmentForCourse(user.id, course.id, result);
+      closeModal();
+      toast('✓ Evaluación completada: ' + Math.round((score / total) * 100) + '%');
+      renderCourseCatalog();
+      const recommended = getSuggestedCourseForUser(user);
+      if(recommended){
+        const recommendedName = recommended.name || 'curso recomendado';
+        toast('Curso recomendado: ' + recommendedName);
+      }
+    };
+  }
+}
+
+function saveAdminCourse(){
+  if(!currentUser() || currentUser().role !== 'admin'){
+    toast('Solo el administrador puede registrar cursos.');
+    return;
+  }
+  const name = document.getElementById('admCourseName').value.trim();
+  const description = document.getElementById('admCourseDescription').value.trim();
+  const price = parseFloat(document.getElementById('admCoursePrice').value) || 0;
+  const visibility = document.getElementById('admCourseVisibility').value;
+  const cutoffDate = document.getElementById('admCourseCutoff').value;
+  const level = document.getElementById('admCourseLevel').value || 'principiante';
+  const cutoffMonths = Number(document.getElementById('admCourseCutoffMonths').value) || getDefaultCourseCutoffMonths(level);
+  const topic = document.getElementById('admCourseTopic').value.trim() || 'General';
+  const quizRaw = document.getElementById('admCourseQuiz').value.trim();
+  const quiz = parseCourseQuiz(quizRaw);
+
+  if(!name || !price){
+    toast('Completa el nombre y el precio del curso.');
+    return;
+  }
+
+  if(editingCourseId){
+    const course = courses.find(c => c.id === editingCourseId);
+    if(course){
+      course.name = name;
+      course.description = description;
+      course.price = price;
+      course.visibility = visibility;
+      course.cutoffDate = cutoffDate || '';
+      course.cutoffMonths = cutoffMonths;
+      course.level = level;
+      course.topic = topic;
+      course.quiz = quiz;
+      course.quizText = quizRaw;
+      toast('✓ Curso actualizado con plazo y fecha de corte configurados');
+    }
+  } else {
+    courses.push({
+      id: Date.now(),
+      name,
+      description,
+      price,
+      visibility,
+      cutoffDate: cutoffDate || '',
+      cutoffMonths,
+      level,
+      topic,
+      quiz,
+      quizText: quizRaw
+    });
+    toast('✓ Curso registrado con plazo automático según su nivel');
+  }
+
+  saveCourses();
+  resetCourseForm();
+  renderAdminPage();
+  renderCourseCatalog();
+}
+
+function cancelCourseEdit(){
+  resetCourseForm();
+  toast('Edición cancelada');
+}
+
+function editAdminCourse(id){
+  const course = courses.find(c => c.id === id);
+  if(!course || !currentUser() || currentUser().role !== 'admin') return;
+  editingCourseId = id;
+  document.getElementById('admCourseName').value = course.name || '';
+  document.getElementById('admCourseDescription').value = course.description || '';
+  document.getElementById('admCoursePrice').value = String(course.price || 0);
+  document.getElementById('admCourseVisibility').value = course.visibility || 'both';
+  document.getElementById('admCourseCutoff').value = course.cutoffDate || '';
+  document.getElementById('admCourseLevel').value = course.level || 'principiante';
+  document.getElementById('admCourseCutoffMonths').value = String(getCourseCutoffMonths(course));
+  document.getElementById('admCourseTopic').value = course.topic || '';
+  document.getElementById('admCourseQuiz').value = Array.isArray(course.quiz) ? course.quiz.map(item => `${item.question}|${item.options.join('|')}|${item.answerIndex}`).join('\n') : (course.quizText || '');
+  const saveBtn = document.getElementById('saveCourseBtn');
+  if(saveBtn) saveBtn.textContent = 'Actualizar curso';
+  const cancelBtn = document.getElementById('cancelCourseEditBtn');
+  if(cancelBtn) cancelBtn.style.display = 'inline-flex';
+  window.scrollTo({ top: document.getElementById('admCourseName').getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+}
+
+function renderAdminCoursesTable(){
+  const tbody = document.getElementById('admCoursesTableBody');
+  if(!tbody) return;
+  if(courses.length === 0){
+    tbody.innerHTML = '<tr><td colspan="6" class="muted">No hay cursos registrados.</td></tr>';
+    return;
+  }
+
+  tbody.innerHTML = courses.map(course => {
+    const cutoffDate = getCourseCutoffDateForEnrollment(course, new Date());
+    const cutoffText = cutoffDate ? cutoffDate.toLocaleDateString('es-CO', { day: '2-digit', month: 'short', year: 'numeric' }) : 'Sin fecha';
+    const level = (course.level || 'principiante').charAt(0).toUpperCase() + ((course.level || 'principiante').slice(1));
+    const months = getCourseCutoffMonths(course);
+    return '<tr><td>' + course.name + '</td><td>' + courseVisibilityLabel(course.visibility) + '</td><td>' + level + '</td><td>' + (course.topic || 'General') + '</td><td>' + fmtCOP(course.price) + '</td><td>' + months + ' meses</td><td>' + cutoffText + '</td><td><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn ghost" onclick="editAdminCourse(' + course.id + ')">Editar</button><button class="btn ghost" onclick="deleteAdminCourse(' + course.id + ')">Eliminar</button></div></td></tr>';
+  }).join('');
+}
+
+function deleteAdminCourse(id){
+  if(!currentUser() || currentUser().role !== 'admin') return;
+  if(editingCourseId === id) resetCourseForm();
+  courses = courses.filter(course => course.id !== id);
+  saveCourses();
+  const assignments = loadCourseAssignments();
+  Object.keys(assignments).forEach(email => {
+    assignments[email] = (assignments[email] || []).filter(cid => cid !== id);
+    if(assignments[email].length === 0) delete assignments[email];
+  });
+  saveCourseAssignments(assignments);
+  users.forEach(u => {
+    if(Array.isArray(u.assignedCourseIds)) {
+      u.assignedCourseIds = u.assignedCourseIds.filter(cid => cid !== id);
+    }
+    if(Array.isArray(u.purchasedCourseIds)) {
+      u.purchasedCourseIds = u.purchasedCourseIds.filter(cid => cid !== id);
+    }
+  });
+  saveUsers(users);
+  renderAdminPage();
+  renderCourseCatalog();
+  toast('Curso eliminado');
+}
+
 /* ---- Compromisos / objetivo (seguimiento) ---- */
 function saveGoal(){
+  if(!requireLogin()) return;
   const name = document.getElementById('goalNameInput').value.trim();
   const total = parseInt(document.getElementById('goalTotalInput').value,10) || 1;
   const done = parseInt(document.getElementById('goalDoneInput').value,10) || 0;
@@ -648,6 +1655,7 @@ function saveGoal(){
 }
 
 function addCommitment(){
+  if(!requireLogin()) return;
   const title = document.getElementById('commitTitleInput').value.trim();
   const date = document.getElementById('commitDateInput').value;
   if(!title){ toast('Escribe el compromiso'); return; }
@@ -712,6 +1720,7 @@ function renderSeguimiento(){
 
 /* ---- Pagos ---- */
 function addPayment(){
+  if(!requireLogin()) return;
   const service = document.getElementById('payServiceInput').value.trim();
   const value = parseFloat(document.getElementById('payValueInput').value) || 0;
   const date = document.getElementById('payDateInput').value;
@@ -734,33 +1743,60 @@ function markPaid(id){
   renderPagos();
 }
 
+function syncUserPurchasedCoursesFromPayments(){
+  const user = currentUser();
+  if(!user) return;
+  const purchasedSet = new Set(Array.isArray(user.purchasedCourseIds) ? user.purchasedCourseIds : []);
+  (state.payments || []).forEach(payment => {
+    if(!payment || !payment.service) return;
+    const matchedCourse = courses.find(course => {
+      const serviceName = String(payment.service || '').toLowerCase();
+      const courseName = String(course.name || '').toLowerCase();
+      return serviceName === courseName || serviceName.includes(courseName) || courseName.includes(serviceName);
+    });
+    if(matchedCourse) purchasedSet.add(matchedCourse.id);
+  });
+  user.purchasedCourseIds = [...purchasedSet];
+  saveUsers(users);
+}
+
 function renderPagos(){
   const pendEl = document.getElementById('pagoPendiente');
   if(!pendEl) return;
-  const pendientes = state.payments.filter(p=>p.status==='pendiente');
-  const pagados = state.payments.filter(p=>p.status==='pagado');
+
+  const user = currentUser();
+  if(user) syncUserPurchasedCoursesFromPayments();
+
+  const payments = (state.payments || []).filter(p => p && p.service && typeof p.value === 'number');
+  const pendientes = payments.filter(p=>p.status==='pendiente');
+  const pagados = payments.filter(p=>p.status==='pagado');
   const pendienteTotal = pendientes.reduce((s,p)=>s+p.value,0);
   const pagadoTotal = pagados.reduce((s,p)=>s+p.value,0);
+
   pendEl.textContent = fmtCOP(pendienteTotal);
   document.getElementById('pagoPendienteSub').textContent = pendientes.length + ' servicio(s) pendiente(s)';
   document.getElementById('pagoAnual').textContent = fmtCOP(pagadoTotal);
   document.getElementById('pagoAnualSub').textContent = pagados.length + ' transacciones';
-  const nextInvoice = pendientes.sort((a,b)=> new Date(a.date||0) - new Date(b.date||0))[0];
+
+  const nextInvoice = [...pendientes].sort((a,b)=> new Date(a.date||0) - new Date(b.date||0))[0];
   document.getElementById('pagoProxFecha').textContent = nextInvoice ? (nextInvoice.date||'—') : '—';
   document.getElementById('pagoProxDesc').textContent = nextInvoice ? nextInvoice.service : 'No tienes facturas programadas.';
+
   const tbody = document.getElementById('paymentsTableBody');
+  if(!tbody) return;
   tbody.innerHTML = '';
-  if(state.payments.length===0){
-    tbody.innerHTML = '<tr id="paymentsEmptyRow"><td colspan="5" class="muted">No tienes pagos registrados todavía.</td></tr>';
-  } else {
-    state.payments.forEach(p=>{
-      const tr = document.createElement('tr');
-      const badge = p.status==='pagado' ? '<span class="badge">Pagado</span>' : '<span class="badge orange">Pendiente</span>';
-      const action = p.status==='pagado' ? '<button class="btn ghost" disabled>Pagado</button>' : '<button class="btn ghost" onclick="markPaid('+p.id+')">Marcar pagado</button>';
-      tr.innerHTML = '<td>'+p.service+'</td><td>'+(p.date||'—')+'</td><td>'+fmtCOP(p.value)+'</td><td>'+badge+'</td><td>'+action+'</td>';
-      tbody.appendChild(tr);
-    });
+  if(payments.length===0){
+    tbody.innerHTML = '<tr id="paymentsEmptyRow"><td colspan="4" class="muted">No tienes pagos registrados todavía.</td></tr>';
+    return;
   }
+
+  payments.forEach(p=>{
+    const tr = document.createElement('tr');
+    const badge = p.status==='pagado' ? '<span class="badge">Pagado</span>' : '<span class="badge orange">Pendiente</span>';
+    const statusText = p.status==='pagado' ? 'Pagado' : 'Pendiente';
+    tr.innerHTML = '<td>'+p.service+'</td><td>'+(p.date||'—')+'</td><td>'+fmtCOP(p.value)+'</td><td>'+badge+'<div class="muted" style="margin-top:4px">Estado: '+statusText+'</div></td>';
+    tbody.appendChild(tr);
+  });
 }
 
 /* ---- Dashboard ---- */
@@ -804,6 +1840,7 @@ function renderDashboard(){
   } else {
     listEl.innerHTML = pending.map(c=>'<div class="item"><div class="item-left"><div class="item-icon">📘</div><div><b>'+c.title+'</b><div class="muted">Fecha límite · '+(c.date||'sin definir')+'</div></div></div>'+statusBadge(c.status)+'</div>').join('');
   }
+  renderFeedPreview();
 }
 
 /* ---- Chat persistente ---- */
@@ -821,6 +1858,7 @@ function renderChat(){
 }
 function sendMessage(e){
   e.preventDefault();
+  if(!requireLogin()) return;
   const input = document.getElementById('chatText');
   const text = input.value.trim();
   if(!text) return;
@@ -890,7 +1928,6 @@ function calcularFinanzas(){
   html += 'Total a pagar en '+cuotas+' cuotas: <b>'+fmtCOP(totalPagado)+'</b><br>';
   html += 'Intereses totales: <b>'+fmtCOP(totalIntereses)+'</b>';
   if(ahorro>0){
-    const mesesParaCubrir = Math.ceil(cuotaMensual/ahorro);
     html += '<br>Con un ahorro mensual de '+fmtCOP(ahorro)+', cada cuota representa '+Math.round((cuotaMensual/ahorro)*100)+'% de tu ahorro disponible.';
   }
   out.innerHTML = html;
@@ -1026,35 +2063,91 @@ function renderSmartGoals(){
   }
 }
 
-/* ---- Autenticación real basada en localStorage ---- */
-const SA_USER_KEY = 'sa_user_v1';
-function getUser(){ try{ return JSON.parse(localStorage.getItem(SA_USER_KEY)); }catch(e){ return null; } }
-function setUser(u){ localStorage.setItem(SA_USER_KEY, JSON.stringify(u)); }
-function updateAuthUI(){
-  const user = getUser();
-  const btn = document.getElementById('authToggleBtn');
-  if(user){
-    btn.textContent = user.name ? ('Hola, '+user.name) : user.email;
-  } else {
-    const lang = localStorage.getItem('sa_lang')||'es';
-    btn.textContent = (I18N[lang]||I18N['es']).auth_btn;
+/* ---- Chatbot: expone comandos de sesión ---- */
+const KB = [
+  {kw:['servicio','servicios','ofrecen','que hacen','qué hacen','service','services','offer','serviços','serviços oferece'], a:'servicios'},
+  {kw:['reserva','reservar','agendar','cita','sesion','sesión','horario','book','booking','schedule','reservar consultoria'], a:'reservas'},
+  {kw:['precio','precios','costo','costos','cuanto cuesta','cuánto cuesta','tarifa','valor','price','pricing','preço','preços'], a:'precios'},
+  {kw:['formacion','formación','curso','cursos','taller','talleres','modulo','módulo','bootcamp','microclase','training','course','courses','formação'], a:'formacion'},
+  {kw:['pago','pagos','factura','facturación','facturacion','saldo','pendiente','payment','payments','invoice','pagamento'], a:'pagos'},
+  {kw:['seguimiento','avance','progreso','compromiso','compromisos','meta','metas','progress','tracking','commitment','acompanhamento'], a:'seguimiento'},
+  {kw:['asesor','asesora','hablar con','contactar','humano','persona','advisor','talk to','consultor'], a:'asesor'},
+  {kw:['consultoria','consultoría','proyecto','proyectos','propuesta tecnica','consulting','project'], a:'consultoria'},
+  {kw:['capacitacion','capacitación','organizacional','empresa','equipo de trabajo','training','organization'], a:'capacitacion'},
+  {kw:['registro','registrar','crear cuenta','cuenta de empresa','sign up','register','signup'], a:'registro'},
+  {kw:['administrador','admin','panel admin'], a:'admin'},
+  {kw:['idioma','language','traducir','translate','langue','sprache','lingua'], a:'idioma'},
+  {kw:['hola','buenas','hello','hi','olá','oi','bonjour','hallo','ciao'], a:'saludo'},
+  {kw:['gracias','thanks','thank you','obrigado','merci','danke','grazie'], a:'gracias'},
+  {kw:['whatsapp','contacto','telefono','teléfono','numero','número','contact','phone'], a:'whatsapp'}
+];
+
+const KB_RESPONSES = {
+  es:{servicios:'Ofrecemos <b>asesorías académicas</b>, <b>apoyo en actividades académicas</b>, <b>formación virtual</b>, <b>creación de contenido educativo</b>, <b>consultoría</b>, <b>capacitación organizacional</b> y <b>diseño de estrategias formativas</b>.',reservas:'Para reservar una asesoría ve a "Reservar asesoría": elige el servicio, la modalidad y un horario disponible.',precios:'Los valores varían según el servicio. Consulta "Pagos y facturación" o habla con un asesor para una cotización exacta.',formacion:'Nuestra formación es propia: cursos virtuales, microclases, bootcamps, videos, podcast y material descargable.',pagos:'En "Pagos y facturación" encuentras tu saldo pendiente e historial de pagos.',seguimiento:'En "Mi seguimiento" puedes ver tu porcentaje de avance y tu plan de acción.',asesor:'Puedes escribir a tu asesora en "Chat con asesores", o usar WhatsApp para respuesta inmediata.',consultoria:'Nuestra consultoría incluye formulación de proyectos, propuestas técnicas y optimización de procesos.',capacitacion:'Ofrecemos capacitación para equipos, talleres técnicos y programas de actualización profesional.',registro:'Puedes crear una cuenta de usuario o de empresa desde el botón "Iniciar sesión o regístrate" en la parte superior derecha.',admin:'El panel de administración es exclusivo para el equipo de Sapere Aude e inicia sesión con una cuenta con rol Administrador.',idioma:'Puedes cambiar el idioma del sitio con el selector 🌐 en la parte superior derecha.',saludo:'¡Hola! 🦉 Soy el asistente de Sapere Aude. ¿En qué puedo ayudarte?',gracias:'¡Con gusto! Si tienes otra duda, aquí estoy.',whatsapp:'Puedes escribirnos por WhatsApp con el botón verde en la esquina inferior derecha.',default:'Puedo ayudarte con: <b>servicios</b>, <b>reservas</b>, <b>formación</b>, <b>consultoría</b>, <b>pagos</b>, <b>registro</b> o <b>seguimiento</b>.'},
+  en:{servicios:'We offer <b>academic advising</b>, <b>academic project support</b>, <b>online training</b>, <b>educational content creation</b>, <b>consulting</b>, <b>organizational training</b>, and <b>training strategy design</b>.',reservas:'To book a session go to "Book a session": choose the service, format, and an available time.',precios:'Prices vary by service. Check "Payments & billing" or talk to an advisor for an exact quote.',formacion:'Our training is in-house: online courses, micro-classes, bootcamps, videos, podcast, and downloadable material.',pagos:'In "Payments & billing" you can see your pending balance and payment history.',seguimiento:'In "My progress" you can see your progress percentage and action plan.',asesor:'You can message your advisor in "Chat with advisors", or use WhatsApp for an immediate reply.',consultoria:'Our consulting includes project formulation, technical proposals, and process optimization.',capacitacion:'We offer team training, technical workshops, and professional refresher programs.',registro:'You can create a personal or company account from the "Sign in or sign up" button in the top right corner.',admin:'The admin panel is exclusive to the Sapere Aude team and requires an account with the Administrator role.',idioma:'You can change the site language with the 🌐 selector in the top right corner.',saludo:'Hi! 🦉 I am the Sapere Aude assistant. How can I help?',gracias:'You are welcome! If you have another question, I am here.',whatsapp:'You can message us on WhatsApp using the green button in the bottom right corner.',default:'I can help with: <b>services</b>, <b>bookings</b>, <b>training</b>, <b>consulting</b>, <b>payments</b>, <b>sign up</b>, or <b>progress</b>.'},
+  pt:{servicios:'Oferecemos <b>assessorias acadêmicas</b>, <b>apoio em atividades acadêmicas</b>, <b>formação virtual</b>, <b>criação de conteúdo educacional</b>, <b>consultoria</b>, <b>capacitação organizacional</b> e <b>desenho de estratégias formativas</b>.',reservas:'Para reservar uma consultoria vá em "Reservar consultoria": escolha o serviço, modalidade e horário disponível.',precios:'Os valores variam por serviço. Consulte "Pagamentos e faturamento" ou fale com um consultor.',formacion:'Nossa formação é própria: cursos virtuais, microaulas, bootcamps, vídeos, podcast e material para download.',pagos:'Em "Pagamentos e faturamento" você vê seu saldo pendente e histórico de pagamentos.',seguimiento:'Em "Meu progresso" você vê seu percentual de avanço e plano de ação.',asesor:'Você pode escrever para sua consultora em "Chat com consultores", ou usar o WhatsApp.',consultoria:'Nossa consultoria inclui formulação de projetos, propostas técnicas e otimização de processos.',capacitacion:'Oferecemos capacitação de equipes, workshops técnicos e programas de atualização profissional.',registro:'Você pode criar uma conta pessoal ou de empresa no botão "Entrar ou cadastrar-se" no canto superior direito.',admin:'O painel de administração é exclusivo para a equipe Sapere Aude com uma conta de função Administrador.',idioma:'Você pode mudar o idioma do site com o seletor 🌐 no canto superior direito.',saludo:'Olá! 🦉 Sou o assistente da Sapere Aude. Como posso ajudar?',gracias:'De nada! Se tiver outra dúvida, estou aqui.',whatsapp:'Você pode nos escrever pelo WhatsApp usando o botão verde no canto inferior direito.',default:'Posso ajudar com: <b>serviços</b>, <b>reservas</b>, <b>formação</b>, <b>consultoria</b>, <b>pagamentos</b>, <b>cadastro</b> ou <b>progresso</b>.'}
+};
+
+function findAnswer(text){
+  const t=text.toLowerCase();
+  let best=null,bestScore=0;
+  for(const entry of KB){
+    let score=0;
+    for(const kw of entry.kw){ if(t.includes(kw)) score+=kw.length; }
+    if(score>bestScore){bestScore=score;best=entry;}
   }
+  const lang = localStorage.getItem('sa_lang') || 'es';
+  const responses = KB_RESPONSES[lang] || KB_RESPONSES['es'];
+  if(best) return responses[best.a] || responses.default;
+  return responses.default;
 }
-function login(e){
+
+function toggleChatbot(){document.getElementById('chatbotWindow').classList.toggle('open')}
+
+function appendChatbotBubble(text,cls){
+  const body=document.getElementById('chatbotBody');
+  const b=document.createElement('div');
+  b.className='chatbot-bubble '+cls;
+  b.innerHTML=text;
+  body.appendChild(b);
+  body.scrollTop=body.scrollHeight;
+  return b;
+}
+
+function chatbotRespond(text){
+  const typing=document.createElement('div');
+  typing.className='chatbot-bubble bot typing';
+  typing.innerHTML='<span></span><span></span><span></span>';
+  document.getElementById('chatbotBody').appendChild(typing);
+  document.getElementById('chatbotBody').scrollTop=document.getElementById('chatbotBody').scrollHeight;
+  setTimeout(()=>{
+    typing.remove();
+    appendChatbotBubble(findAnswer(text),'bot');
+  },550+Math.random()*400);
+}
+
+function chatbotAsk(text){
+  appendChatbotBubble(text,'user');
+  chatbotRespond(text);
+}
+
+function handleChatbotSubmit(e){
   e.preventDefault();
-  const email = document.getElementById('email').value.trim();
-  const nameField = document.getElementById('nameField');
-  const isRegister = nameField.style.display !== 'none';
-  const name = document.getElementById('name').value.trim();
-  if(!email){ toast('Ingresa un correo válido'); return; }
-  setUser({ email, name: isRegister ? name : (getUser()?.name || '') });
-  document.getElementById('auth').classList.remove('open');
-  updateAuthUI();
-  toast(isRegister ? '✓ Cuenta creada' : '✓ Sesión iniciada');
+  const input=document.getElementById('chatbotInput');
+  const val=input.value.trim();
+  if(!val) return;
+  appendChatbotBubble(val,'user');
+  input.value='';
+  chatbotRespond(val);
 }
 
 /* ---- Inicialización ---- */
 window.addEventListener('DOMContentLoaded', ()=>{
+  const savedLang = localStorage.getItem('sa_lang') || 'es';
+  const sel = document.getElementById('langSelect');
+  if(sel) sel.value = savedLang;
+  if(I18N[savedLang]) applyI18n(savedLang);
+
   buildCalendar();
   document.querySelectorAll('#timeSlots .time').forEach(t=>{
     t.addEventListener('click', ()=>{
@@ -1069,9 +2162,10 @@ window.addEventListener('DOMContentLoaded', ()=>{
   renderPlanner();
   renderChecklist();
   renderSmartGoals();
+  renderCourseCatalog();
   updatePomodoroDisplay();
-  updateAuthUI();
   searchResources();
+  applyAuthUI();
 });
 </script>
 <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
