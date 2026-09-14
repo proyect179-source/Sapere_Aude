@@ -513,7 +513,6 @@ h1,h2,h3,h4{text-align:left;margin:0}
       <label class="check"><input type="checkbox" id="keepSession" checked> <span data-i18n="auth_keep_session">Mantener mi sesión iniciada</span></label>
       <p class="muted" id="authError" style="color:var(--danger);display:none;margin:0"></p>
       <button class="btn" id="authBtn" data-i18n="auth_login_btn">Iniciar sesión</button>
-      <button type="button" class="btn secondary" id="forgotPasswordBtn" style="margin-top:10px;width:100%" onclick="handleForgotPassword()">¿Olvidaste tu contraseña?</button>
     </form>
     <div class="auth-links"><span data-i18n="auth_secure">Plataforma segura</span><a onclick="toggleAuth()" data-i18n="auth_create_account">Crear una cuenta</a></div>
   </div>
@@ -727,31 +726,6 @@ function closeAuthModal(){
 }
 function toggleAuth(){
   openAuthModal(authMode==='login' ? 'register' : 'login');
-}
-
-function handleForgotPassword(){
-  const emailInput = document.getElementById('email');
-  const typedEmail = (emailInput ? emailInput.value.trim() : '').toLowerCase();
-  const targetEmail = typedEmail || window.prompt('Escribe tu correo electrónico registrado:', '');
-  if(!targetEmail){ return; }
-
-  const user = users.find(u => String(u.email || '').trim().toLowerCase() === targetEmail.toLowerCase());
-  if(!user){
-    showAuthError('No encontramos una cuenta con ese correo.');
-    return;
-  }
-
-  const tempPassword = 'Reset' + String(user.id).slice(-4);
-  user.passwordHash = simpleHash(tempPassword);
-  saveUsers(users);
-
-  if(emailInput) emailInput.value = targetEmail;
-  const passwordInput = document.getElementById('password');
-  if(passwordInput) passwordInput.value = tempPassword;
-
-  authMode = 'login';
-  openAuthModal('login');
-  showAuthError('Se creó una contraseña temporal: ' + tempPassword + '. Inicia sesión y cámbiala luego en tu perfil.');
 }
 
 function handleAuthBtnClick(){
